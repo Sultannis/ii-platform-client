@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import DashboardHeader from "@/layouts/DashbardLayout/components/DashboardHeader.vue";
+import DashboardHeader from "@/layouts/DashbardLayout/components/DashboardHeader/DashboardHeader.vue";
 </script>
 
 <template>
