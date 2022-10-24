@@ -1,15 +1,17 @@
 <template>
   <header class="header">
     <div class="header__logo">
-      <img src="@/assets/icons/logo.svg" alt="">
+      <img src="@/assets/icons/logo.svg">
       <p class="header__name">Ferrum</p>
     </div>
     <div class="header__profile">
       <button class="header__button">
-        <img src="@/assets/icons/archive.svg" alt="">
+        <img src="@/assets/icons/archive.svg" id="but">
+        <img src="@/assets/icons/archive-hovered.svg">
       </button>
       <button class="header__button">
-        <img src="@/assets/icons/profile-picture.svg" alt="">
+        <img src="@/assets/icons/profile-picture.svg" id="but">
+        <img src="@/assets/icons/profile-picture-hovered.svg">
       </button>
     </div>
    
@@ -42,11 +44,22 @@
 .header__profile {
   display: flex;
   flex-direction: row;
-  margin: 0 40px 0 0;
+  margin: 0 20px 0 0;
 }
 .header__button {
+  width: 70px;
+  height: 50px;
   background-color: var(--primary-color);
   border: none;
-  margin: 0 15px 0 15px;
 }
+
+#but {
+  position: absolute;
+  opacity: 1;
+  transition-duration: 0.3s;
+}
+.header__button:hover #but {
+  opacity: 0;
+}
+
 </style>
