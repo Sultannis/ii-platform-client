@@ -33,7 +33,9 @@ const sidebarLinks = reactive([
     <div class="dashboard__left">
       <SidebarNavigation :links="sidebarLinks" />
     </div>
-    <RouterView />
+    <div class="dashboard__middle">
+      <RouterView />
+    </div>
     <div class="dashboard__right"></div>
   </main>
 </template>
@@ -51,8 +53,12 @@ const sidebarLinks = reactive([
   margin-right: 20px;
 }
 
+.dashboard__middle {
+  width: 100%;
+}
+
 .dashboard__right {
-  width: 400px;
+  min-width: 300px;
   margin-left: 20px;
 }
 </style>

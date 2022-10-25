@@ -10,11 +10,13 @@ const props = defineProps({
 </script>
 
 <template>
-  <SidebarNavigationLink
-    v-for="link of links"
-    :image-class="link.iconClass"
-    :route="link.route"
-  >
-    {{ link.title }}
-  </SidebarNavigationLink>
+  <aside class="sidebar">
+    <SidebarNavigationLink
+      v-for="link of links"
+      :image-class="link.iconClass"
+      :route="link.route"
+    >
+      {{ link.title }}
+    </SidebarNavigationLink>
+  </aside>
 </template>
