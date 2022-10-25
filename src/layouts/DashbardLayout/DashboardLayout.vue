@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import DashboardHeader from "@/layouts/DashbardLayout/components/DashboardHeader.vue";
+import DashboardHeader from "@/layouts/DashbardLayout/components/DashboardHeader/DashboardHeader.vue";
 import SidebarNavigation from "@/layouts/DashbardLayout/components/SidebarNavigation.vue";
 import { reactive } from "vue";
 
@@ -28,7 +28,7 @@ const sidebarLinks = reactive([
 </script>
 
 <template>
-  <dashboard-header />
+  <DashboardHeader />
   <main class="dashboard">
     <div class="dashboard__left">
       <SidebarNavigation :links="sidebarLinks" />
