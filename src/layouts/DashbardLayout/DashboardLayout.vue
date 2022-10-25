@@ -47,10 +47,12 @@ const sidebarLinks = reactive([
 }
 
 .dashboard__left {
-  width: 300px;
+  min-width: 300px;
+  margin-right: 20px;
 }
 
 .dashboard__right {
   width: 400px;
+  margin-left: 20px;
 }
 </style>

@@ -34,6 +34,11 @@ const props = defineProps({
   display: flex;
   align-items: center;
   cursor: pointer;
+  transition: transform 0.2s linear;
+}
+
+.link:hover {
+  transform: scale(1.03);
 }
 
 .link__icon-circle {
@@ -50,6 +55,7 @@ const props = defineProps({
 
 .link__icon {
   color: var(--dark-grey-color);
+  font-weight: 30px;
 }
 
 .link:first-child {
@@ -57,6 +63,17 @@ const props = defineProps({
 }
 
 .router-link-exact-active {
-  background-color: var(--primary-color);
+  background: var(--primary-color);
+  color: #ffffff;
+  transition: all 0.2s linear;
+}
+
+.router-link-exact-active .link__icon-circle {
+  background: var(--primary-color);
+  transition: all 0.2s linear;
+}
+
+.router-link-exact-active .link__icon {
+  color: #ffffff;
 }
 </style>
