@@ -1,12 +1,8 @@
 <script setup lang="ts">
-import SidebarNavigationLink from "./SidebarNavigationLink.vue";
+import { SIDEBAR_NAVIGATION_LINKS } from "@/common/constants/sidebarNavigationLinks";
+import SidebarNavigationLink from "../SidebarNavigationLink/SidebarNavigationLink.vue";
 
-defineProps({
-  links: {
-    type: Array<{ iconClass: string; title: string; route: string }>,
-    default: [],
-  },
-});
+const links = SIDEBAR_NAVIGATION_LINKS;
 </script>
 
 <template>
