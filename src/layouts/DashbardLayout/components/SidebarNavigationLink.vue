@@ -2,18 +2,22 @@
 const props = defineProps({
   imageClass: {
     type: String,
-    required: false,
+    required: true,
+  },
+  route: {
+    type: String,
+    required: true,
   },
 });
 </script>
 
 <template>
-  <div class="link">
+  <RouterLink class="link" :to="route">
     <div class="link__icon-circle">
       <i :class="['link__icon', 'bx', props.imageClass]" />
     </div>
     <slot />
-  </div>
+  </RouterLink>
 </template>
 
 <style scoped>
@@ -24,6 +28,8 @@ const props = defineProps({
   border-radius: 10px;
 
   font-weight: 500;
+  text-decoration: none;
+  color: var(--text-dark-color);
 
   display: flex;
   align-items: center;
@@ -48,5 +54,9 @@ const props = defineProps({
 
 .link:first-child {
   margin-top: 0;
+}
+
+.router-link-exact-active {
+  background-color: var(--primary-color);
 }
 </style>
