@@ -1,0 +1,52 @@
+<script setup lang="ts">
+const props = defineProps({
+  imageClass: {
+    type: String,
+    required: false,
+  },
+});
+</script>
+
+<template>
+  <div class="link">
+    <div class="link__icon-circle">
+      <i :class="['link__icon', 'bx', props.imageClass]" />
+    </div>
+    <slot />
+  </div>
+</template>
+
+<style scoped>
+.link {
+  padding: 20px;
+  margin-top: 15px;
+  background: #ffffff;
+  border-radius: 10px;
+
+  font-weight: 500;
+
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.link__icon-circle {
+  margin-right: 10px;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: var(--light-grey-color);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.link__icon {
+  color: var(--dark-grey-color);
+}
+
+.link:first-child {
+  margin-top: 0;
+}
+</style>
