@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import DashboardHeader from "@/layouts/DashbardLayout/components/DashboardHeader/DashboardHeader.vue";
 import SidebarNavigation from "@/layouts/DashbardLayout/components/SidebarNavigation.vue";
+import NewsList from "@/layouts/DashbardLayout/components/NewsList/NewsList.vue"
 import { reactive } from "vue";
 
 const sidebarLinks = reactive([
@@ -36,7 +37,9 @@ const sidebarLinks = reactive([
     <div class="dashboard__middle">
       <RouterView />
     </div>
-    <div class="dashboard__right"></div>
+    <div class="dashboard__right">
+      <NewsList/>
+    </div>
   </main>
 </template>
 

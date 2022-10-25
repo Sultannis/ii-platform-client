@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import SidebarNavigationLink from "./SidebarNavigationLink.vue";
 
-const props = defineProps({
+defineProps({
   links: {
     type: Array<{ iconClass: string; title: string; route: string }>,
     default: [],
