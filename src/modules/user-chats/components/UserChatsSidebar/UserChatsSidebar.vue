@@ -22,6 +22,7 @@ import UserChatsSidebarRoomCard from "./UserChatsSidebarRoomCard.vue";
   background: #ffffff;
   border-radius: 10px;
   width: 100%;
+  min-width: 374px;
   height: calc(100vh - 120px);
   overflow: hidden;
 }
@@ -36,5 +37,19 @@ import UserChatsSidebarRoomCard from "./UserChatsSidebarRoomCard.vue";
   padding-bottom: 20px;
   overflow: auto;
   max-height: calc(100vh - 120px);
+}
+
+@media screen and (max-width: 1140px) {
+  .user-chats-sidebar {
+    padding: 15px 8px;
+    min-width: unset;
+  }
+
+  .user-chats-sidebar__header {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 </style>

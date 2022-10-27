@@ -19,4 +19,11 @@ import UserChatsBody from "./components/UserChatsBody/UserChatsBody.vue";
   grid-template-columns: 1fr 3fr;
   gap: 16px;
 }
+
+@media screen and (max-width: 1140px) {
+  .user-chats-view {
+    padding: 20px 15px 0 15px;
+    grid-template-columns: 95px 1fr;
+  }
+}
 </style>

@@ -20,4 +20,15 @@ import BurgerIcon from "@/assets/icons/chats/burger-icon.svg";
 .user-chats-sidebar__burger-icon {
   cursor: pointer;
 }
+
+@media screen and (max-width: 1140px) {
+  .user-chats-sidebar__burger {
+    margin: 0;
+  }
+
+  .user-chats-sidebar__burger-icon {
+    width: 20px;
+    height: 15px;
+  }
+}
 </style>

@@ -52,12 +52,10 @@ const toggleInputFocus = () => (isInputFocus.value = !isInputFocus.value);
   position: absolute;
   top: 15px;
   left: 20px;
-  /* transition: border-color 0.2s cubic-bezier(0.47, 0, 0.745, 0.715); */
 }
 
 .user-chats-sidebar__search-icon.active svg path {
   fill: #6f00c7;
-  /* transition: border-color 0.2s cubic-bezier(0.47, 0, 0.745, 0.715); */
 }
 
 .user-chats-sidebar__search-input {
@@ -80,5 +78,11 @@ const toggleInputFocus = () => (isInputFocus.value = !isInputFocus.value);
   font-size: 16px;
   font-weight: 400;
   color: #bbbbbb;
+}
+
+@media screen and (max-width: 1140px) {
+  .user-chats-sidebar__search {
+    display: none;
+  }
 }
 </style>

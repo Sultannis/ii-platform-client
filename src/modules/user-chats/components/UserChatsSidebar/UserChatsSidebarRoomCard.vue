@@ -104,4 +104,28 @@ defineProps({
 .user-chats-sidebar__card.card-active .user-chats-sidebar__card-date {
   color: #ffffff;
 }
+
+@media screen and (max-width: 1140px) {
+  .user-chats-sidebar__card-title,
+  .user-chats-sidebar__card-message {
+    display: none;
+  }
+
+  .user-chats-sidebar__card {
+    margin-right: 0;
+    padding: 8px 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .user-chats-sidebar__card-avatar {
+    margin-right: 0;
+  }
+
+  .user-chats-sidebar__card-avatar span {
+    font-size: 16px;
+    line-height: 19px;
+  }
+}
 </style>
