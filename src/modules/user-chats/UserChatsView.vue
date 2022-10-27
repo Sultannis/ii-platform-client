@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import DashboardHeader from "@/layouts/DashbardLayout/components/DashboardHeader/DashboardHeader.vue";
 import UserChatsSidebar from "@/modules/user-chats/components/UserChatsSidebar/UserChatsSidebar.vue";
+import UserChatsBody from "./components/UserChatsBody/UserChatsBody.vue";
 </script>
 
 <template>
   <dashboard-header />
   <div class="user-chats-view">
     <user-chats-sidebar />
+    <user-chats-body />
   </div>
 </template>
 
