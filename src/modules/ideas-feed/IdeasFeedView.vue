@@ -7,6 +7,7 @@ import { ideas } from "@/modules/ideas-feed/composables/fetchIdeasFeed";
   <div class="feed">
     <IdeaCard
       v-for="idea of ideas"
+      :key="idea.title"
       :title="idea.title"
       :description="idea.description"
       :score="idea.score"
