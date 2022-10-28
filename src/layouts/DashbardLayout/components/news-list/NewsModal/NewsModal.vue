@@ -4,39 +4,61 @@ import {
   selectedNewsItem,
   newsModalVisible,
 } from "@/layouts/DashbardLayout/components/news-list/composables/newsModalState";
+import { ref } from "vue";
+
+
+const mouseOnModal = ref(false);
+
+const setMouseOverValue = ()=> {
+  mouseOnModal.value = true
+  console.log(mouseOnModal.value)
+  }
+
+const setMouseOutValue = ()=> {
+  mouseOnModal.value = false
+  console.log(mouseOnModal.value)
+  }
+
+const handleNewsModalClose = ()=> {
+  if(!mouseOnModal.value) {
+    closeNewsModal()
+  }
+  }  
 </script>
 
 <template>
   <div
-    :class="['modal-backdrop', { 'modal-backdrop_visible': newsModalVisible }]"
+    :class="['modal-backdrop', { 'modal-backdrop_visible': newsModalVisible }]" @click="handleNewsModalClose"
   >
-    <div class="modal">
-      <header class="modal-header">
+    <div class="modal" @mouseenter="setMouseOverValue" @mouseleave="setMouseOutValue">
+      <header class="modal__header">
         <slot name="header">
           {{ selectedNewsItem.title }}
         </slot>
-        <button type="button" class="btn-close" @click="closeNewsModal">
-          x
+        
+        <button class="modal__close" @click="closeNewsModal">
+          <i class='bx bx-x'></i>
         </button>
       </header>
 
-      <section class="modal-body">
+      <section class="modal__body">
         <slot name="body">
           {{ selectedNewsItem.paragraph }}
         </slot>
       </section>
 
-      <footer class="modal-footer">
+      <footer class="modal__footer">
         <slot name="footer">
           {{ selectedNewsItem.date }}
         </slot>
-        <button type="button" class="btn-green">Close Modal</button>
+
       </footer>
     </div>
   </div>
 </template>
 
 <style>
+
 .modal-backdrop {
   position: fixed;
   z-index: 100;
@@ -49,61 +71,64 @@ import {
   display: none;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
 .modal-backdrop_visible {
   display: flex;
+  overflow: scroll;
 }
 
 .modal {
+  position: fixed;
+  padding: 20px 20px 20px 20px;
+  width: 800px;
+  border-radius: 10px;
   background: #ffffff;
-  box-shadow: 2px 2px 20px 1px;
-  overflow-x: auto;
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
 }
 
-.modal-header,
-.modal-footer {
-  padding: 15px;
+.modal__header,
+.modal__footer {
   display: flex;
-}
-
-.modal-header {
   position: relative;
-  border-bottom: 1px solid #eeeeee;
-  color: #4aae9b;
-  justify-content: space-between;
 }
 
-.modal-footer {
+.modal__header {
+  position: relative;
+  font-size: 30px;
+  font-weight: 500;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.modal__footer {
   border-top: 1px solid #eeeeee;
   flex-direction: column;
   justify-content: flex-end;
 }
 
-.modal-body {
+.modal__body {
   position: relative;
-  padding: 20px 10px;
+  margin-bottom: 20px;
 }
 
-.btn-close {
-  position: absolute;
-  top: 0;
-  right: 0;
+.modal__close {
+  width: 36px;
+  height: 36px;
   border: none;
-  font-size: 20px;
-  padding: 10px;
-  cursor: pointer;
-  font-weight: bold;
-  color: #4aae9b;
-  background: transparent;
+  border-radius: 50%;
+  background:#ffffff;
+  color: #CFCFCF;
+  font-size: 30px;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.btn-green {
-  color: white;
-  background: #4aae9b;
-  border: 1px solid #4aae9b;
-  border-radius: 2px;
+.modal__close:hover {
+  background: #F5F5F5;
 }
+
 </style>

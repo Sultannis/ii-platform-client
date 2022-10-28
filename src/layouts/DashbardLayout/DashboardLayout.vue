@@ -3,11 +3,12 @@ import DashboardHeader from "@/layouts/DashbardLayout/components/DashboardHeader
 import SidebarNavigation from "@/layouts/DashbardLayout/components/SidebarNavigation/SidebarNavigation.vue";
 import NewsList from "@/layouts/DashbardLayout/components/news-list/NewsList/NewsList.vue";
 import NewsModal from "@/layouts/DashbardLayout/components/news-list/NewsModal/NewsModal.vue";
+import { newsModalVisible } from "./components/news-list/composables/newsModalState";
 </script>
 
 <template>
   <DashboardHeader />
-  <main class="dashboard">
+  <main :class="['dashboard', { 'dashboard-newsmodal' : newsModalVisible}]">
     <div class="dashboard__left">
       <SidebarNavigation />
     </div>
@@ -22,6 +23,7 @@ import NewsModal from "@/layouts/DashbardLayout/components/news-list/NewsModal/N
 </template>
 
 <style scoped>
+
 .dashboard {
   padding-top: 20px;
   width: 90%;
@@ -29,6 +31,9 @@ import NewsModal from "@/layouts/DashbardLayout/components/news-list/NewsModal/N
   display: flex;
 }
 
+.dashboard-newsmodal {
+  overflow: scroll;
+}
 .dashboard__left {
   min-width: 300px;
   margin-right: 20px;
@@ -39,7 +44,7 @@ import NewsModal from "@/layouts/DashbardLayout/components/news-list/NewsModal/N
 }
 
 .dashboard__right {
-  min-width: 300px;
+  min-width: 340px;
   margin-left: 20px;
 }
 </style>

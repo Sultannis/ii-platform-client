@@ -29,7 +29,7 @@ const handleCardClick = () => {
   openNewsModal();
 };
 
-const paragraphProcessed = computed(() => `${paragraph.slice(0, 90)}...`);
+const paragraphProcessed = computed(() => `${paragraph.slice(0, 100)}...`);
 </script>
 
 <template>
@@ -43,9 +43,11 @@ const paragraphProcessed = computed(() => `${paragraph.slice(0, 90)}...`);
 <style scoped>
 .newscard {
   margin-bottom: 15px;
-  width: 340px;
+  max-width: 340px;
+  width: 100%;
   height: 140px;
-  padding: 18px 20px 16px 20px;
+  padding: 10px 20px 0px 20px;
+  position: relative;
 
   border-radius: 10px;
   background: #ffffff;
@@ -70,13 +72,13 @@ const paragraphProcessed = computed(() => `${paragraph.slice(0, 90)}...`);
   margin-bottom: 16px;
   font-size: 12px;
   font-weight: 400;
-
-  overflow: hidden;
 }
 
 .newscard__date {
   font-size: 12px;
   font-weight: 500;
   color: #afafaf;
+  position: absolute;
+  bottom: 10px;
 }
 </style>
