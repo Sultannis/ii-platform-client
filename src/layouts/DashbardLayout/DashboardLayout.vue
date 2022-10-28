@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import DashboardHeader from "@/layouts/DashbardLayout/components/DashboardHeader/DashboardHeader.vue";
 import SidebarNavigation from "@/layouts/DashbardLayout/components/SidebarNavigation.vue";
-import NewsList from "@/layouts/DashbardLayout/components/NewsList/NewsList.vue"
+import NewsList from "@/layouts/DashbardLayout/components/news-list/NewsList/NewsList.vue"
 import { reactive } from "vue";
+import NewsModal from "@/layouts/DashbardLayout/components/news-list/NewsModal/NewsModal.vue"
 
 const sidebarLinks = reactive([
   {
@@ -40,6 +41,7 @@ const sidebarLinks = reactive([
     <div class="dashboard__right">
       <NewsList/>
     </div>
+    <NewsModal/>
   </main>
 </template>
 
