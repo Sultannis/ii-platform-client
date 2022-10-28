@@ -90,6 +90,11 @@ const handleNewsModalClose = () => {
   flex-direction: column;
 }
 
+.modal::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: #f5f5f5;
+}
+
 .modal__header,
 .modal__footer {
   display: flex;
