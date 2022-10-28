@@ -8,7 +8,7 @@ import { newsModalVisible } from "./components/news-list/composables/newsModalSt
 
 <template>
   <DashboardHeader />
-  <main :class="['dashboard', { 'dashboard-newsmodal' : newsModalVisible}]">
+  <main :class="['dashboard', { 'dashboard-newsmodal': newsModalVisible }]">
     <div class="dashboard__left">
       <SidebarNavigation />
     </div>
@@ -23,7 +23,6 @@ import { newsModalVisible } from "./components/news-list/composables/newsModalSt
 </template>
 
 <style scoped>
-
 .dashboard {
   padding-top: 20px;
   width: 90%;
@@ -31,9 +30,6 @@ import { newsModalVisible } from "./components/news-list/composables/newsModalSt
   display: flex;
 }
 
-.dashboard-newsmodal {
-  overflow: scroll;
-}
 .dashboard__left {
   min-width: 300px;
   margin-right: 20px;

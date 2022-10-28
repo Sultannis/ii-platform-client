@@ -6,38 +6,42 @@ import {
 } from "@/layouts/DashbardLayout/components/news-list/composables/newsModalState";
 import { ref } from "vue";
 
-
 const mouseOnModal = ref(false);
 
-const setMouseOverValue = ()=> {
-  mouseOnModal.value = true
-  console.log(mouseOnModal.value)
-  }
+const setMouseOverValue = () => {
+  mouseOnModal.value = true;
+  console.log(mouseOnModal.value);
+};
 
-const setMouseOutValue = ()=> {
-  mouseOnModal.value = false
-  console.log(mouseOnModal.value)
-  }
+const setMouseOutValue = () => {
+  mouseOnModal.value = false;
+  console.log(mouseOnModal.value);
+};
 
-const handleNewsModalClose = ()=> {
-  if(!mouseOnModal.value) {
-    closeNewsModal()
+const handleNewsModalClose = () => {
+  if (!mouseOnModal.value) {
+    closeNewsModal();
   }
-  }  
+};
 </script>
 
 <template>
   <div
-    :class="['modal-backdrop', { 'modal-backdrop_visible': newsModalVisible }]" @click="handleNewsModalClose"
+    :class="['modal-backdrop', { 'modal-backdrop_visible': newsModalVisible }]"
+    @click="handleNewsModalClose"
   >
-    <div class="modal" @mouseenter="setMouseOverValue" @mouseleave="setMouseOutValue">
+    <div
+      class="modal"
+      @mouseenter="setMouseOverValue"
+      @mouseleave="setMouseOutValue"
+    >
       <header class="modal__header">
         <slot name="header">
           {{ selectedNewsItem.title }}
         </slot>
-        
+
         <button class="modal__close" @click="closeNewsModal">
-          <i class='bx bx-x'></i>
+          <i class="bx bx-x"></i>
         </button>
       </header>
 
@@ -51,18 +55,15 @@ const handleNewsModalClose = ()=> {
         <slot name="footer">
           {{ selectedNewsItem.date }}
         </slot>
-
       </footer>
     </div>
   </div>
 </template>
 
 <style>
-
 .modal-backdrop {
   position: fixed;
   z-index: 100;
-  overflow: hidden;
   top: 0;
   bottom: 0;
   left: 0;
@@ -71,21 +72,20 @@ const handleNewsModalClose = ()=> {
   display: none;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
 }
 
 .modal-backdrop_visible {
   display: flex;
-  overflow: scroll;
 }
 
 .modal {
+  max-height: 90vh;
+  overflow-y: auto;
   position: fixed;
   padding: 20px 20px 20px 20px;
   width: 800px;
   border-radius: 10px;
   background: #ffffff;
-  overflow-x: hidden;
   display: flex;
   flex-direction: column;
 }
@@ -120,15 +120,14 @@ const handleNewsModalClose = ()=> {
   height: 36px;
   border: none;
   border-radius: 50%;
-  background:#ffffff;
-  color: #CFCFCF;
+  background: #ffffff;
+  color: #cfcfcf;
   font-size: 30px;
   align-items: center;
   justify-content: space-between;
 }
 
 .modal__close:hover {
-  background: #F5F5F5;
+  background: #f5f5f5;
 }
-
 </style>
