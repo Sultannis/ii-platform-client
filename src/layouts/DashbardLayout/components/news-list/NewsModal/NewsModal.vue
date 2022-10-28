@@ -39,6 +39,8 @@ import {
 <style>
 .modal-backdrop {
   position: fixed;
+  z-index: 100;
+  overflow: hidden;
   top: 0;
   bottom: 0;
   left: 0;

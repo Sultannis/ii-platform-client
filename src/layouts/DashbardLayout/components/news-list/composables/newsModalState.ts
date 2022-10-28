@@ -1,3 +1,7 @@
+import {
+  setBodyOverflowAuto,
+  setBodyOverflowHidden,
+} from "@/common/helpers/body-overflow-switchers";
 import { news } from "@/layouts/DashbardLayout/components/news-list/composables/fetchNewsList";
 import { reactive, ref } from "vue";
 
@@ -18,9 +22,11 @@ const setSelectedNewsItemId = (newsItemId: number) => {
 
 const openNewsModal = () => {
   newsModalVisible.value = true;
+  setBodyOverflowHidden();
 };
 const closeNewsModal = () => {
   newsModalVisible.value = false;
+  setBodyOverflowAuto();
 };
 
 export {
