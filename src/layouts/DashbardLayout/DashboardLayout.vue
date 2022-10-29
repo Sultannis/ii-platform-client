@@ -3,18 +3,26 @@ import DashboardHeader from "@/layouts/DashbardLayout/components/DashboardHeader
 import SidebarNavigation from "@/layouts/DashbardLayout/components/SidebarNavigation/SidebarNavigation.vue";
 import NewsList from "@/layouts/DashbardLayout/components/news-list/NewsList/NewsList.vue";
 import NewsModal from "@/layouts/DashbardLayout/components/news-list/NewsModal/NewsModal.vue";
+import { useRoute } from "vue-router";
+import { computed } from "@vue/reactivity";
+
+const route = useRoute();
+
+const onIdeasFeed = computed(() => {
+  return route.name === "ideas-feed";
+});
 </script>
 
 <template>
   <DashboardHeader />
-  <main class= "dashboard">
+  <main class="dashboard">
     <div class="dashboard__left">
       <SidebarNavigation />
     </div>
     <div class="dashboard__middle">
       <RouterView />
     </div>
-    <div class="dashboard__right">
+    <div class="dashboard__right" v-show="onIdeasFeed">
       <NewsList />
     </div>
     <NewsModal />
@@ -22,7 +30,6 @@ import NewsModal from "@/layouts/DashbardLayout/components/news-list/NewsModal/N
 </template>
 
 <style scoped>
-
 .dashboard {
   padding-top: 20px;
   width: 90%;
