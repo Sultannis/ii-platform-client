@@ -21,7 +21,7 @@ import NewsList from "@/layouts/DashbardLayout/components/NewsList/NewsList.vue"
 
 <style scoped>
 .dashboard {
-  padding-top: 20px;
+  padding-top: 10px;
   width: 90%;
   margin: auto;
   display: flex;
