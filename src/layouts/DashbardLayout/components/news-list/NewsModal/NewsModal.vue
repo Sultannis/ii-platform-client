@@ -139,8 +139,11 @@ const handleNewsModalClose = () => {
   color: #cfcfcf;
   font-size: 30px;
   align-items: center;
-  justify-content: space-between;
+  display: flex;
+  justify-content: space-evenly;
+  cursor: pointer;
 }
+
 
 .modal__close:hover {
   background: #f5f5f5;
