@@ -5,7 +5,7 @@ import {
 import { news } from "@/layouts/DashbardLayout/components/news-list/composables/fetchNewsList";
 import { reactive, ref } from "vue";
 
-let selectedNewsItem = reactive({ id: 0, title: "", paragraph: "", date: "" });
+let selectedNewsItem = reactive({ id: 0, title: "", paragraph: "", date: "", author: "",});
 
 let newsModalVisible = ref(false);
 
@@ -17,6 +17,7 @@ const setSelectedNewsItemId = (newsItemId: number) => {
     selectedNewsItem.title = foundNewsItem.title;
     selectedNewsItem.paragraph = foundNewsItem.paragraph;
     selectedNewsItem.date = foundNewsItem.date;
+    selectedNewsItem.author = foundNewsItem.author;
   }
 };
 

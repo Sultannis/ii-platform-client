@@ -45,17 +45,21 @@ const handleNewsModalClose = () => {
         </button>
       </header>
 
+      <div class="modal__date">
+        <slot>
+          {{ selectedNewsItem.author }}
+        </slot>
+        , 
+        <slot>
+          {{ selectedNewsItem.date }}
+        </slot>
+      </div>
+
       <section class="modal__body">
         <slot name="body">
           {{ selectedNewsItem.paragraph }}
         </slot>
       </section>
-
-      <footer class="modal__footer">
-        <slot name="footer">
-          {{ selectedNewsItem.date }}
-        </slot>
-      </footer>
     </div>
   </div>
 </template>
@@ -82,12 +86,18 @@ const handleNewsModalClose = () => {
   max-height: 90vh;
   overflow-y: auto;
   position: fixed;
-  padding: 20px 20px 20px 20px;
+  padding: 40px 50px 40px 50px;
   width: 800px;
   border-radius: 10px;
   background: #ffffff;
   display: flex;
   flex-direction: column;
+}
+
+.modal__date {
+  margin-bottom: 20px;
+  color: #767474;
+  font-weight: 500;
 }
 
 .modal::-webkit-scrollbar-track {
@@ -106,7 +116,7 @@ const handleNewsModalClose = () => {
   font-size: 30px;
   font-weight: 500;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .modal__footer {
