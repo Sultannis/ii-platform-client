@@ -13,67 +13,35 @@ const props = defineProps({
 
 <template>
   <RouterLink class="link" :to="route">
-    <div class="link__icon-circle">
-      <i :class="['link__icon', 'bx', props.imageClass]" />
-    </div>
+    <i :class="['link__icon', 'bx', props.imageClass]" />
     <slot />
   </RouterLink>
 </template>
 
 <style scoped>
 .link {
-  padding: 20px;
-  margin-top: 15px;
-  background: #ffffff;
-  border-radius: 10px;
-
-  font-weight: 500;
-  text-decoration: none;
-  color: var(--text-dark-color);
+  margin-top: 10px;
+  height: 40px;
+  width: 100%;
+  padding-left: 35px;
 
   display: flex;
   align-items: center;
-  cursor: pointer;
-  transition: transform 0.2s linear;
+  color: #ffffff;
 }
 
 .link:hover {
-  transform: scale(1.03);
-}
-
-.link__icon-circle {
-  margin-right: 10px;
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  background: var(--light-grey-color);
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background: var(--background-light);
 }
 
 .link__icon {
+  margin-right: 10px;
   color: var(--dark-grey-color);
   font-weight: 30px;
 }
 
-.link:first-child {
-  margin-top: 0;
-}
-
 .router-link-exact-active {
-  background: var(--primary-color);
-  color: #ffffff;
+  color: var(--blue-highlight);
   transition: all 0.2s linear;
-}
-
-.router-link-exact-active .link__icon-circle {
-  background: var(--primary-color);
-  transition: all 0.2s linear;
-}
-
-.router-link-exact-active .link__icon {
-  color: #ffffff;
 }
 </style>

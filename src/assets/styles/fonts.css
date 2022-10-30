@@ -1,17 +1,17 @@
 @font-face {
-  font-family: "SF Pro";
-  src: url("../fonts/san-francisco-pro/SF-Pro-Display-Regular.otf");
+  font-family: "Montserrat";
+  src: url("../fonts/montserrat/Montserrat-Regular.ttf");
   font-weight: 400;
 }
 
 @font-face {
-  font-family: "SF Pro";
-  src: url("../fonts/san-francisco-pro/SF-Pro-Display-Semibold.otf");
+  font-family: "Montserrat";
+  src: url("../fonts/montserrat/Montserrat-SemiBold.ttf");
   font-weight: 600;
 }
 
 @font-face {
-  font-family: "SF Pro";
-  src: url("../fonts/san-francisco-pro/SF-Pro-Display-Bold.otf");
+  font-family: "Montserrat";
+  src: url("../fonts/montserrat/Montserrat-Bold.ttf");
   font-weight: 700;
 }

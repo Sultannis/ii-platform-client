@@ -31,8 +31,6 @@ const onIdeasFeed = computed(() => {
 
 <style scoped>
 .dashboard {
-  padding-top: 10px;
-  width: 90%;
   margin: auto;
   display: flex;
 }

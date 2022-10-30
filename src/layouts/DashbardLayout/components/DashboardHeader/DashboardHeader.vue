@@ -7,20 +7,19 @@ const dotVisible = ref(false);
 <template>
   <header class="header">
     <div class="header__left">
-      <img src="@/assets/icons/logo.svg" class="header__icon" />
-      <p class="header__name">Ferrum</p>
+      <i class="bx bxs-meteor header__icon"></i>
+      NOTIO
     </div>
     <div class="header__right">
       <button
         :class="[
           'header__button',
-          'header__button_inbox',
           {
-            'header__button_inbox-full': dotVisible,
+            header__button_full: dotVisible,
           },
         ]"
       >
-        <i class="bx bxs-inbox" />
+        <i class="bx bx-bell" />
       </button>
       <a-popover
         :overlayStyle="{ 'box-shadow': 'none' }"
@@ -36,14 +35,14 @@ const dotVisible = ref(false);
           <span>Title</span>
         </template>
         <button class="header__button header__button_profile">
-          <i class="bx bxs-user" />
+          <i class="bx bx-user" />
         </button>
       </a-popover>
     </div>
   </header>
 </template>
 
-<style>
+<style scoped>
 .form {
   display: flex;
   flex-direction: column;
@@ -58,31 +57,33 @@ const dotVisible = ref(false);
 }
 
 .header {
-  padding: 0 5%;
+  padding: 0 35px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   height: 50px;
   max-width: 100vw;
-  background: var(--primary-color);
+  background: var(--background-medium);
+  color: #ffffff;
 }
 
 .header__icon {
-  width: 25px;
+  font-size: 25px;
+  margin-right: 5px;
 }
 
 .header__left {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  font-size: 22px;
+  font-weight: 600;
 }
 
 .header__right {
   display: flex;
   flex-direction: row;
-  positon: relative;
 }
 
 .header__name {
@@ -98,11 +99,11 @@ const dotVisible = ref(false);
   height: 30px;
 
   border: none;
-  border-radius: 50%;
-  background: var(--primary-color);
+  cursor: pointer;
 
   color: #ffffff;
   font-size: 18px;
+  background: none;
 
   display: flex;
   justify-content: center;
@@ -113,12 +114,10 @@ const dotVisible = ref(false);
 }
 
 .header__button:hover {
-  background: #ffffff;
-  color: var(--primary-color);
-  cursor: pointer;
+  color: var(--text-grey);
 }
 
-.header__button_inbox-full::after {
+.header__button_full::after {
   width: 6px;
   height: 6px;
 

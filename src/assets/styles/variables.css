@@ -1,9 +1,13 @@
 :root {
-  /* colors */
-  --primary-color: #6F00C7;
-  --secondary-color: #F80163;
-  --light-grey-color: #F5F5F5;
-  --dark-grey-color: #CFCFCF;
-  --text-dark-color: #0D2044;
-  --border-color: #f0f0f0;
+  --background-dark: #161616;
+  --background-semi-dark: #1C1C1C;
+  --background-medium: #313132;
+  --background-light: #454545;
+
+  --border-color: #454545;
+  --blue-highlight: #0C8CE9;
+  --green-highlight: #238636;
+  --red-highlight: #D11818;
+
+  --text-grey: #969696;
 }

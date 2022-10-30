@@ -16,3 +16,12 @@ const links = SIDEBAR_NAVIGATION_LINKS;
     </SidebarNavigationLink>
   </aside>
 </template>
+
+<style scoped>
+.sidebar {
+  min-height: 100vh;
+  padding-top: 10px;
+  max-width: 385px;
+  background-color: var(--background-semi-dark);
+}
+</style>
