@@ -15,9 +15,6 @@ import { ideas } from "@/modules/ideas-feed/composables/fetchIdeasFeed";
         :image-url="idea.imageUrl"
       />
     </div>
-    <div class="feed__right">
-      <HotProfilesList />
-    </div>
   </div>
 </template>
 
@@ -25,15 +22,9 @@ import { ideas } from "@/modules/ideas-feed/composables/fetchIdeasFeed";
 .feed {
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 405px;
 }
 
 .feed__ideas {
   margin-right: 20px;
-}
-
-.feed__right {
-  max-width: 405px;
-  min-width: 405px;
 }
 </style>
