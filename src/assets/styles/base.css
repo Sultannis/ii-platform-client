@@ -19,12 +19,11 @@
 
 ::-webkit-scrollbar-track {
   width: 10px;
-  background-color: #ffffff;
+  background-color: var(--background-semi-dark);
 }
 
 ::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  background: var(--dark-grey-color);
+  background: var(--background-light);
 }
 
 
