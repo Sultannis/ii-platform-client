@@ -41,7 +41,6 @@
 }
 
 .card__name {
-  color: #ffffff;
   text-decoration: underline;
   font-size: 18px;
 }

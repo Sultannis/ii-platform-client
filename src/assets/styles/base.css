@@ -13,7 +13,6 @@
   border-radius: 0px 10px 10px 0px;
   width: 10px;
   margin-block: 10px;
-  color: #ffffff;
   background: #ffffff;
 }
 
@@ -27,9 +26,9 @@
 }
 
 body {
-  color: #ffffff;
+  color: var(--text-color);
   min-height: 100vh;
   font-family: "Montserrat", sans-serif;
-  background-color: var(--background-dark);
+  background-color: var(--background-color);
 }
 

@@ -33,7 +33,6 @@ import HotProfileCard from "@/modules/ideas-feed/components/HotProfileCard/HotPr
   border-radius: 10px;
 
   overflow: hidden;
-  color: #ffffff;
 }
 
 .list__header {
@@ -59,7 +58,6 @@ import HotProfileCard from "@/modules/ideas-feed/components/HotProfileCard/HotPr
   margin-bottom: -5px;
   font-weight: 600;
   font-size: 18px;
-  color: #ffffff;
 }
 
 .list__subtext {
