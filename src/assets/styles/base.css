@@ -30,7 +30,7 @@
 
 body {
   min-height: 100vh;
-  font-family: "Montserrat Alternates", sans-serif;
+  font-family: "SF Pro", Cambria;
   background-image: linear-gradient(#FFF2F6, #E8E9FD);
   color: var(--text-dark-color)
 }
