@@ -1,7 +1,16 @@
 <script setup lang="ts">
 import DashboardHeader from "@/layouts/DashbardLayout/components/DashboardHeader/DashboardHeader.vue";
 import SidebarNavigation from "@/layouts/DashbardLayout/components/SidebarNavigation/SidebarNavigation.vue";
-import NewsList from "@/layouts/DashbardLayout/components/NewsList/NewsList.vue";
+import NewsList from "@/layouts/DashbardLayout/components/news-list/NewsList/NewsList.vue";
+import NewsModal from "@/layouts/DashbardLayout/components/news-list/NewsModal/NewsModal.vue";
+import { useRoute } from "vue-router";
+import { computed } from "@vue/reactivity";
+
+const route = useRoute();
+
+const onIdeasFeed = computed(() => {
+  return route.name === "ideas-feed";
+});
 </script>
 
 <template>
@@ -13,9 +22,10 @@ import NewsList from "@/layouts/DashbardLayout/components/NewsList/NewsList.vue"
     <div class="dashboard__middle">
       <RouterView />
     </div>
-    <div class="dashboard__right">
+    <div class="dashboard__right" v-show="onIdeasFeed">
       <NewsList />
     </div>
+    <NewsModal />
   </main>
 </template>
 
@@ -37,7 +47,7 @@ import NewsList from "@/layouts/DashbardLayout/components/NewsList/NewsList.vue"
 }
 
 .dashboard__right {
-  min-width: 300px;
+  min-width: 340px;
   margin-left: 20px;
 }
 </style>
