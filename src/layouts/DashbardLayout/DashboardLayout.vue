@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import DashboardHeader from "@/layouts/DashbardLayout/components/DashboardHeader/DashboardHeader.vue";
 import SidebarNavigation from "@/layouts/DashbardLayout/components/SidebarNavigation/SidebarNavigation.vue";
-import NewsModal from "@/layouts/DashbardLayout/components/news-list/NewsModal/NewsModal.vue";
 import { useRoute } from "vue-router";
 import { computed } from "@vue/reactivity";
 
@@ -18,11 +17,9 @@ const onIdeasFeed = computed(() => {
     <div class="dashboard__left">
       <SidebarNavigation />
     </div>
-    <div class="dashboard__middle">
+    <div class="dashboard__content">
       <RouterView />
     </div>
-    <div class="dashboard__right" v-show="onIdeasFeed"></div>
-    <NewsModal />
   </main>
 </template>
 
@@ -33,15 +30,12 @@ const onIdeasFeed = computed(() => {
   display: flex;
 }
 
-.dashboard__middle {
-  padding-top: 20px;
-  margin: 0 20px;
-  width: 100%;
+.dashboard__left {
+  margin-right: 20px;
 }
 
-.dashboard__right {
+.dashboard__content {
   padding-top: 20px;
-  min-width: 295px;
-  max-width: 295px;
+  width: 100%;
 }
 </style>
