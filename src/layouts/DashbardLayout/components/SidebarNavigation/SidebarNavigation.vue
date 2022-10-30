@@ -19,6 +19,7 @@ const links = SIDEBAR_NAVIGATION_LINKS;
 
 <style scoped>
 .sidebar {
+  position: fixed;
   min-height: 100%;
   padding-top: 10px;
   max-width: 295px;

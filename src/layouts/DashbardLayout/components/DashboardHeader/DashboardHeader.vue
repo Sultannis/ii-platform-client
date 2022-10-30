@@ -57,12 +57,16 @@ const dotVisible = ref(false);
 }
 
 .header {
+  position: fixed;
+  z-index: 1;
+  top: 0;
   padding: 0 35px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   height: 50px;
+  min-width: 100vw;
   max-width: 100vw;
   background: var(--background-medium);
   color: #ffffff;

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import CommonTag from "@/common/components/CommonTag/CommonTag.vue";
+
 const { title, description, score, imageUrl } = defineProps({
   title: {
     type: String,
@@ -21,112 +23,84 @@ const { title, description, score, imageUrl } = defineProps({
 
 <template>
   <div class="card">
-    <div class="card__left">
-      <h3 class="card__title">{{ title }}</h3>
-      <p class="card__desc">{{ description }}</p>
-      <div class="card__bottom">
-        <button class="card__button">
-          <i class="bx bxs-bookmark" />
-        </button>
+    <img src="@/assets/images/idea image.png" alt="" class="card__image" />
+    <div class="card__heading">{{ title }}</div>
+    <div class="card__content">
+      <p class="card__description">{{ description }}</p>
+      <div class="card__tags">
+        <CommonTag> Иновации </CommonTag>
+        <CommonTag> Идея </CommonTag>
+        <CommonTag> Стартап </CommonTag>
+        <CommonTag> Программирование </CommonTag>
+        <CommonTag> Иновации </CommonTag>
+        <CommonTag> Идея </CommonTag>
+        <CommonTag> Стартап </CommonTag>
+        <CommonTag> Программирование </CommonTag>
+        <CommonTag> Иновации </CommonTag>
+        <CommonTag> Идея </CommonTag>
+        <CommonTag> Стартап </CommonTag>
+        <CommonTag> Программирование </CommonTag>
+      </div>
+      <div class="card__info">
+        <div class="card__fin-support">Необходимое финансирование 5.3м ₽</div>
+        <div class="card__date">Опубликовано 22/10/22</div>
       </div>
     </div>
-    <div class="card__right">
-      <img
-        src="https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?s=612x612"
-        alt=""
-        class="card__user-img"
-      />
-      <div class="card__votes">
-        <button class="card__button card__button_vote">
-          <i class="bx bx-chevron-up" />
-        </button>
-        <div class="card__score">{{ score }}</div>
-        <button class="card__button">
-          <i class="bx bx-chevron-down card__button_vote"></i>
-        </button>
-      </div>
-    </div>
+    <footer class="card__footer">
+      <div class="card__author"></div>
+      <div class="card__activations"></div>
+    </footer>
   </div>
 </template>
 
 <style scoped>
 .card {
-  margin-top: 20px;
-  width: 100%;
-  background: #ffffff;
+  margin-top: 10px;
+  background: transparent;
+  max-width: 100%;
 
+  border: 1px solid var(--border-color);
   border-radius: 10px;
 
   display: flex;
+  flex-direction: column;
   overflow: hidden;
+}
+
+.card__heading {
+  padding: 10px 15px;
+  background: var(--background-light);
+
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--blue-highlight);
+}
+
+.card__content {
+  padding: 15px;
+}
+
+.card__description {
+  color: var(--text-grey);
+}
+
+.card__info {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  color: var(--text-grey);
+}
+
+.card__image {
+  max-width: 100%;
 }
 
 .card:first-child {
   margin-top: 0;
 }
 
-.card__bottom {
-  margin-top: 15px;
-  width: 100%;
-}
-
-.card__left {
-  padding: 20px;
-}
-
-.card__right {
-  padding: 20px;
-  max-width: 100px;
-  background: var(--primary-color);
-
-  color: #ffffff;
-
+.card__tags {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.card__votes {
-  height: 100%;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.card__score {
-  margin: 8px 0;
-}
-
-.card__button {
-  font-size: 22px;
-  background: none;
-  outline: none;
-  border: none;
-  cursor: pointer;
-
-  color: var(--dark-grey-color);
-}
-
-.card__button_vote {
-  color: #ffffff;
-}
-
-.card__title {
-  font-size: 20px;
-}
-
-.card__desc {
-  margin-top: 10px;
-  font-size: 13px;
-}
-
-.card__user-img {
-  width: 40px;
-  height: 40px;
-  margin-bottom: 15px;
-  border-radius: 50%;
+  flex-wrap: wrap;
 }
 </style>

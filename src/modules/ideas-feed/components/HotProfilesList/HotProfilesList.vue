@@ -18,7 +18,9 @@ import HotProfileCard from "@/modules/ideas-feed/components/HotProfileCard/HotPr
     <HotProfileCard />
     <HotProfileCard />
     <HotProfileCard />
-    <HotProfileCard />
+    <div class="list__footer">
+      <div class="list__more">Хочу еще!</div>
+    </div>
   </div>
 </template>
 
@@ -62,5 +64,16 @@ import HotProfileCard from "@/modules/ideas-feed/components/HotProfileCard/HotPr
 
 .list__subtext {
   color: var(--text-grey);
+}
+
+.list__footer {
+  padding: 10px 15px;
+  border-top: 1px solid var(--border-color);
+  color: var(--blue-highlight);
+}
+
+.list__more:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }
 </style>

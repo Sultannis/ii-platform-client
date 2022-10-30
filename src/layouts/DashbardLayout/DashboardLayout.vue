@@ -25,17 +25,18 @@ const onIdeasFeed = computed(() => {
 
 <style scoped>
 .dashboard {
-  min-height: 100vh;
+  margin-top: 50px;
+  min-height: 90vh;
   padding-right: 35px;
   display: flex;
 }
 
 .dashboard__left {
+  min-width: 295px;
   margin-right: 20px;
 }
 
 .dashboard__content {
   padding-top: 20px;
-  width: 100%;
 }
 </style>

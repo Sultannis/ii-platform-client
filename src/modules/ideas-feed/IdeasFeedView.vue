@@ -25,7 +25,7 @@ import { ideas } from "@/modules/ideas-feed/composables/fetchIdeasFeed";
 .feed {
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 345px;
+  grid-template-columns: 1fr 405px;
 }
 
 .feed__ideas {
@@ -33,7 +33,7 @@ import { ideas } from "@/modules/ideas-feed/composables/fetchIdeasFeed";
 }
 
 .feed__right {
-  max-width: 345px;
-  min-width: 345px;
+  max-width: 405px;
+  min-width: 405px;
 }
 </style>
