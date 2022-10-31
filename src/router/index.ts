@@ -16,7 +16,7 @@ const router = createRouter({
       component: DashboardLayout,
       children: [
         {
-          path: "/",
+          path: "/feed",
           name: "ideas-feed",
           component: IdeasFeedView,
         },

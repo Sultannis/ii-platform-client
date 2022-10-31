@@ -43,6 +43,7 @@ import HeaderSearchInput from "@/layouts/DashbardLayout/components/HeaderSearchI
 .header__icon {
   font-size: 25px;
   margin-right: 15px;
+  margin-left: 30px;
 }
 
 .header__left {

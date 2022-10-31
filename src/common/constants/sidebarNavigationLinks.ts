@@ -2,7 +2,7 @@ export const SIDEBAR_NAVIGATION_LINKS = [
   {
     iconClass: "bxs-collection",
     title: "Лента",
-    route: "/",
+    route: "/feed",
   },
   {
     iconClass: "bx-search-alt",
