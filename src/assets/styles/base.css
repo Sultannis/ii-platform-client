@@ -12,7 +12,6 @@
 
 body {
   overflow: overlay;
-  margin-right: -10px;
   color: var(--text-color);
   min-height: 100vh;
   font-family: "Montserrat", sans-serif;

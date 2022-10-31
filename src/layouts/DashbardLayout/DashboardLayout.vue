@@ -3,6 +3,7 @@ import DashboardHeader from "@/layouts/DashbardLayout/components/DashboardHeader
 import CommonNavigationSideBlock from "@/common/components/CommonNavigationSideBlock/CommonNavigationSideBlock.vue";
 import HotProfilesList from "@/modules/ideas-feed/components/HotProfilesList/HotProfilesList.vue";
 import { SIDEBAR_NAVIGATION_LINKS } from "@/common/constants/sidebarNavigationLinks";
+import { SIDEBAR_ACCOUNT_LINKS } from "@/common/constants/sidebarAccountLinks";
 </script>
 
 <template>
@@ -15,8 +16,8 @@ import { SIDEBAR_NAVIGATION_LINKS } from "@/common/constants/sidebarNavigationLi
           :links="SIDEBAR_NAVIGATION_LINKS"
         />
         <CommonNavigationSideBlock
-          heading="Основные"
-          :links="SIDEBAR_NAVIGATION_LINKS"
+          heading="Аккаунт"
+          :links="SIDEBAR_ACCOUNT_LINKS"
         />
       </div>
       <div class="dashboard__right">
@@ -31,15 +32,15 @@ import { SIDEBAR_NAVIGATION_LINKS } from "@/common/constants/sidebarNavigationLi
 
 <style scoped>
 .dashboard {
-  margin-top: 85px;
-  min-height: 100vh;
+  padding-top: 85px;
+  min-height: calc(100vh - 85px);
 
   display: flex;
   flex-direction: column;
 }
 
 .dashboard__center {
-  margin: auto;
+  margin: 0 auto;
   width: calc(95% - 640px);
   max-width: 1020px;
 }
