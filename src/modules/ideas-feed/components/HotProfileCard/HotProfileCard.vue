@@ -1,12 +1,28 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+
+const { name, likes, imageUrl } = defineProps({
+  name: {
+    type: String,
+    required: true,
+  },
+  likes: {
+    type: Number,
+    required: true,
+  },
+  imageUrl: {
+    type: String,
+    required: true,
+  },
+})
+</script>
 
 <template>
   <div class="card">
     <div class="card__left">
       <img src="@/assets/images/profile-photo.jpg" class="card__image" />
     </div>
-    <div class="card__name">its.sultan</div>
-    <div class="card__like-number">342</div>
+    <div class="card__name">{{ name }}</div>
+    <div class="card__like-number">{{ likes }}</div>
   </div>
 </template>
 
@@ -14,6 +30,8 @@
 .card {
   width: 100%;
   height: 60px;
+  margin-bottom: 10px;
+
   background-color: #ffffff;
   color: var(--text-color-light);
 
@@ -27,23 +45,24 @@
   position: relative;
 
   transition-duration: 0.2s;
+  cursor: pointer;
 }
 
 .card:hover {
   background: #c3c4cd;
-  color: #000000;
+  color: var(--text-color);
 }
 
 .card__image {
-  width: 45px;
-  height: 45px;
-  margin-right: 10px;
+  width: 40px;
+  height: 40px;
 
+  margin-right: 10px;
   border-radius: 50%;
 }
 
 .card__name {
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 600;
 
   display: flex;
