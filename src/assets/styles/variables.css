@@ -6,6 +6,10 @@
   --dark-grey-color: #cfcfcf;
   --text-dark-color: #0d2044;
 
+  /* light teme */
+  --theme-light-background-color: #f3f3f3;
+  --theme-light-primary-color: #4338ca;
+
   /* dark theme */
   --theme-dark-background-color: #151515;
   --theme-dark-primary-color: #212121;

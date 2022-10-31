@@ -12,6 +12,11 @@
 body {
   min-height: 100vh;
   font-family: "Montserrat", sans-serif;
-  background-color: var(--theme-dark-background-color);
+  background-color: var(--theme-light-background-color);
   color: var(--text-dark-color);
+}
+
+body.darken {
+  background-color: var(--theme-dark-background-color);
+  color: #fff;
 }

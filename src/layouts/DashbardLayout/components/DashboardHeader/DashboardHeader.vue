@@ -1,96 +1,65 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import LogoImage from "@/assets/images/logo.svg";
+import LogoImageDark from "@/assets/images/logo-darken.svg";
+import DashboardHeaderSearch from "./DashboardHeaderSearch.vue";
+import DashboardHeaderNotifications from "@/layouts/DashbardLayout/components/DashboardHeader/DashboardHeaderNotifications.vue";
+import DashboardHeaderUser from "@/layouts/DashbardLayout/components/DashboardHeader/DashboardHeaderUser.vue";
 
-const dotVisible = ref(false);
+defineProps({
+  darkTheme: {
+    type: Boolean,
+    default: false,
+  },
+});
 </script>
 
 <template>
-  <header class="header">
-    <div class="header__left">
-      <img src="@/assets/icons/logo.svg" />
-      <p class="header__name">Ferrum</p>
-    </div>
-    <div class="header__right">
-      <button
-        :class="[
-          'header__button',
-          'header__button_inbox',
-          {
-            'header__button_inbox-full': dotVisible,
-          },
-        ]"
-      >
-        <i class="bx bxs-inbox" />
-      </button>
-      <button class="header__button header__button_profile">
-        <i class="bx bxs-user" />
-      </button>
+  <header :class="['dashboard-header', { dark: darkTheme }]">
+    <div class="dashboard-header__wrap">
+      <div class="dashboard-header__logo">
+        <router-link to="/">
+          <img
+            :src="darkTheme ? LogoImageDark : LogoImage"
+            alt="Notio"
+            class="dashboard-header__logo-image"
+          />
+        </router-link>
+      </div>
+      <div class="dashboard-header__row">
+        <dashboard-header-search :dark-theme="darkTheme" />
+        <dashboard-header-notifications />
+        <dashboard-header-user />
+      </div>
     </div>
   </header>
 </template>
 
 <style scoped>
-.header {
+.dashboard-header {
+  margin-bottom: 15px;
+  padding: 20px 30px;
+  background-color: #fff;
+}
+
+.dashboard-header.dark {
+  background-color: var(--theme-dark-primary-color);
+  color: #fff;
+}
+
+.dashboard-header__wrap {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   align-items: center;
-  height: 80px;
-  max-width: 100vw;
-  background: var(--primary-color);
-}
-.header__left {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-left: 40px;
   justify-content: space-between;
 }
-.header__name {
-  font-size: 22px;
-  font-weight: 700;
-  color: #ffffff;
-  margin-left: 15px;
-}
-.header__right {
+
+.dashboard-header__row {
   display: flex;
-  flex-direction: row;
-  margin-right: 30px;
+  align-items: center;
 }
 
-.header__button {
-  margin-left: 15px;
-  width: 55px;
-  height: 55px;
-
-  border: none;
-  border-radius: 50%;
-  background: var(--primary-color);
-
-  color: #ffffff;
-  font-size: 25px;
-
-  position: relative;
-  transition-duration: 0.3s;
-}
-
-.header__button:hover {
-  background: #ffffff;
-  color: var(--primary-color);
-  cursor: pointer;
-}
-
-.header__button_inbox-full::after {
-  width: 6px;
-  height: 6px;
-
-  background: var(--secondary-color);
-  border-radius: 50%;
-
-  position: absolute;
-  right: 8px;
-  top: 10px;
-  content: "";
-  display: inline-block;
+.dashboard-header__logo-image {
+  object-fit: contain;
+  max-width: 124px;
+  max-height: 30px;
 }
 </style>

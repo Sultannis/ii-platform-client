@@ -21,23 +21,9 @@ import NewsList from "@/layouts/DashbardLayout/components/NewsList/NewsList.vue"
 
 <style scoped>
 .dashboard {
-  padding-top: 20px;
-  width: 90%;
-  margin: auto;
-  display: flex;
-}
-
-.dashboard__left {
-  min-width: 300px;
-  margin-right: 20px;
-}
-
-.dashboard__middle {
-  width: 100%;
-}
-
-.dashboard__right {
-  min-width: 300px;
-  margin-left: 20px;
+  padding: 0 25px;
+  display: grid;
+  grid-template-columns: 310px 1fr 310px;
+  gap: 20px;
 }
 </style>
