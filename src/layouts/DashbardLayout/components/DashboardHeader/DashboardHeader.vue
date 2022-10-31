@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import HeaderSearchInput from "@/layouts/DashbardLayout/components/HeaderSearchInput/HeaderSearchInput.vue";
 import { ref } from "vue";
 
 const dotVisible = ref(false);
@@ -11,6 +12,7 @@ const dotVisible = ref(false);
       NOTIO
     </div>
     <div class="header__right">
+      <HeaderSearchInput />
       <button
         :class="[
           'header__button',
@@ -43,19 +45,6 @@ const dotVisible = ref(false);
 </template>
 
 <style scoped>
-.form {
-  display: flex;
-  flex-direction: column;
-}
-
-.form__input {
-  margin-top: 15px;
-}
-
-.form__input:first-child {
-  margin-top: 0;
-}
-
 .header {
   position: fixed;
   z-index: 1;
@@ -65,11 +54,10 @@ const dotVisible = ref(false);
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  height: 50px;
+  height: 70px;
   min-width: 100vw;
   max-width: 100vw;
-  background: var(--background-medium);
-  color: #ffffff;
+  background: #fff;
 }
 
 .header__icon {
@@ -78,22 +66,23 @@ const dotVisible = ref(false);
 }
 
 .header__left {
+  color: var(--primary-color);
   display: flex;
   flex-direction: row;
   align-items: center;
   font-size: 22px;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .header__right {
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
 
 .header__name {
   font-size: 18px;
   font-weight: 700;
-  color: #ffffff;
   margin-left: 15px;
 }
 
@@ -105,8 +94,7 @@ const dotVisible = ref(false);
   border: none;
   cursor: pointer;
 
-  color: #ffffff;
-  font-size: 18px;
+  font-size: 20px;
   background: none;
 
   display: flex;
@@ -117,8 +105,12 @@ const dotVisible = ref(false);
   transition-duration: 0.3s;
 }
 
-.header__button:hover {
-  color: var(--text-grey);
+.header__button_profile {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  color: #fff;
 }
 
 .header__button_full::after {
@@ -143,5 +135,18 @@ const dotVisible = ref(false);
   box-shadow: none !important;
   border-radius: 10px !important;
   border: 1px solid var(--border-color);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form__input {
+  margin-top: 15px;
+}
+
+.form__input:first-child {
+  margin-top: 0;
 }
 </style>

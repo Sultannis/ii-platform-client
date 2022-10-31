@@ -1,14 +1,10 @@
 :root {
-  --background-dark: #161616;
-  --background-semi-dark: #1C1C1C;
-  --background-medium: #313132;
-  --background-light: #454545;
+  --background-color: #F3F3F3;
+  --background-highlighted-color: #4438ca2f;
 
-  --border-color: #454545;
-  --blue-highlight: #0C8CE9;
-  --blue-dimmed-highlight: #002B4A;
-  --green-highlight: #238636;
-  --red-highlight: #D11818;
+  --primary-color: #4338CA;
 
-  --text-grey: #969696;
+  --text-color: #262F4C;
+  --text-color-light: #262f4cc0;
+  --text-color-grey: #C3C4CD;
 }

@@ -27,7 +27,6 @@ const props = defineProps({
 
   display: flex;
   align-items: center;
-  color: #ffffff;
 }
 
 .link:hover {
