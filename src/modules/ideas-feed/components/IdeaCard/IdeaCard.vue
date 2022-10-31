@@ -20,72 +20,105 @@ const { title, description, score, imageUrl } = defineProps({
 </script>
 
 <template>
-  <div class="card">
-    <img src="@/assets/images/idea image.png" alt="" class="card__image" />
-    <div class="card__heading">{{ title }}</div>
-    <div class="card__content">
-      <p class="card__description">{{ description }}</p>
-      <div class="card__tags"></div>
-      <div class="card__info">
-        <div class="card__fin-support">Необходимое финансирование 5.3м ₽</div>
-        <div class="card__date">Опубликовано 22/10/22</div>
+  <div class="idea">
+    <div class="idea__row idea__row_space-between">
+      <div class="idea__heading">{{ title }}</div>
+      <i class="bx bx-dots-horizontal-rounded idea__options"></i>
+    </div>
+
+    <div class="idea__row">
+      <div class="idea__author">
+        <img
+          src="@/assets/images/profile-photo.jpg"
+          alt=""
+          class="idea__author-image"
+        />
+        <div class="idea__author-name">its.sultan</div>
+        <div class="idea__author-divider" />
+      </div>
+      <div class="idea__time">2 мин</div>
+    </div>
+    <div class="idea__content">
+      <p class="idea__description">{{ description }}</p>
+      <div class="idea__tags"></div>
+      <div class="idea__info">
+        <div class="idea__fin-support">Необходимое финансирование 5.3м ₽</div>
+        <div class="idea__date">Опубликовано 22/10/22</div>
       </div>
     </div>
-    <footer class="card__footer">
-      <div class="card__author"></div>
-      <div class="card__activations"></div>
+    <footer class="idea__footer">
+      <div class="idea__author"></div>
+      <div class="idea__activations"></div>
     </footer>
   </div>
 </template>
 
 <style scoped>
-.card {
-  margin-top: 10px;
-  background: transparent;
-  max-width: 100%;
-
-  border: 1px solid var(--border-color);
+.idea {
+  margin-bottom: 10px;
+  padding: 20px;
+  background: #fff;
   border-radius: 10px;
-
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
 }
 
-.card__heading {
-  padding: 10px 15px;
-  background: var(--background-light);
-
+.idea__heading {
   font-size: 20px;
   font-weight: 600;
-  color: var(--blue-highlight);
+  color: var(--text-color);
 }
 
-.card__content {
-  padding: 15px;
+.idea__options {
+  color: var(--text-color-light);
+  cursor: pointer;
+  transition: color 0.2s linear;
 }
 
-.card__description {
-  color: var(--text-grey);
+.idea__options:hover {
+  color: var(--text-color);
+  transition: color 0.2s linear;
 }
 
-.card__info {
-  margin-top: 10px;
+.idea__row {
   display: flex;
+  align-items: center;
+}
+
+.idea__row_space-between {
   justify-content: space-between;
-  color: var(--text-grey);
+  margin-bottom: 10px;
+  font-size: 25px;
 }
 
-.card__image {
-  max-width: 100%;
-}
-
-.card:first-child {
-  margin-top: 0;
-}
-
-.card__tags {
+.idea__author {
+  padding-right: 10px;
   display: flex;
-  flex-wrap: wrap;
+  align-items: center;
+}
+
+.idea__author-image {
+  margin-right: 10px;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+
+.idea__author-divider {
+  margin-left: 10px;
+  height: 25px;
+  width: 1.5px;
+  background-color: var(--text-color-grey);
+}
+
+.idea__author-name {
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.idea__author-name:hover {
+  text-decoration: underline;
+}
+
+.idea__time {
+  color: var(--text-color-grey);
 }
 </style>
