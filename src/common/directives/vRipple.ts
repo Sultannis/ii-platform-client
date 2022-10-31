@@ -8,7 +8,7 @@ const handleRipple = (
   const rippleElement = document.createElement("span");
   let currentDiameter = 1;
   let currentOpacity = 0.65;
-  const animationHandler = setInterval(animateRippleSpread, 10);
+  const animationHandler = setInterval(animateRippleSpread, 6);
   applyRippleStyle();
 
   function applyRippleStyle() {
@@ -20,14 +20,14 @@ const handleRipple = (
     rippleElement.style.height = "5px";
     rippleElement.style.width = "5px";
     rippleElement.style.borderRadius = "100%";
-    rippleElement.style.backgroundColor = "#0000001f";
+    rippleElement.style.backgroundColor = "rgba(0,0,0, 0.15)";
     rippleElement.style.left = `${offsetX}px`;
     rippleElement.style.top = `${offsetY}px`;
     ev.target.appendChild(rippleElement);
   }
 
   function animateRippleSpread() {
-    const maximalDiameter = +binding.value || 50;
+    const maximalDiameter = +binding.value || 120;
     if (currentDiameter <= maximalDiameter) {
       currentDiameter++;
       currentOpacity -= 0.65 / maximalDiameter;

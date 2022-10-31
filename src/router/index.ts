@@ -28,12 +28,19 @@ const router = createRouter({
           name: "saved-ideas",
           component: SavedIdeasView,
         },
+        {
+          path: "/chats",
+          name: "chats",
+          component: UserChatsView,
+          children: [
+            // {
+            //   path: ":id",
+            //   name: "chat-room",
+            //   component: ChatRoom,
+            // },
+          ],
+        },
       ],
-    },
-    {
-      path: "/chats",
-      name: "chats",
-      component: UserChatsView,
     },
   ],
 });

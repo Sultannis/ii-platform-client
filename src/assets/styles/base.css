@@ -11,8 +11,7 @@
 
 body {
   min-height: 100vh;
-  font-family: "Montserrat Alternates", sans-serif;
-  background-image: linear-gradient(#FFF2F6, #E8E9FD);
-  color: var(--text-dark-color)
+  font-family: "Montserrat", sans-serif;
+  background-color: var(--theme-dark-background-color);
+  color: var(--text-dark-color);
 }
-
