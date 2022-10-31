@@ -1,17 +1,12 @@
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div class="card">
     <div class="card__left">
-      <img src="@/assets/images/profile-photo.jpg" class="card__image">
+      <img src="@/assets/images/profile-photo.jpg" class="card__image" />
     </div>
-    <div class="card__name">
-      <p>its.sultan</p>
-    </div>
-    <div class="card__like-number">
-      <p>342</p>
-    </div>
+    <div class="card__name">its.sultan</div>
+    <div class="card__like-number">342</div>
   </div>
 </template>
 
@@ -28,14 +23,14 @@
 
   display: flex;
   flex-direction: row;
-  align-items: center;  
+  align-items: center;
   position: relative;
 
   transition-duration: 0.2s;
 }
 
 .card:hover {
-  background: #C3C4CD;
+  background: #c3c4cd;
   color: #000000;
 }
 
@@ -67,5 +62,4 @@
   position: absolute;
   right: 16px;
 }
-
 </style>
