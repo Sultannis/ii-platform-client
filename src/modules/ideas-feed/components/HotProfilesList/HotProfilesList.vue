@@ -7,7 +7,6 @@ import HotProfileCard from "@/modules/ideas-feed/components/HotProfileCard/HotPr
     <div class="list__header">
       <div class="list__left">
         <h4 class="list__heading">Горячие профили</h4>
-        <div class="list__subtext">сегодня</div>
       </div>
       <img
         src="@/assets/icons/hot-emoji.png"
@@ -15,8 +14,6 @@ import HotProfileCard from "@/modules/ideas-feed/components/HotProfileCard/HotPr
         class="list__header-icon"
       />
     </div>
-    <HotProfileCard />
-    <HotProfileCard />
     <HotProfileCard />
     <div class="list__footer">
       <div class="list__more">Хочу еще!</div>
@@ -28,10 +25,13 @@ import HotProfileCard from "@/modules/ideas-feed/components/HotProfileCard/HotPr
 .list {
   display: flex;
   flex-direction: column;
+  background: #ffffff;
 
   border: 1px solid var(--border-color);
   border-radius: 10px;
 
+  padding-left: 16px;
+  padding-right: 16px;
   overflow: hidden;
 }
 
