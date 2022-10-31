@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 defineProps({
   name: {
     type: String,
@@ -13,7 +12,7 @@ defineProps({
     type: String,
     required: true,
   },
-})
+});
 </script>
 
 <template>
@@ -49,8 +48,7 @@ defineProps({
 }
 
 .card:hover {
-  background: #c3c4cd;
-  color: var(--text-color);
+  background: var(--background-color);
 }
 
 .card__image {
