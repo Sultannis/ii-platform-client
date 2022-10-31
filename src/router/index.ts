@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import DashboardLayout from "@/layouts/DashboardLayout/DashboardLayout.vue";
+import FeedLayout from "@/layouts/FeedLayout/FeedLayout.vue";
 import IdeasFeedView from "@/modules/ideas-feed/IdeasFeedView.vue";
 import UserIdeasView from "@/modules/user-ideas/UserIdeasView.vue";
 import SavedIdeasView from "@/modules/saved-ideas/SavedIdeasView.vue";
@@ -18,7 +19,25 @@ const router = createRouter({
         {
           path: "/feed",
           name: "ideas-feed",
-          component: IdeasFeedView,
+          component: FeedLayout,
+          redirect: { name: "ideas-feed:new" },
+          children: [
+            {
+              path: "new",
+              name: "ideas-feed:new",
+              component: IdeasFeedView,
+            },
+            {
+              path: "popular",
+              name: "ideas-feed:popular",
+              component: IdeasFeedView,
+            },
+            {
+              path: "people",
+              name: "ideas-feed:people",
+              component: IdeasFeedView,
+            },
+          ],
         },
         {
           path: "/user-ideas",

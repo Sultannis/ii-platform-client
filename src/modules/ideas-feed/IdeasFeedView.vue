@@ -5,15 +5,13 @@ import { ideas } from "@/modules/ideas-feed/composables/fetchIdeasFeed";
 
 <template>
   <div class="feed">
-    <div class="feed__ideas">
-      <IdeaCard
-        v-for="idea of ideas"
-        :title="idea.title"
-        :description="idea.description"
-        :score="idea.score"
-        :image-url="idea.imageUrl"
-      />
-    </div>
+    <IdeaCard
+      v-for="idea of ideas"
+      :title="idea.title"
+      :description="idea.description"
+      :score="idea.score"
+      :image-url="idea.imageUrl"
+    />
   </div>
 </template>
 

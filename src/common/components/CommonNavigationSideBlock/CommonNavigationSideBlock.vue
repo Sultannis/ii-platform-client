@@ -17,7 +17,7 @@ defineProps({
 
 <style scoped>
 .block {
-  padding: 15px;
+  padding: 10px 15px;
   background: #fff;
 
   border-radius: 10px;
@@ -54,12 +54,12 @@ defineProps({
   font-size: 18px;
 }
 
-.router-link-exact-active {
+.router-link-active {
   background: var(--background-highlighted-color);
   color: var(--primary-color);
 }
 
-.router-link-exact-active:hover {
+.router-link-active:hover {
   color: var(--primary-color);
 }
 </style>

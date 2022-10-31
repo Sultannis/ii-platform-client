@@ -1,6 +1,6 @@
 export const SIDEBAR_ACCOUNT_LINKS = [
   {
-    iconClass: "bxs-conversation",
+    iconClass: "bx-conversation",
     title: "Поддежка",
     route: "/support",
   },

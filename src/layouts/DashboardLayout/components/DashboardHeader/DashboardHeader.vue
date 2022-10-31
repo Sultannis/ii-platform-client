@@ -23,7 +23,7 @@ import HeaderSearchInput from "@/layouts/DashboardLayout/components/HeaderSearch
 .header {
   width: 100vw;
   position: fixed;
-  z-index: 1;
+  z-index: 2;
   top: 0;
   height: 70px;
   background: #fff;

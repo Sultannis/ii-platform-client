@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import CommonTag from "@/common/components/CommonTag/CommonTag.vue";
-
 const { title, description, score, imageUrl } = defineProps({
   title: {
     type: String,
@@ -16,7 +14,7 @@ const { title, description, score, imageUrl } = defineProps({
   },
   imageUrl: {
     type: String,
-    required: true,
+    required: false,
   },
 });
 </script>
@@ -27,20 +25,7 @@ const { title, description, score, imageUrl } = defineProps({
     <div class="card__heading">{{ title }}</div>
     <div class="card__content">
       <p class="card__description">{{ description }}</p>
-      <div class="card__tags">
-        <CommonTag> Иновации </CommonTag>
-        <CommonTag> Идея </CommonTag>
-        <CommonTag> Стартап </CommonTag>
-        <CommonTag> Программирование </CommonTag>
-        <CommonTag> Иновации </CommonTag>
-        <CommonTag> Идея </CommonTag>
-        <CommonTag> Стартап </CommonTag>
-        <CommonTag> Программирование </CommonTag>
-        <CommonTag> Иновации </CommonTag>
-        <CommonTag> Идея </CommonTag>
-        <CommonTag> Стартап </CommonTag>
-        <CommonTag> Программирование </CommonTag>
-      </div>
+      <div class="card__tags"></div>
       <div class="card__info">
         <div class="card__fin-support">Необходимое финансирование 5.3м ₽</div>
         <div class="card__date">Опубликовано 22/10/22</div>
