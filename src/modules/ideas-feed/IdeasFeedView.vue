@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import HotProfilesList from "./components/HotProfilesList/HotProfilesList.vue";
 import IdeaCard from "@/modules/ideas-feed/components/IdeaCard/IdeaCard.vue";
 import { ideas } from "@/modules/ideas-feed/composables/fetchIdeasFeed";
 </script>

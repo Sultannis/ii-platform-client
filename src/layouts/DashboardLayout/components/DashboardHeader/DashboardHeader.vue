@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import HeaderSearchInput from "@/layouts/DashbardLayout/components/HeaderSearchInput/HeaderSearchInput.vue";
+import HeaderSearchInput from "@/layouts/DashboardLayout/components/HeaderSearchInput/HeaderSearchInput.vue";
 </script>
 
 <template>

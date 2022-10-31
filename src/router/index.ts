@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
-import DashboardLayout from "@/layouts/DashbardLayout/DashboardLayout.vue";
+import DashboardLayout from "@/layouts/DashboardLayout/DashboardLayout.vue";
 import IdeasFeedView from "@/modules/ideas-feed/IdeasFeedView.vue";
 import UserIdeasView from "@/modules/user-ideas/UserIdeasView.vue";
 import SavedIdeasView from "@/modules/saved-ideas/SavedIdeasView.vue";

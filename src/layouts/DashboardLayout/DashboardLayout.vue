@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import DashboardHeader from "@/layouts/DashbardLayout/components/DashboardHeader/DashboardHeader.vue";
+import DashboardHeader from "@/layouts/DashboardLayout/components/DashboardHeader/DashboardHeader.vue";
 import CommonNavigationSideBlock from "@/common/components/CommonNavigationSideBlock/CommonNavigationSideBlock.vue";
-import HotProfilesList from "@/modules/ideas-feed/components/HotProfilesList/HotProfilesList.vue";
+import HotProfiles from "@/layouts/DashboardLayout/components/HotProfiles/HotProfiles.vue";
 import { SIDEBAR_NAVIGATION_LINKS } from "@/common/constants/sidebarNavigationLinks";
 import { SIDEBAR_ACCOUNT_LINKS } from "@/common/constants/sidebarAccountLinks";
 </script>
@@ -21,7 +21,7 @@ import { SIDEBAR_ACCOUNT_LINKS } from "@/common/constants/sidebarAccountLinks";
         />
       </div>
       <div class="dashboard__right">
-        <HotProfilesList />
+        <HotProfiles />
       </div>
     </div>
     <div class="dashboard__center">
