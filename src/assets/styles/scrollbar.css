@@ -2,14 +2,13 @@
   border-radius: 0px 10px 10px 0px;
   width: 10px;
   margin-block: 10px;
-  background: #ffffff;
 }
 
 ::-webkit-scrollbar-track {
   width: 10px;
-  background-color: var(--background-semi-dark);
+  background: rgba(0, 0, 0, 0);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--background-highlighted-color);
+  background: var(--primary-color);
 }

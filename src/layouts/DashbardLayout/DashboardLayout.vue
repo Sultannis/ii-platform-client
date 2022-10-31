@@ -14,6 +14,10 @@ import { SIDEBAR_NAVIGATION_LINKS } from "@/common/constants/sidebarNavigationLi
           heading="Основные"
           :links="SIDEBAR_NAVIGATION_LINKS"
         />
+        <CommonNavigationSideBlock
+          heading="Основные"
+          :links="SIDEBAR_NAVIGATION_LINKS"
+        />
       </div>
       <div class="dashboard__right">
         <HotProfilesList />
@@ -41,7 +45,12 @@ import { SIDEBAR_NAVIGATION_LINKS } from "@/common/constants/sidebarNavigationLi
 }
 
 .dashboard__left {
+  margin-bottom: 20px;
   min-width: 300px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .dashboard__right {
