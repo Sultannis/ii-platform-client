@@ -37,7 +37,7 @@ defineProps({
 <style scoped>
 .dashboard-header {
   margin-bottom: 15px;
-  padding: 20px 30px;
+  padding: 15px 30px;
   background-color: #fff;
 }
 
