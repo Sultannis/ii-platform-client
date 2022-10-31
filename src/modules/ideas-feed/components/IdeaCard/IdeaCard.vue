@@ -1,5 +1,6 @@
 <script setup lang="ts">
-const { title, description, score, imageUrl } = defineProps({
+import CommonTag from "@/common/components/CommonTag/CommonTag.vue";
+defineProps({
   title: {
     type: String,
     required: true,
@@ -25,7 +26,6 @@ const { title, description, score, imageUrl } = defineProps({
       <div class="idea__heading">{{ title }}</div>
       <i class="bx bx-dots-horizontal-rounded idea__options"></i>
     </div>
-
     <div class="idea__row">
       <div class="idea__author">
         <img
@@ -38,17 +38,28 @@ const { title, description, score, imageUrl } = defineProps({
       </div>
       <div class="idea__time">2 мин</div>
     </div>
-    <div class="idea__content">
-      <p class="idea__description">{{ description }}</p>
-      <div class="idea__tags"></div>
-      <div class="idea__info">
-        <div class="idea__fin-support">Необходимое финансирование 5.3м ₽</div>
-        <div class="idea__date">Опубликовано 22/10/22</div>
-      </div>
+    <p class="idea__description">{{ description }}</p>
+    <div class="idea__tags">
+      <CommonTag>идея</CommonTag>
+      <CommonTag>роботы</CommonTag>
+      <CommonTag>иновации</CommonTag>
+      <CommonTag>беш</CommonTag>
+      <CommonTag>роботы</CommonTag>
     </div>
+    <img src="@/assets/images/idea image.png" alt="" class="idea__image" />
     <footer class="idea__footer">
-      <div class="idea__author"></div>
-      <div class="idea__activations"></div>
+      <div class="idea__action">
+        <i class="bx bx-like idea__action-icon" />
+        Лайков
+      </div>
+      <div class="idea__action">
+        <i class="bx bx-comment-detail idea__action-icon" />
+        Коментариев
+      </div>
+      <div class="idea__action">
+        <i class="bx bx-bookmark idea__action-icon" />
+        Сохранить
+      </div>
     </footer>
   </div>
 </template>
@@ -56,7 +67,7 @@ const { title, description, score, imageUrl } = defineProps({
 <style scoped>
 .idea {
   margin-bottom: 10px;
-  padding: 20px;
+  padding: 20px 30px;
   background: #fff;
   border-radius: 10px;
 }
@@ -120,5 +131,44 @@ const { title, description, score, imageUrl } = defineProps({
 
 .idea__time {
   color: var(--text-color-grey);
+}
+
+.idea__description {
+  margin-top: 10px;
+}
+
+.idea__tags {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.idea__image {
+  margin-top: 10px;
+  width: 100%;
+}
+
+.idea__footer {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.idea__action {
+  margin-right: 20px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-color-light);
+
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.idea__action:hover {
+  color: var(--text-color);
+}
+
+.idea__action-icon {
+  margin-right: 10px;
 }
 </style>
