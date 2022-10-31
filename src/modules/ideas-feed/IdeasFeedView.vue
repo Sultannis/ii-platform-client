@@ -23,8 +23,4 @@ import { ideas } from "@/modules/ideas-feed/composables/fetchIdeasFeed";
   width: 100%;
   display: grid;
 }
-
-.feed__ideas {
-  margin-right: 20px;
-}
 </style>

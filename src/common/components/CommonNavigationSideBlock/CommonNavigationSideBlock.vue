@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const props = defineProps({
+defineProps({
   heading: String,
   links: Array<{ title: string; iconClass: string; route }>,
 });
