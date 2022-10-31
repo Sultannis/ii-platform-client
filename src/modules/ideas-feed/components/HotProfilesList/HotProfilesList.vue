@@ -10,7 +10,7 @@ import { hotprofiles } from "@/modules/ideas-feed/composables/fetchHotprofilesLi
         <h2 class="list__heading">Горячие профили</h2>
       </div>
       <img
-        src="@/assets/icons/🔥.svg"
+        src="@/assets/icons/fire-emoji.svg"
         alt="Hot emoji"
         class="list__header-icon"
       />
@@ -18,7 +18,7 @@ import { hotprofiles } from "@/modules/ideas-feed/composables/fetchHotprofilesLi
     <HotProfileCard
       v-for="hotprofile of hotprofiles"
       :name="hotprofile.name"
-      :likes="hotprofile.likes"
+      :interactionsCount="hotprofile.interactionsCount"
       :image-url="hotprofile.imageUrl"
     />
   </div>

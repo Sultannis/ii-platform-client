@@ -1,11 +1,11 @@
 <script setup lang="ts">
 
-const { name, likes, imageUrl } = defineProps({
+defineProps({
   name: {
     type: String,
     required: true,
   },
-  likes: {
+  interactionsCount: {
     type: Number,
     required: true,
   },
@@ -22,7 +22,7 @@ const { name, likes, imageUrl } = defineProps({
       <img src="@/assets/images/profile-photo.jpg" class="card__image" />
     </div>
     <div class="card__name">{{ name }}</div>
-    <div class="card__like-number">{{ likes }}</div>
+    <div class="card__like-number">{{ interactionsCount }}</div>
   </div>
 </template>
 

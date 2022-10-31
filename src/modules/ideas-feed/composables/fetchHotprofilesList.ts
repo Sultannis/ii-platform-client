@@ -3,17 +3,17 @@ import { reactive } from "vue";
 const hotprofiles = reactive([
     {
         name: "its.sultan",
-        likes: 667,
+        interactionsCount: 667,
         imageUrl: "/some-url",
     },
     {
         name: "Sultan Mirza",
-        likes: 342,
+        interactionsCount: 302,
         imageUrl: "/some-url",
     },
     {
         name: "its.sultan",
-        likes: 102,
+        interactionsCount: 102,
         imageUrl: "/some-url",
     },
 
