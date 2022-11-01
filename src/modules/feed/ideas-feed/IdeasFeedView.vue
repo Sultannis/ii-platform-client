@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import IdeaCard from "@/modules/ideas-feed/components/IdeaCard/IdeaCard.vue";
-import { ideas } from "@/modules/ideas-feed/composables/fetchIdeasFeed";
+import IdeaCard from "@/modules/feed/ideas-feed/components/IdeaCard/IdeaCard.vue";
+import { ideas } from "@/modules/feed/ideas-feed/composables/fetchIdeasFeed";
 </script>
 
 <template>
