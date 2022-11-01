@@ -5,12 +5,12 @@ export const FEED_MENU_LINKS = [
     route: "/feed/new",
   },
   {
-    iconClass: "bx-time",
+    iconClass: "bx-cool",
     title: "Популярные",
     route: "/feed/popular",
   },
   {
-    iconClass: "bx-time",
+    iconClass: "bx-face",
     title: "Люди",
     route: "/feed/people",
   },
