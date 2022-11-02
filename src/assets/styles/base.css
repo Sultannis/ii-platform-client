@@ -18,3 +18,7 @@ body {
   background-color: var(--background-color);
 }
 
+button {
+  border: none;
+  outline: none;
+}

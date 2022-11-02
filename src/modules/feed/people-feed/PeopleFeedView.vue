@@ -9,6 +9,9 @@ const value = ref("");
 
 <template>
   <div class="feed">
+    <CommonModal>
+      
+    </CommonModal>
     <PersonCard
       v-for="person in feedPeople"
       :name="person.name"
