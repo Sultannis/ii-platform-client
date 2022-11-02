@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import PersonCard from "@/modules/feed/people-feed/components/PersonCard/PersonCard.vue";
+import CommonModal from "@/common/components/CommonModal/CommonModal.vue";
 import { feedPeople } from "@/modules/feed/people-feed/composable/fetchFeedPeople";
 </script>
 

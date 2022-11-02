@@ -1,13 +1,35 @@
+<script setup lang="ts">
+defineProps({
+  width: {
+    type: String,
+    default: "800",
+  },
+  height: {
+    type: String,
+    default: "600",
+  },
+});
+</script>
+
 <template>
-  <div class="modal__back">
-    <div class="modal">
+  <div class="modal__background">
+    <div
+      :style="{
+        width: width + 'px',
+        height: height + 'px',
+      }"
+      class="modal"
+    >
       <i class="bx bx-x modal__exit" />
+      <slot />
     </div>
   </div>
 </template>
 
 <style>
-.modal__back {
+.modal__background {
+  top: 0;
+  left: 0;
   position: fixed;
   width: 100%;
   min-height: 100vh;
@@ -19,9 +41,7 @@
 }
 
 .modal {
-  margin: 10vh auto;
-  height: 200vh;
-  width: 70%;
+  margin: 5vh auto;
   background: #fff;
   border-radius: 10px;
   position: relative;

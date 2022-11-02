@@ -2,13 +2,11 @@
 import DashboardHeader from "@/layouts/DashboardLayout/components/DashboardHeader/DashboardHeader.vue";
 import CommonNavigationSideBlock from "@/common/components/CommonNavigationSideBlock/CommonNavigationSideBlock.vue";
 import HotProfiles from "@/layouts/DashboardLayout/components/HotProfiles/HotProfiles.vue";
-import CommonModal from "@/common//components/CommonModal/CommonModal.vue";
 import { SIDEBAR_NAVIGATION_LINKS } from "@/common/constants/sidebarNavigationLinks";
 import { SIDEBAR_ACCOUNT_LINKS } from "@/common/constants/sidebarAccountLinks";
 </script>
 
 <template>
-  <CommonModal />
   <main class="dashboard">
     <DashboardHeader />
     <div class="dashboard__fixed">
@@ -42,7 +40,6 @@ import { SIDEBAR_ACCOUNT_LINKS } from "@/common/constants/sidebarAccountLinks";
 }
 
 .dashboard__center {
-  z-index: 1;
   margin: 0 auto;
   width: calc(95% - 640px);
   max-width: 1020px;
