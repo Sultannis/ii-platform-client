@@ -1,14 +1,11 @@
-import { onBeforeUnmount, ref, computed } from "vue";
+import { onBeforeUnmount, ref, type Ref } from "vue";
 import type { ChatRoom } from "@/common/entity/chat-room";
 import { useSocketIO } from "@/common/composables/socket-io";
 import config from "@/common/config/config";
 
 const chatRooms = ref([] as ChatRoom[]);
 const chatRoomId = ref("");
-
-const activeChatRoom = computed(() => {
-  return chatRooms.value.find((room) => room.id === chatRoomId.value);
-});
+const activeChatRoom: Ref<ChatRoom | null> = ref(null);
 
 const setActiveChatRoom = (roomId: string) => (chatRoomId.value = roomId);
 
@@ -26,6 +23,10 @@ const useChatSocketIO = () => {
   socket.on("rooms", (rooms: ChatRoom[]) => {
     chatRooms.value = rooms;
     console.log(chatRooms);
+  });
+
+  socket.on("join", (room: ChatRoom) => {
+    activeChatRoom.value = room;
   });
 
   socket.emit("connection");

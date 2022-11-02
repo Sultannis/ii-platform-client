@@ -11,4 +11,6 @@ export interface ChatRoom {
   updatedAt: string;
   deletedAt?: string | null;
   messages?: ChatMessage[];
+  message?: ChatMessage;
+  notReadedMessagesAmount?: number | null;
 }
