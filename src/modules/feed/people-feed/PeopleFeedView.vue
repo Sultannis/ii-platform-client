@@ -2,6 +2,9 @@
 import PersonCard from "@/modules/feed/people-feed/components/PersonCard/PersonCard.vue";
 import CommonModal from "@/common/components/CommonModal/CommonModal.vue";
 import { feedPeople } from "@/modules/feed/people-feed/composable/fetchFeedPeople";
+import { ref } from "vue";
+
+const value = ref("");
 </script>
 
 <template>
@@ -22,5 +25,10 @@ import { feedPeople } from "@/modules/feed/people-feed/composable/fetchFeedPeopl
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+}
+
+.ant-input {
+  margin: 20px;
+  background: #ccc;
 }
 </style>

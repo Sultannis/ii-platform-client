@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import DashboardLayout from "@/layouts/DashboardLayout/DashboardLayout.vue";
 import FeedLayout from "@/layouts/FeedLayout/FeedLayout.vue";
+import EditProfileLayout from "@/layouts/EditProfileLayout/EditProfileLayout.vue";
 import IdeasFeedView from "@/modules/feed/ideas-feed/IdeasFeedView.vue";
 import UserIdeasView from "@/modules/user-ideas/UserIdeasView.vue";
 import SavedIdeasView from "@/modules/saved-ideas/SavedIdeasView.vue";
@@ -66,6 +67,10 @@ const router = createRouter({
           component: SettingsView,
         },
       ],
+    },
+    {
+      path: "/user-edit",
+      component: EditProfileLayout,
     },
   ],
 });
