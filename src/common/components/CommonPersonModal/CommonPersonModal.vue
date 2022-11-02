@@ -1,6 +1,15 @@
 <script setup lang="ts">
 import CommonModal from "@/common/components/CommonModal/CommonModal.vue";
 import CommonProfileImageUpload from "@/common/components/CommonProfileImageUpload/CommonProfileImageUpload.vue";
+import CommonMenuNavigation from "@/common/components/CommonMenuNavigation/CommonMenuNavigation.vue";
+import { PROFILE_MENU_LINKS } from "@/common/constants/profileMenuLinks";
+import { ref } from "vue";
+
+const seletedLinkTitle = ref("");
+
+const setSelectedLinkTitle = (title: string) => {
+  seletedLinkTitle.value = title;
+};
 </script>
 
 <template>
@@ -29,6 +38,12 @@ import CommonProfileImageUpload from "@/common/components/CommonProfileImageUplo
           Добавить в контакты
         </button>
       </div>
+      <div class="person__right">
+        <CommonMenuNavigation
+          :links="PROFILE_MENU_LINKS"
+          @click="setSelectedLinkTitle"
+        />
+      </div>
     </div>
   </CommonModal>
 </template>
@@ -53,6 +68,11 @@ import CommonProfileImageUpload from "@/common/components/CommonProfileImageUplo
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.person__right {
+  width: 100%;
+  margin-left: 10px;
 }
 
 .person__name {
