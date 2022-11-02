@@ -12,6 +12,7 @@
 
 body {
   overflow: overlay;
+  overflow: hidden;
   color: var(--text-color);
   min-height: 100vh;
   font-family: "Montserrat", sans-serif;
