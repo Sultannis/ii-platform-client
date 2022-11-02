@@ -16,4 +16,12 @@
   --theme-dark-secondary-color: #2c2c2c;
   --theme-dark-accent-color: #0c8ce9;
   --theme-dark-grey-color: #bbbbbb;
+  --background-color: #f3f3f3;
+  --background-highlighted-color: #4438ca2f;
+
+  --primary-color: #4338ca;
+
+  --text-color: #262f4c;
+  --text-color-light: #262f4cac;
+  --text-color-grey: #c3c4cd;
 }

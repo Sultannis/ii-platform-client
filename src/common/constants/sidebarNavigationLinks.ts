@@ -1,8 +1,8 @@
 export const SIDEBAR_NAVIGATION_LINKS = [
   {
-    iconClass: "bxs-collection",
+    iconClass: "bx-collection",
     title: "Лента",
-    route: "/",
+    route: "/feed",
   },
   {
     iconClass: "bx-search-alt",
@@ -10,12 +10,12 @@ export const SIDEBAR_NAVIGATION_LINKS = [
     route: "/user-ideas",
   },
   {
-    iconClass: "bxs-bookmark",
+    iconClass: "bx-bookmark",
     title: "Сохраненные",
     route: "/saved",
   },
   {
-    iconClass: "bxs-chat",
+    iconClass: "bx-chat",
     title: "Сообщения",
     route: "/chats",
   },
