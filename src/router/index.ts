@@ -6,7 +6,7 @@ import UserIdeasView from "@/modules/user-ideas/UserIdeasView.vue";
 import SavedIdeasView from "@/modules/saved-ideas/SavedIdeasView.vue";
 import ChatRoomsView from "@/modules/user-chats/views/ChatRoomsView/ChatRoomsView.vue";
 import ChatRoomView from "@/modules/user-chats/views/ChatRoomView/ChatRoomView.vue";
-import UserChatsView from "@/modules/user-chats/UserChatsView.vue";
+import UserChatsView from "@/modules/user-chats/views/UserChatsView/UserChatsView.vue";
 import SettingsView from "@/modules/settings/SettingsView.vue";
 import SupportView from "@/modules/support/SupportView.vue";
 import PeopleFeedView from "@/modules/feed/people-feed/PeopleFeedView.vue";
