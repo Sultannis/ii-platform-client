@@ -78,12 +78,14 @@ const value = ref("");
 .general__title {
   margin-bottom: 15px;
   padding-left: 40px;
+  
   font-weight: 600;
   font-size: 20px;
   color: var(--text-color);
 }
 
 .general__form {
+  margin-bottom: 40px;
   padding: 20px 40px;
   width: 100%;
 
@@ -92,7 +94,7 @@ const value = ref("");
 }
 
 .general__field {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   width: 100%;
   display: flex;
   align-items: center;
@@ -115,4 +117,12 @@ const value = ref("");
   display: flex;
   flex-wrap: wrap;
 }
+
+.ant-input {
+  border: none;
+  border-radius: 10px;
+  background: var(--background-color);
+  outline: none;
+}
+
 </style>

@@ -1,37 +1,34 @@
 <template>
-    <div class="edit-form-action">Действия</div>
-    <div class="edit-form">
-        <button class="save-changes">Сохранить изменения</button>
-        <button class="cancel-changes">Отменить изменения</button>
-    </div>
+    <div class="action"></div>
+        <div class="action__title">Действия</div>
+        <div class="action__form">
+            <button class="action__save">Сохранить изменения</button>
+            <button class="action__cancel">Отменить изменения</button>
+        </div>
 </template>
 
-<style>
+<style scoped>
 
-.edit-form-action {
-    margin-bottom: 20px;
-    margin-left: 40px;
-
-    font-size: 20px;
+.action__title{
+    margin-bottom: 15px;
+    padding-left: 40px;
+    
     font-weight: 600;
+    font-size: 20px;
+    color: var(--text-color);
 }
 
-.edit-form {
+.action__form {
+    padding: 20px 40px;
     width: 100%;
-    background: #ffffff;
-    padding: 40px 200px 40px 50px;
 
-    border: none;
-    border-radius: 10px;
-
-    display: flex;
-    flex-direction: row;
-    position: relative;
+    background: #fff;
+    border-radius: 10px;    
 }
 
-.save-changes {
-    width: 300px;
-    height: 50px;
+.action__save {
+    width: 260px;
+    height: 40px;
     margin-right: 100px;
 
     border: none;
@@ -39,15 +36,14 @@
 
     background: var(--primary-color);
     color: #ffffff;
-    cursor: pointer;
 
-    font-size: 20px;
-    font-weight: 600;
+    font-size: 18px;
+    cursor: pointer;
 }
 
-.cancel-changes {
-    width: 300px;
-    height: 50px;
+.action__cancel {
+    width: 260px;
+    height: 40px;
 
     border-color: var(--primary-color);
     border-radius: 10px;
@@ -56,9 +52,8 @@
     
     background: #ffffff;
     color: var(--primary-color);
-    cursor: pointer;
 
-    font-size: 20px;
-    font-weight: 600;
+    font-size: 18px;
+    cursor: pointer;
 }
 </style>

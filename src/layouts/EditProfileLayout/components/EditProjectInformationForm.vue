@@ -1,141 +1,112 @@
-<script lang="ts">
-import { defineComponent, reactive } from "vue";
-import CommonTag from "@/common/components/CommonTag/CommonTag.vue"
-import type { message } from "ant-design-vue";
+<script setup lang="ts">
+import CommonTag from "@/common/components/CommonTag/CommonTag.vue";
+import { ref } from "vue";
 
-interface FormState {
-    title: string,
-    description: string,
-    link: string,
-}
-
-export default defineComponent({
-    setup() {
-        const formState = reactive<FormState>({
-            title:"",
-            description:"",
-            link:"",
-        });
-        const onFinish = (values: any) => {
-            console.log("Success:", values);
-        };
-        const onFinishFailed = (errorInfo: any) => {
-            console.log("Failed:", errorInfo);
-        };
-        return {
-            formState,
-            onFinish,
-            onFinishFailed,
-        };
-    },
-    components: { CommonTag }    
-});
+const value = ref("");
 </script>
 
 <template>
-    <div class="edit-form-project">Проекты</div>
-    <div class="edit-form">
-        <button class="delete-project">
-            <i class='bx bx-trash' ></i>
+    <div class="project">
+        <div class="project__title">Проекты</div>
+        <div class="project__form">
+            <div class="project__field">
+                <div class="project__label">Заголовок</div>
+                <a-input v-model:value="value" class="project__input" />
+            </div>
+            <div class="project__field project__field_align-start">
+                <div class="project__label">Описание *</div>
+                <a-textarea rows="4" class="project__input"></a-textarea>
+            </div>
+            <div class="project__field">
+                <div class="project__label">Ссылка</div>
+                <a-input v-model:value="value" class="project__input" />
+            </div>
+            <div class="project__field project__field_align-start">
+                <div class="project__label">Теги</div>
+                <div class="project__tags">
+                    <CommonTag>иновации</CommonTag>
+                    <CommonTag>роботы</CommonTag>
+                    <CommonTag>работы</CommonTag>
+                    <CommonTag>обучения</CommonTag>
+                    <CommonTag>иновации</CommonTag>
+                    <CommonTag>иновации</CommonTag>
+                    <CommonTag>иновации</CommonTag>
+                    <CommonTag>иновации</CommonTag>
+                </div>
+            </div>
+        </div>
+        <button class="project__add">
+            <i class='bx bx-plus'></i>
+            Добавить проект
         </button>
-        <a-form
-        :model="formState"
-        name="basic"
-        :label-col="{ span:8 }"
-        :wrapper-col="{ span: 16 }"
-      autocomplete="off"
-      @finish="onFinish"
-      @finishFailed="onFinishFailed"
-      >
-      <div class="edit-form__field">
-        <div class="edit-form-label">Заголовок</div>
-        <div class="edit-form-input">
-            <a-form-item
-            label="Title"
-            name="title"
-            :rules="[{ required:true, message: 'Please input your title'}]"
-            >
-            <a-input v-model:value="formState.title" />
-        </a-form-item>
-        </div>
     </div>
-    <div class="edit-form__field" style="align-items:flex-start">
-          <div class="edit-form-label">Описание</div>
-          <div class="edit-form-input">
-              <textarea placeholder="Basic usage" rows="4" class="ant-input" style="height: 40px;"></textarea>
-          </div>
-      </div>
-    <div class="edit-form__field">
-        <div class="edit-form-label">Ссылка</div>
-        <div class="edit-form-input">
-            <a-form-item
-            label="Link"
-            name="link"
-            >
-            <a-input v-model:value="formState.link" />
-        </a-form-item>
-        </div>
-    </div>
-    <div class="edit-form__field" style="align-items:flex-start">
-          <div class="edit-form-label">Теги</div>
-          <div class="edit-form-tags">
-              <CommonTag>иновации</CommonTag>
-              <CommonTag>роботы</CommonTag>
-              <CommonTag>работы</CommonTag>
-              <CommonTag>обучения</CommonTag>
-              <CommonTag>иновации</CommonTag>
-              <CommonTag>иновации</CommonTag>
-              <CommonTag>иновации</CommonTag>
-              <CommonTag>иновации</CommonTag>
-          </div>
-      </div>
-        </a-form>
-    </div>
-    <button class="add-project">
-        <i class='bx bx-plus'></i>
-        Добавить проект
-    </button>
 </template>
 
-<style>
-.edit-form-project{
-    font-size: 20px;
-    font-weight: 600;
+<style scoped>
 
-    margin-bottom: 20px;
-    margin-left: 40px;
+.project__title{
+    margin-bottom: 15px;
+    padding-left: 40px;
+    
+    font-weight: 600;
+    font-size: 20px;
+    color: var(--text-color);
 }
 
-.add-project {
+.project__form {
+    margin-bottom: 20px;
+    padding: 20px 40px;
+    width: 100%;
+
+    background: #fff;
+    border-radius: 10px;    
+}
+
+.project__field {
+  margin-bottom: 20px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.project__field_align-start {
+  align-items: flex-start;
+}
+
+.project__label {
+  min-width: 250px;
+}
+
+.project__input {
+  width: 100%;
+}
+
+.project__tags {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.ant-input {
+  border: none;
+  border-radius: 10px;
+  background: var(--background-color);
+}
+
+.project__add {
+    width: 260px;
+    height: 40px;
+    margin-left: 40px;
+    margin-bottom: 40px;
+    
     border: none;
     border-radius: 10px;
-    
-    margin-bottom: 100px;
-    margin-left: 40px;
 
-    width: 300px;
-    height: 50px;
-    background-color: #4338CA21;
-
-    font-size: 20px;
-    font-weight: 400;
-
+    background: #4338CA21;
     color: var(--primary-color);
-    position: relative;
+
+    font-size: 18px;
     cursor: pointer;
 }
 
-.delete-project {
-    display: inline-block;
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    right: 30px;
-    top: 20px;
-    font-size: 20px;
-    border: none;
-    background-color: #ffffff;
-    color: var(--text-color-light);
-    cursor: pointer;
-}
 </style>

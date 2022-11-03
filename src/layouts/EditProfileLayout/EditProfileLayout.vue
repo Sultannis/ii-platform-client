@@ -6,18 +6,46 @@ import EditActionButtonsForm from "./components/EditActionButtonsForm.vue";
 
 <template>
   <div class="edit-layout">
+    <button class="cancel-changes">
+      <i class='bx bxs-chevron-left' ></i>
+      На главную без сохранения
+    </button>
     <EditGeneralInformationForm />
+    <EditProjectInformationForm />
+    <EditActionButtonsForm />
   </div>
 </template>
 
 <style scoped>
 .edit-layout {
-  padding: 70px 0;
+  padding: 50px 0;
   margin: auto;
   width: 60%;
   max-width: 1668px;
 
   display: flex;
   flex-direction: column;
+}
+
+.cancel-changes {
+  width: 360px;
+  height: 50px;
+  
+  margin-bottom: 40px;
+  position: relative;
+  border: none;
+  
+  background: var(--background-color);
+  color: var(--primary-color);
+  cursor: pointer;
+  
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.bx {
+  font-size: 32px;
+  position: absolute;
+  left: 0px;
 }
 </style>
