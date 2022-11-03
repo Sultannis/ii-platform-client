@@ -4,7 +4,14 @@ import router from "./router";
 import "ant-design-vue/dist/antd.css";
 
 import "@/assets/styles/base.css";
-import { Input, Popover, Skeleton, Tooltip, Upload } from "ant-design-vue";
+import {
+  Input,
+  notification,
+  Popover,
+  Skeleton,
+  Tooltip,
+  Upload,
+} from "ant-design-vue";
 
 const app = createApp(App);
 

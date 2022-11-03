@@ -1,5 +1,23 @@
 <script setup lang="ts">
+import { useAuthenticate } from "@/common/composables/authenticate";
+import { useUser } from "@/common/composables/user";
 import HeaderSearchInput from "@/layouts/DashboardLayout/components/HeaderSearchInput/HeaderSearchInput.vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+
+const { user } = useUser();
+const { loggedIn } = useAuthenticate();
+
+const handleProfileClick = () => {
+  if (loggedIn.value) {
+    console.log("should open profile modal");
+  } else {
+    router.push({
+      path: "/auth/login",
+    });
+  }
+};
 </script>
 
 <template>
@@ -14,7 +32,10 @@ import HeaderSearchInput from "@/layouts/DashboardLayout/components/HeaderSearch
         <button class="header__button">
           <i class="bx bx-bell" />
         </button>
-        <button class="header__button header__button_profile">
+        <button
+          class="header__button header__button_profile"
+          @click="handleProfileClick"
+        >
           <i class="bx bx-user" />
         </button>
       </div>

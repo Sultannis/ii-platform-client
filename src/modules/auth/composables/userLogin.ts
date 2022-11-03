@@ -1,9 +1,9 @@
 import { ref } from "vue";
-import { loginAdmin as loginAdminRequest } from "@/api/repositories/admins.repository";
-import { useAuthenticate } from "@/common/composables/useAuthenticate";
-import { useAdmin } from "@/common/composables/useAdmin";
+import { loginUser as loginUserRequest } from "@/api/repositories/users.repository";
+import { useAuthenticate } from "@/common/composables/authenticate";
+import { useUser } from "@/common/composables/user";
 import { showErrorNotification } from "@/common/helpers/notifications";
-import type { LoginAdminDto } from "@/api/dto/LoginAdmin.dto";
+import type { LoginUserDto } from "@/api/dto/LoginUser.dto";
 import {
   IncorrectDataError,
   InternalServerError,
@@ -11,29 +11,29 @@ import {
 } from "@/api/request";
 
 const { setAuth } = useAuthenticate();
-const { setAdmin } = useAdmin();
+const { setUser } = useUser();
 
-const loginAdminLoading = ref(false);
-const startLoginAdminLoading = () => {
-  loginAdminLoading.value = true;
+const userLoginLoading = ref(false);
+const startUserLoginLoading = () => {
+  userLoginLoading.value = true;
 };
-const finishLoginAdminLoading = () => {
-  loginAdminLoading.value = false;
+const finishUserLoginLoading = () => {
+  userLoginLoading.value = false;
 };
 
-const loginAdmin = async (form: LoginAdminDto) => {
-  startLoginAdminLoading();
+const loginUser = async (form: LoginUserDto) => {
+  startUserLoginLoading();
 
-  const payload: LoginAdminDto = {
+  const payload: LoginUserDto = {
     email: form.email.trim(),
     password: form.password.trim(),
   };
 
   try {
-    const [admin, authToken] = await loginAdminRequest(payload);
+    const [user, authToken] = await loginUserRequest(payload);
 
     setAuth({ authToken });
-    setAdmin(admin);
+    setUser(user);
   } catch (error) {
     if (error instanceof IncorrectDataError) {
       showErrorNotification(
@@ -42,20 +42,20 @@ const loginAdmin = async (form: LoginAdminDto) => {
       );
     } else if (error instanceof NotExistError) {
       showErrorNotification(
-        "Админ не существует",
-        "Админ с такой почтой не зарегистрирован. Если вам нужно создать или восстановить аккаунт свяжитесь с тех поддержкой"
+        "Пользователь не существует",
+        "Пользователь с такой почтой не зарегистрирован"
       );
     } else if (error instanceof InternalServerError) {
       showErrorNotification(
         "Что-то пошло не так",
-        "Произошла непредвиденная ошибка. Пожалуйста обратитесь в службу технической поддержки."
+        "Произошла непредвиденная ошибка. Обратитесь в службу технической поддержки."
       );
     }
 
     throw error;
   } finally {
-    finishLoginAdminLoading();
+    finishUserLoginLoading();
   }
 };
 
-export const useAdminLogin = () => ({ loginAdminLoading, loginAdmin });
+export const useUserLogin = () => ({ userLoginLoading, loginUser });

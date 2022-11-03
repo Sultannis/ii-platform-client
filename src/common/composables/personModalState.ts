@@ -4,7 +4,7 @@ import {
   setBodyOverflowHidden,
 } from "../helpers/body-overflow-switchers";
 
-const personModalVisible = ref(true);
+const personModalVisible = ref(false);
 
 const openPersonModal = () => {
   personModalVisible.value = true;

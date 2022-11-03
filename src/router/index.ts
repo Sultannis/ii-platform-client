@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import DashboardLayout from "@/layouts/DashboardLayout/DashboardLayout.vue";
 import FeedLayout from "@/layouts/FeedLayout/FeedLayout.vue";
 import EditProfileLayout from "@/layouts/EditProfileLayout/EditProfileLayout.vue";
+import AuthLayoutVue from "@/layouts/AuthLayout/AuthLayout.vue";
 import IdeasFeedView from "@/modules/feed/ideas-feed/IdeasFeedView.vue";
 import UserIdeasView from "@/modules/user-ideas/UserIdeasView.vue";
 import SavedIdeasView from "@/modules/saved-ideas/SavedIdeasView.vue";
@@ -9,7 +10,7 @@ import UserChatsView from "@/modules/user-chats/UserChatsView.vue";
 import SettingsView from "@/modules/settings/SettingsView.vue";
 import SupportView from "@/modules/support/SupportView.vue";
 import PeopleFeedView from "@/modules/feed/people-feed/PeopleFeedView.vue";
-import AuthLayoutVue from "@/layouts/AuthLayout/AuthLayout.vue";
+import LoginView from "@/modules/auth/login/LoginView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -72,10 +73,13 @@ const router = createRouter({
     {
       path: "/auth",
       component: AuthLayoutVue,
-      components: [{
-        path: '/login',
-        component: 
-      }]
+      children: [
+        {
+          path: "login",
+          name: "auth-login",
+          component: LoginView,
+        },
+      ],
     },
     {
       path: "/user-edit",

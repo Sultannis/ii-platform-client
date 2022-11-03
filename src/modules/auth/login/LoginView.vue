@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import useVuelidate from "@vuelidate/core";
-import { customRules } from "@/common/helpers/vuelidateCustom";
-import { useAdminLogin } from "../composables/useAdminLogin";
+import { validationRules } from "@/common/validation/customValidation";
+import { useUserLogin } from "@/modules/auth/composables/userLogin";
 import { reactive } from "vue";
 import { useRouter } from "vue-router";
 import CommonInput from "@/common/components/CommonInput/CommonInput.vue";
-import CommonButton from "@/common/components/CommonButton/CommonButton.vue";
 
-const { loginAdminLoading, loginAdmin } = useAdminLogin();
+const { userLoginLoading, loginUser } = useUserLogin();
 
 const form = reactive({
   email: "",
@@ -16,14 +15,14 @@ const form = reactive({
 
 const rules = {
   email: {
-    required: customRules.required,
-    email: customRules.email,
-    max: customRules.maxLength(255),
+    required: validationRules.required,
+    email: validationRules.email,
+    max: validationRules.maxLength(255),
   },
   password: {
-    required: customRules.required,
-    min: customRules.minLength(8),
-    max: customRules.maxLength(255),
+    required: validationRules.required,
+    min: validationRules.minLength(8),
+    max: validationRules.maxLength(255),
   },
 };
 
@@ -31,7 +30,7 @@ const v$ = useVuelidate(rules, form);
 
 const router = useRouter();
 const navigateToApp = () => {
-  router.push({ name: "receipts" });
+  router.push({ path: "/feed/new" });
 };
 
 const clearForm = () => {
@@ -44,7 +43,7 @@ const handleFormSubmission = () => {
   v$.value.$touch();
 
   if (!v$.value.$invalid) {
-    loginAdmin(form).then(() => {
+    loginUser(form).then(() => {
       navigateToApp();
       clearForm();
     });
@@ -76,7 +75,7 @@ const handleFormSubmission = () => {
         />
       </div>
       <CommonButton
-        :loading="loginAdminLoading"
+        :loading="userLoginLoading"
         submit
         full-width
         content="Войти"
@@ -91,5 +90,4 @@ const handleFormSubmission = () => {
 </template>
 
 <style scoped>
-@import "../styles/auth-form.css";
 </style>

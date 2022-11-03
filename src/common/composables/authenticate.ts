@@ -1,13 +1,15 @@
-import { reactive } from "vue";
+import { reactive, ref } from "vue";
 import type { Auth } from "@/entities/Auth";
-import { useAdmin } from "./useAdmin";
 import router from "@/router";
+import { useUser } from "./user";
 
-const { ADMIN_KEY } = useAdmin();
 const AUTH_TOKEN_KEY = "auth_token";
+const { USER_KEY } = useUser();
 
-const getAuthTokenFromLocalStorage = (): string =>
-  localStorage.getItem(AUTH_TOKEN_KEY) || "";
+const getAuthTokenFromLocalStorage = (): string => {
+  const token = localStorage.getItem(AUTH_TOKEN_KEY) || "";
+  return token;
+};
 
 const defaultAuth = {
   authToken: getAuthTokenFromLocalStorage(),
@@ -23,12 +25,15 @@ const setAuth = (payload: Auth): void => {
 const logout = (): void => {
   auth.authToken = "";
   localStorage.removeItem(AUTH_TOKEN_KEY);
-  localStorage.removeItem(ADMIN_KEY);
+  localStorage.removeItem(USER_KEY);
   router.push({ name: "login" });
 };
+
+const loggedIn = ref(!!auth.authToken);
 
 export const useAuthenticate = () => ({
   auth,
   setAuth,
   logout,
+  loggedIn,
 });

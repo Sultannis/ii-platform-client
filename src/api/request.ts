@@ -1,6 +1,6 @@
 import axios, { type AxiosResponse } from "axios";
 import apiConfig from "@/config/config";
-import { useAuthenticate } from "@/common/composables/useAuthenticate";
+import { useAuthenticate } from "@/common/composables/authenticate";
 
 const apiVersion = "v1";
 
