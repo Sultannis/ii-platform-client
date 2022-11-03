@@ -5,8 +5,8 @@ import "ant-design-vue/dist/antd.css";
 
 import "@/assets/styles/base.css";
 import {
+  Form,
   Input,
-  notification,
   Popover,
   Skeleton,
   Tooltip,
@@ -19,6 +19,7 @@ app.use(router);
 app.use(Popover);
 app.use(Tooltip);
 app.use(Input);
+app.use(Form);
 app.use(Upload);
 app.use(Skeleton);
 

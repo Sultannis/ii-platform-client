@@ -15,14 +15,14 @@ const form = reactive({
 
 const rules = {
   email: {
-    required: validationRules.required,
-    email: validationRules.email,
-    max: validationRules.maxLength(255),
+    required: true,
+    email: true,
+    max: 255,
   },
   password: {
-    required: validationRules.required,
-    min: validationRules.minLength(8),
-    max: validationRules.maxLength(255),
+    required: true,
+    min: 8,
+    max: 255,
   },
 };
 
@@ -52,42 +52,18 @@ const handleFormSubmission = () => {
 </script>
 
 <template>
-  <div class="form-container">
-    <form class="form" @submit.prevent="handleFormSubmission">
-      <h1 class="form__title">С возвращением</h1>
-      <h3 class="form__subtitle">Войдите в аккаунт, чтобы продолжить</h3>
-      <div class="form__inputs-container">
-        <CommonInput
-          v-model="form.email"
-          :errors="v$.email.$errors"
-          title="Email"
-          type="text"
-          placeholder="Введите вашу почту"
-          class="form__input"
-        />
-        <CommonInput
-          v-model="form.password"
-          :errors="v$.password.$errors"
-          title="Пароль"
-          placeholder="Введите ваш пароль"
-          type="password"
-          class="form__input"
-        />
-      </div>
-      <CommonButton
-        :loading="userLoginLoading"
-        submit
-        full-width
-        content="Войти"
-        class="form__button"
+  <a-form ref="formRef" name="custom-validation" :model="form" :rules="rules">
+    <a-form-item has-feedback name="email">
+      <a-input v-model:value="form.email" type="email" autocomplete="off" />
+    </a-form-item>
+    <a-form-item has-feedback name="password">
+      <a-input
+        v-model:value="form.password"
+        type="password"
+        autocomplete="off"
       />
-      <h3 class="form__reset-label">
-        Забыли пароль?
-        <span class="form__reset-link">Восстановите его</span>
-      </h3>
-    </form>
-  </div>
+    </a-form-item>
+  </a-form>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>
