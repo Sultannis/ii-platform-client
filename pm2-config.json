@@ -3,7 +3,7 @@
     {
       "name": "frontend",
       "script": "npm",
-      "args": "dev"
+      "args": "run dev"
     }
   ]
 }
