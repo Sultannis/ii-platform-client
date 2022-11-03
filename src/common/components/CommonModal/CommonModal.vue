@@ -1,4 +1,28 @@
 <script setup lang="ts">
+import { ref } from "vue";
+
+const emit = defineEmits(["closeClick"]);
+
+const emitCloseClick = () => {
+  emit("closeClick");
+};
+
+const handleClick = () => {
+  if (!mouseOverModal.value) {
+    emitCloseClick();
+  }
+};
+
+const mouseOverModal = ref(false);
+
+const setMouseOver = () => {
+  mouseOverModal.value = true;
+};
+
+const setMouseOut = () => {
+  mouseOverModal.value = false;
+};
+
 defineProps({
   width: {
     type: String,
@@ -12,15 +36,17 @@ defineProps({
 </script>
 
 <template>
-  <div class="modal__background">
+  <div class="modal__background" @click="handleClick">
     <div
       :style="{
         width: width + 'px',
         height: height + 'px',
       }"
       class="modal"
+      @mouseenter="setMouseOver"
+      @mouseleave="setMouseOut"
     >
-      <i class="bx bx-x modal__exit" />
+      <i class="bx bx-x modal__exit" @click="emitCloseClick" />
       <slot />
     </div>
   </div>
@@ -34,7 +60,7 @@ defineProps({
   width: 100%;
   min-height: 100vh;
   max-height: 100vh;
-  z-index: 3;
+  z-index: 4;
   overflow-y: scroll;
 
   background-color: rgba(0, 0, 0, 0.608);

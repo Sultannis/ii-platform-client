@@ -85,7 +85,7 @@ const handleClick = (title: string, index: number) => {
 
 .menu__item {
   margin-right: 10px;
-  height: 100%;
+  min-height: 100%;
   cursor: pointer;
   display: flex;
   flex-direction: column;

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import PersonCard from "@/modules/feed/people-feed/components/PersonCard/PersonCard.vue";
 import { feedPeople } from "@/modules/feed/people-feed/composable/fetchFeedPeople";
+import { openPersonModal } from "@/common/composables/personModalState";
 </script>
 
 <template>
@@ -11,6 +12,7 @@ import { feedPeople } from "@/modules/feed/people-feed/composable/fetchFeedPeopl
       :occupation="person.occupation"
       :img-url="person.imgUrl"
       :interactions-count="person.interactionsCount"
+      @click="openPersonModal"
     />
   </div>
 </template>

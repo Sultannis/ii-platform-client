@@ -42,6 +42,7 @@ import { SIDEBAR_ACCOUNT_LINKS } from "@/common/constants/sidebarAccountLinks";
 }
 
 .dashboard__center {
+  z-index: 3;
   margin: 0 auto;
   width: calc(95% - 640px);
   max-width: 1020px;

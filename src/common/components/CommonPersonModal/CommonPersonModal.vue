@@ -5,10 +5,11 @@ import CommonMenuNavigation from "@/common/components/CommonMenuNavigation/Commo
 import PersonCommonPage from "@/common/components/PersonCommonPage/PersonCommonPage.vue";
 import PersonProjectsPage from "@/common/components/PersonProjectsPage/PersonProjectsPage.vue";
 import { PROFILE_MENU_LINKS } from "@/common/constants/profileMenuLinks";
+import {
+  personModalVisible,
+  closePersonModal,
+} from "@/common/composables/personModalState";
 import { ref } from "vue";
-import type { SkeletonAvatarProps } from "ant-design-vue";
-
-const avatarShape = ref<SkeletonAvatarProps["shape"]>("circle");
 
 const seletedLinkTitle = ref("");
 
@@ -18,7 +19,11 @@ const setSelectedLinkTitle = (title: string) => {
 </script>
 
 <template>
-  <CommonModal width="900">
+  <CommonModal
+    v-if="personModalVisible"
+    width="900"
+    @close-click="closePersonModal"
+  >
     <div class="person">
       <div class="person__left">
         <div v-if="false" class="person__left-loader">
