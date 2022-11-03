@@ -11,6 +11,7 @@ import SettingsView from "@/modules/settings/SettingsView.vue";
 import SupportView from "@/modules/support/SupportView.vue";
 import PeopleFeedView from "@/modules/feed/people-feed/PeopleFeedView.vue";
 import LoginView from "@/modules/auth/login/LoginView.vue";
+import RegisterView from "@/modules/auth/register/RegisterView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -78,6 +79,11 @@ const router = createRouter({
           path: "login",
           name: "auth-login",
           component: LoginView,
+        },
+        {
+          path: "register",
+          name: "auth-register",
+          component: RegisterView,
         },
       ],
     },

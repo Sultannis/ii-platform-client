@@ -52,50 +52,50 @@ const handleFormSubmission = () => {
 </script>
 
 <template>
-  <div class="login">
-    <div class="login__top">
-      <div class="login__heading">Войти в аккаунт</div>
+  <div class="register">
+    <div class="register__top">
+      <div class="register__heading">Создать аккаунт</div>
     </div>
-    <div class="login__bottom">
-      <RouterLink to="/auth/register" class="login__link">
-        У меня нет аккаунта (
+    <div class="register__bottom">
+      <RouterLink to="/auth/login" class="register__link">
+        У меня уже есть аккаунт
       </RouterLink>
     </div>
   </div>
 </template>
 
 <style scoped>
-.login {
+.register {
   width: 500px;
   display: flex;
   flex-direction: column;
 }
 
-.login__top {
+.register__top {
   padding: 10px 30px;
-  height: 250px;
+  height: 350px;
   background: #fff;
   border-radius: 10px;
 }
 
-.login__heading {
+.register__heading {
   color: var(--text-color);
   font-size: 20px;
   font-weight: 600;
 }
 
-.login__bottom {
+.register__bottom {
   padding: 10px 30px;
   margin-top: 20px;
   background: #fff;
   border-radius: 10px;
 }
-.login__link {
+.register__link {
   font-weight: 400;
   color: var(--text-color-light);
 }
 
-.login__link:hover {
+.register__link:hover {
   color: var(--text-color);
 }
 </style>

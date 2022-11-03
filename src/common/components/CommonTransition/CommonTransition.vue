@@ -26,11 +26,11 @@ defineProps({
 <style scoped>
 .transition-enter-active,
 .transition-leave-active {
-  transition: all var(--normal-speed) ease-in-out;
+  transition: all 200ms ease-in-out;
 }
 
 .transition-fast-leave-active {
-  transition: all var(--fast-speed) ease-in-out;
+  transition: all 200ms ease-in-out;
 }
 
 .transition-enter-from,
