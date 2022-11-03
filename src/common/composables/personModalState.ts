@@ -1,6 +1,6 @@
 import { ref } from "vue";
 import {
-  setBodyOverflowAuto,
+  setBodyOverflowOvelay,
   setBodyOverflowHidden,
 } from "../helpers/body-overflow-switchers";
 
@@ -13,7 +13,7 @@ const openPersonModal = () => {
 
 const closePersonModal = () => {
   personModalVisible.value = false;
-  setBodyOverflowAuto();
+  setBodyOverflowOvelay();
 };
 
 export { personModalVisible, openPersonModal, closePersonModal };

@@ -11,7 +11,10 @@ import HeaderSearchInput from "@/layouts/DashboardLayout/components/HeaderSearch
       </div>
       <div class="header__right">
         <HeaderSearchInput />
-        <button :class="['header__button']">
+        <button class="header__button">
+          <i class="bx bx-bell" />
+        </button>
+        <button class="header__button">
           <i class="bx bx-bell" />
         </button>
       </div>
