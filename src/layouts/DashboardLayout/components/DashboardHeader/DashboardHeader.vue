@@ -14,8 +14,8 @@ import HeaderSearchInput from "@/layouts/DashboardLayout/components/HeaderSearch
         <button class="header__button">
           <i class="bx bx-bell" />
         </button>
-        <button class="header__button">
-          <i class="bx bx-bell" />
+        <button class="header__button header__button_profile">
+          <i class="bx bx-user" />
         </button>
       </div>
     </div>
