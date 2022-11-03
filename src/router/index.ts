@@ -9,6 +9,7 @@ import UserChatsView from "@/modules/user-chats/UserChatsView.vue";
 import SettingsView from "@/modules/settings/SettingsView.vue";
 import SupportView from "@/modules/support/SupportView.vue";
 import PeopleFeedView from "@/modules/feed/people-feed/PeopleFeedView.vue";
+import AuthLayoutVue from "@/layouts/AuthLayout/AuthLayout.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -67,6 +68,14 @@ const router = createRouter({
           component: SettingsView,
         },
       ],
+    },
+    {
+      path: "/auth",
+      component: AuthLayoutVue,
+      components: [{
+        path: '/login',
+        component: 
+      }]
     },
     {
       path: "/user-edit",

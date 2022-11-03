@@ -28,6 +28,7 @@ defineProps({
 }
 
 .block__heading {
+  font-size: 12px;
   padding: 5px 20px;
   text-transform: uppercase;
   color: var(--text-color-grey);
