@@ -215,7 +215,7 @@ export default defineComponent({
   background: #ffffff;
 
   margin-bottom: 40px;
-  padding: 40px 200px 40px 50px;
+  padding: 20px 20px 20px 10px;
 
   border: none;
   border-radius: 10px;
@@ -229,7 +229,7 @@ export default defineComponent({
   margin-bottom: 20px;
   margin-left: 40px;
   font-weight: 600;
-  font-size: 23px;
+  font-size: 20px;
 }
 
 .edit-form-label {
@@ -241,6 +241,7 @@ export default defineComponent({
 }
 
 .edit-form__field {
+  width: 100%;
   display: flex;
   flex-direction: row;
   position: relative;

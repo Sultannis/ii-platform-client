@@ -12,7 +12,7 @@
     margin-bottom: 20px;
     margin-left: 40px;
 
-    font-size: 23px;
+    font-size: 20px;
     font-weight: 600;
 }
 

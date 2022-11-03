@@ -99,7 +99,7 @@ export default defineComponent({
 
 <style>
 .edit-form-project{
-    font-size: 23px;
+    font-size: 20px;
     font-weight: 600;
 
     margin-bottom: 20px;
