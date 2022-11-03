@@ -58,7 +58,7 @@ const handleFormSubmission = () => {
     </div>
     <div class="login__bottom">
       <RouterLink to="/auth/register" class="login__link">
-        У меня нет аккаунта (
+        У меня нет аккаунта
       </RouterLink>
     </div>
   </div>
@@ -72,7 +72,7 @@ const handleFormSubmission = () => {
 }
 
 .login__top {
-  padding: 10px 30px;
+  padding: 20px 30px;
   height: 250px;
   background: #fff;
   border-radius: 10px;
@@ -92,10 +92,10 @@ const handleFormSubmission = () => {
 }
 .login__link {
   font-weight: 400;
-  color: var(--text-color-light);
+  color: var(--primary-color);
 }
 
 .login__link:hover {
-  color: var(--text-color);
+  color: var(--primary-color-light);
 }
 </style>
