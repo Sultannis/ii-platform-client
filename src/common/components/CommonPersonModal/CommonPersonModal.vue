@@ -2,6 +2,7 @@
 import CommonModal from "@/common/components/CommonModal/CommonModal.vue";
 import CommonProfileImageUpload from "@/common/components/CommonProfileImageUpload/CommonProfileImageUpload.vue";
 import CommonMenuNavigation from "@/common/components/CommonMenuNavigation/CommonMenuNavigation.vue";
+import PersonCommonPage from "@/common/components/PersonCommonPage/PersonCommonPage.vue";
 import { PROFILE_MENU_LINKS } from "@/common/constants/profileMenuLinks";
 import { ref } from "vue";
 
@@ -43,6 +44,10 @@ const setSelectedLinkTitle = (title: string) => {
           :links="PROFILE_MENU_LINKS"
           @click="setSelectedLinkTitle"
         />
+        <div class="person__content">
+          <PersonCommonPage v-if="seletedLinkTitle == 'Общая'" />
+          <PersonCommonPage v-if="seletedLinkTitle === 'общая'" />
+        </div>
       </div>
     </div>
   </CommonModal>
@@ -71,8 +76,16 @@ const setSelectedLinkTitle = (title: string) => {
 }
 
 .person__right {
+  height: 100%;
   width: 100%;
   margin-left: 10px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.person__content {
+  height: 100%;
 }
 
 .person__name {
@@ -91,7 +104,7 @@ const setSelectedLinkTitle = (title: string) => {
 
 .person__description {
   margin-top: 5px;
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .person__username {
