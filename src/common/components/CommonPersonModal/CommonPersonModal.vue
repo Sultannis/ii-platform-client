@@ -81,6 +81,7 @@ const setSelectedLinkTitle = (title: string) => {
   width: 100%;
   margin-left: 10px;
 
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
 }

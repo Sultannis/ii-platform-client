@@ -75,7 +75,7 @@ const handleClick = (title: string, index: number) => {
 <style>
 .menu {
   margin-bottom: 10px;
-  height: 55px;
+  min-height: 55px;
   padding: 0 20px;
   background: #fff;
   display: flex;
