@@ -6,6 +6,9 @@ import PersonCommonPage from "@/common/components/PersonCommonPage/PersonCommonP
 import PersonProjectsPage from "@/common/components/PersonProjectsPage/PersonProjectsPage.vue";
 import { PROFILE_MENU_LINKS } from "@/common/constants/profileMenuLinks";
 import { ref } from "vue";
+import type { SkeletonAvatarProps } from "ant-design-vue";
+
+const avatarShape = ref<SkeletonAvatarProps["shape"]>("circle");
 
 const seletedLinkTitle = ref("");
 
@@ -18,7 +21,13 @@ const setSelectedLinkTitle = (title: string) => {
   <CommonModal width="900">
     <div class="person">
       <div class="person__left">
-        <div class="person__left-top">
+        <div v-if="false" class="person__left-loader">
+          <a-skeleton-avatar active avatar :size="260" />
+          <a-skeleton active :paragraph="{ rows: 4 }" />
+          <a-skeleton active :paragraph="{ rows: 2 }" />
+        </div>
+
+        <div v-else class="person__left-top">
           <CommonProfileImageUpload />
           <div class="person__name">Sultan Mustafin</div>
           <div class="person__username">@ its.sultan</div>
@@ -46,6 +55,11 @@ const setSelectedLinkTitle = (title: string) => {
           @click="setSelectedLinkTitle"
         />
         <div class="person__content">
+          <div v-if="false" class="person__content-loader">
+            <a-skeleton active :paragraphs="{ rows: 4 }" />
+            <a-skeleton active :paragraphs="{ rows: 4 }" />
+          </div>
+
           <PersonCommonPage v-if="seletedLinkTitle == 'Общая'" />
           <PersonProjectsPage v-if="seletedLinkTitle === 'Проекты'" />
         </div>
@@ -88,6 +102,13 @@ const setSelectedLinkTitle = (title: string) => {
 
 .person__content {
   height: 100%;
+}
+
+.person__content-loader {
+  height: 100%;
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
 }
 
 .person__name {
