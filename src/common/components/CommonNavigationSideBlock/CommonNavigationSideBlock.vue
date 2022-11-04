@@ -1,16 +1,30 @@
 <script setup lang="ts">
+import { useAuthenticate } from "@/common/composables/authenticate";
+
 defineProps({
   heading: String,
-  links: Array<{ title: string; iconClass: string; route }>,
+  links: Array<{ id: number; title: string; iconClass: string; route: string }>,
 });
+
+const { auth } = useAuthenticate();
+
+const getDisplayLinkValue = (id: number) => {
+  if (auth.authToken) {
+    return true;
+  } else {
+    return [1, 5, 6].find((arrayId) => arrayId === id);
+  }
+};
 </script>
 
 <template>
   <div class="block">
     <h4 class="block__heading">{{ heading }}</h4>
-    <RouterLink v-for="link of links" :to="link.route" class="block__link">
-      <i :class="['block__icon', 'bx', link.iconClass]" />
-      {{ link.title }}
+    <RouterLink v-for="link of links" :key="link.id" :to="link.route">
+      <div v-if="getDisplayLinkValue(link.id)" class="block__link">
+        <i :class="['block__icon', 'bx', link.iconClass]" />
+        {{ link.title }}
+      </div>
     </RouterLink>
   </div>
 </template>
@@ -55,12 +69,12 @@ defineProps({
   font-size: 18px;
 }
 
-.router-link-active {
+.router-link-active > .block__link {
   background: var(--background-highlighted-color);
   color: var(--primary-color);
 }
 
-.router-link-active:hover {
+.router-link-active:hover > .block__link {
   color: var(--primary-color);
 }
 </style>
