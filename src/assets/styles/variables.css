@@ -20,6 +20,11 @@
   --background-highlighted-color: #4438ca2f;
 
   --primary-color: #4338ca;
+  --background-color: #f3f3f3;
+  --background-highlighted-color: #e7e5f8;
+
+  --primary-color: #4338ca;
+  --primary-color-light: #4438cacd;
 
   --text-color: #262f4c;
   --text-color-light: #262f4cac;

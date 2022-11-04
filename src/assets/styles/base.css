@@ -2,6 +2,7 @@
 @import "@/assets/styles/variables.css";
 @import "@/assets/styles/scrollbar.css";
 @import "@/assets/styles/animations.css";
+@import "@/assets/styles/overrside-ant-design.css";
 
 *,
 *::before,
@@ -24,4 +25,9 @@ body {
 body.darken {
   background-color: var(--theme-dark-background-color);
   color: #fff;
+}
+
+button {
+  border: none;
+  outline: none;
 }

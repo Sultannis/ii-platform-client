@@ -14,4 +14,20 @@ export default defineConfig({
   server: {
     port: 8080,
   },
+  css: {
+    preprocessorOptions: {
+      less: {
+        lessOptions: {
+          modifyVars: {
+            "primary-color": "#ca3838",
+            "link-color": "#ca3838",
+            "antd-wave-shadow-color": "#ca3838",
+            "border-radius-base": "2px",
+            "border-color-base": "#ca3838",
+          },
+          javascriptEnabled: true,
+        },
+      },
+    },
+  },
 });

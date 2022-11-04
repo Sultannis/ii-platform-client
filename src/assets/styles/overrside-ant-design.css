@@ -1,0 +1,46 @@
+.ant-notification-notice {
+  border-radius: 8px;
+}
+
+.ant-message-notice-content {
+  border-radius: 5px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+.ant-input {
+  border-radius: 5px;
+} 
+
+.ant-input:hover {
+  border-color: rgb(67, 56, 202);
+}
+
+.ant-input:focus {
+  border-color: rgb(67, 56, 202);
+  outline: none;
+  -webkit-box-shadow: 0 0 0 2px rgba(67, 56, 202, .2);
+  box-shadow: 0 0 0 2px rgba(67, 56, 202, .2);
+}
+
+.ant-input-password {
+  border-radius: 5px;
+}
+
+.ant-input-affix-wrapper-focused {
+  border-color: rgb(67, 56, 202);
+  outline: none;
+  -webkit-box-shadow: 0 0 0 2px rgba(67, 56, 202, .2);
+  box-shadow: 0 0 0 2px rgba(67, 56, 202, .2);
+}
+
+.ant-form-item-required::before {
+  display: none !important;
+}

@@ -5,9 +5,9 @@ export const setBodyOverflowHidden = () => {
   }
 };
 
-export const setBodyOverflowAuto = () => {
+export const setBodyOverflowOvelay = () => {
   const body = document.querySelector("body");
   if (body) {
-    body.style.overflow = "auto";
+    body.style.overflow = "overlay";
   }
 };
