@@ -19,8 +19,6 @@ const auth: Auth = reactive(defaultAuth);
 
 const setAuth = (payload: Auth): void => {
   auth.authToken = payload.authToken;
-  console.log("Token got set");
-  console.log(!!auth.authToken);
   localStorage.setItem(AUTH_TOKEN_KEY, payload.authToken);
 };
 
@@ -31,4 +29,11 @@ const logout = (): void => {
   router.push({ name: "login" });
 };
 
-export { auth, setAuth, logout };
+const loggedIn = ref(!!auth.authToken);
+
+export const useAuthenticate = () => ({
+  auth,
+  setAuth,
+  logout,
+  loggedIn,
+});

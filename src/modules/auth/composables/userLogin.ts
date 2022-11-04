@@ -1,6 +1,6 @@
 import { ref } from "vue";
 import { loginUser as loginUserRequest } from "@/api/repositories/users.repository";
-import { setAuth } from "@/common/composables/authenticate";
+import { useAuthenticate } from "@/common/composables/authenticate";
 import { useUser } from "@/common/composables/user";
 import { showErrorNotification } from "@/common/helpers/notifications";
 import type { LoginUserDto } from "@/api/dto/LoginUser.dto";
@@ -11,6 +11,7 @@ import {
 } from "@/api/request";
 
 const { setUser } = useUser();
+const { setAuth } = useAuthenticate();
 
 const userLoginLoading = ref(false);
 const startUserLoginLoading = () => {
