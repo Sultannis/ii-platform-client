@@ -34,6 +34,9 @@ const value = ref("");
                     <CommonTag>иновации</CommonTag>
                 </div>
             </div>
+            <button class="project__delete">
+              <i class='bx bx-trash'></i>
+            </button>
         </div>
         <button class="project__add">
             <i class='bx bx-plus'></i>
@@ -57,8 +60,9 @@ const value = ref("");
     margin-bottom: 20px;
     padding: 20px 40px;
     width: 100%;
+    position: relative;
 
-    background: #fff;
+    background: #ffffff;
     border-radius: 10px;    
 }
 
@@ -115,6 +119,20 @@ const value = ref("");
 }
 
 .bx {
-  font-size: 15px;
+  font-size: 18px;
+}
+
+.project__delete {
+  width: 30px;
+  height: 30px;
+  
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+
+  border: none;
+  background: #ffffff;
+  color: var(--text-color);
+  cursor: pointer;
 }
 </style>
