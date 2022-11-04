@@ -1,10 +1,8 @@
 <script setup lang="ts">
 import useVuelidate from "@vuelidate/core";
-import { validationRules } from "@/common/validation/customValidation";
 import { useUserLogin } from "@/modules/auth/composables/userLogin";
 import { reactive } from "vue";
 import { useRouter } from "vue-router";
-import CommonInput from "@/common/components/CommonInput/CommonInput.vue";
 
 const { userLoginLoading, loginUser } = useUserLogin();
 

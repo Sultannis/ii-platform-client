@@ -1,31 +1,40 @@
 <script setup lang="ts">
-import useVuelidate from "@vuelidate/core";
-import { validationRules } from "@/common/validation/customValidation";
 import { useUserLogin } from "@/modules/auth/composables/userLogin";
 import { reactive } from "vue";
 import { useRouter } from "vue-router";
-import CommonInput from "@/common/components/CommonInput/CommonInput.vue";
+import CommonButton from "@/common/components/CommonButton/CommonButton.vue";
+import { Form } from "ant-design-vue";
 
 const { userLoginLoading, loginUser } = useUserLogin();
+const useForm = Form.useForm;
 
-const validateMessages = {
-  required: "${label} должен быть заполнен!",
-  types: {
-    email: "Почта не валидна!",
-  },
-  string: {
-    min: "${label} должна быть длиннее ${min} символов",
-    max: "${label} должен быть короче ${max} символов",
-    range: "${label} должен быть длиннее ${min} и короче ${max}",
-  },
-};
+const rules = reactive({
+  email: [
+    { type: "email", message: "Почта не валидна", trigger: "blur" },
+    { required: true, message: "Почта должна быть заполнена", trigger: "blur" },
+    {
+      max: 255,
+      message: "Почта должна быть короче ${max} символов",
+      trigger: "blur",
+    },
+  ],
+  password: [
+    { required: true, message: "Пароль должно быть заполнен", trigger: "blur" },
+    {
+      min: 6,
+      max: 255,
+      message: "Пароль должен быть длиннее ${min} и короче ${max}",
+      trigger: "blur",
+    },
+  ],
+});
 
 const form = reactive({
   email: "",
   password: "",
 });
 
-const v$ = useVuelidate();
+const { resetFields, validate, validateInfos } = useForm(form, rules);
 
 const router = useRouter();
 const navigateToApp = () => {
@@ -35,19 +44,15 @@ const navigateToApp = () => {
 const clearForm = () => {
   form.email = "";
   form.password = "";
-  setTimeout(() => v$.value.$reset(), 0);
+  setTimeout(() => resetFields(), 0);
 };
 
-const handleFormSubmission = () => {
-  v$.value.$touch();
-  console.log(v$.value.$invalid);
-
-  if (!v$.value.$invalid) {
-    loginUser(form).then(() => {
-      navigateToApp();
-      clearForm();
-    });
-  }
+const handleFormSubmission = async () => {
+  await validate();
+  loginUser(form).then(() => {
+    navigateToApp();
+    clearForm();
+  });
 };
 </script>
 
@@ -57,28 +62,28 @@ const handleFormSubmission = () => {
       <div class="login__heading">Войти в аккаунт</div>
       <a-form
         :model="form"
-        :validate-messages="validateMessages"
+        validate-trigger="onBlur"
         layout="vertical"
         class="login__form"
       >
-        <a-form-item
-          :rules="[{ type: 'email', required: true, max: 255 }]"
-          name="email"
-          label="Почта"
-        >
+        <a-form-item v-bind="validateInfos.email" name="email" label="Почта">
           <a-input v-model:value="form.email" />
         </a-form-item>
         <a-form-item
-          :rules="[{ type: 'string', required: true, min: 6, max: 255 }]"
+          v-bind="validateInfos.password"
           name="password"
           label="Пароль"
           class="login__field"
         >
           <a-input-password v-model:value="form.password" />
         </a-form-item>
-        <button class="login__button" @click="handleFormSubmission">
+        <CommonButton
+          :loading="userLoginLoading"
+          @click="handleFormSubmission"
+          class="login__button"
+        >
           Войти
-        </button>
+        </CommonButton>
       </a-form>
     </div>
     <div class="login__bottom">
@@ -91,13 +96,13 @@ const handleFormSubmission = () => {
 
 <style scoped>
 .login {
-  width: 500px;
+  width: 450px;
   display: flex;
   flex-direction: column;
 }
 
 .login__top {
-  padding: 20px 30px;
+  padding: 30px;
   background: #fff;
   border-radius: 10px;
 }
@@ -130,6 +135,7 @@ const handleFormSubmission = () => {
 }
 
 .login__button {
+  margin-top: 10px;
   cursor: pointer;
   padding: 7px 30px;
   background: var(--background-color);
