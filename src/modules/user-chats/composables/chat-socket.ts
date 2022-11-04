@@ -4,6 +4,8 @@ import { useSocketIO } from "@/common/composables/socket-io";
 import config from "@/common/config/config";
 import type { Socket } from "socket.io-client";
 import type { ChatMessage } from "@/common/entity/chat-message";
+import { useAuthenticate } from "@/common/composables/authenticate";
+import { useUser } from "@/common/composables/user";
 
 export enum SocketEvent {
   CONNECTION = "connection",
@@ -13,9 +15,11 @@ export enum SocketEvent {
   MESSAGE_READ = "message-read",
 }
 
-const userId = 1;
-const authToken =
-  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEiLCJ0eXBlIjoidXNlciIsImlhdCI6MTY2NzU2NDE5OSwiZXhwIjoxNjY4MTY4OTk5fQ.NMPkvCiYfR6JF9w6IfVkzfuA9hssconlkpCsc5kl6tE";
+const { auth } = useAuthenticate();
+const { user } = useUser();
+
+const userId = user.id;
+const authToken = "Bearer " + auth.authToken;
 
 const socket: Ref<Socket> = ref();
 const rooms = ref([] as ChatRoom[]);
