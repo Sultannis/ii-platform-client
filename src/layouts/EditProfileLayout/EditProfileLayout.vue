@@ -32,19 +32,24 @@ import EditActionButtonsForm from "./components/EditActionButtonsForm.vue";
   height: 50px;
   
   margin-bottom: 40px;
-  position: relative;
+  position: absolute;
   border: none;
   
   background: var(--background-color);
   color: var(--primary-color);
   cursor: pointer;
   
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
+  transition-duration: 0.2s;
+}
+
+.cancel-changes:hover {
+  transform: scale(1.01);
 }
 
 .bx {
-  font-size: 32px;
+  font-size: 30px;
   position: absolute;
   left: 0px;
 }

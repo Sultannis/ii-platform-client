@@ -102,11 +102,19 @@ const value = ref("");
     border: none;
     border-radius: 10px;
 
-    background: #4338CA21;
+    background: #ffffff;
     color: var(--primary-color);
 
     font-size: 18px;
     cursor: pointer;
+    transition-duration: 0.2s;
 }
 
+.project__add:hover {
+  background: #4338CA21;
+}
+
+.bx {
+  font-size: 15px;
+}
 </style>

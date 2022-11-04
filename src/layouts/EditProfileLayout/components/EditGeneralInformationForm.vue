@@ -76,6 +76,7 @@ const value = ref("");
 
 <style scoped>
 .general__title {
+  margin-top: 80px;
   margin-bottom: 15px;
   padding-left: 40px;
   
