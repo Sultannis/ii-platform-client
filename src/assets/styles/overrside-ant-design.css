@@ -44,3 +44,16 @@ h6 {
 .ant-form-item-required::before {
   display: none !important;
 }
+
+.ant-popover-inner {
+  box-shadow: 0px 0px 6px 0px rgba(214,214,214,1);
+  border-radius: 5px;
+}
+
+.ant-popover-title {
+  padding: 10px;
+}
+
+.ant-popover-inner-content {
+  padding: 0
+}

@@ -84,6 +84,7 @@ const handleFormSubmission = async () => {
         validate-trigger="onBlur"
         layout="vertical"
         class="register__form"
+        @keyup.enter="handleFormSubmission"
       >
         <a-form-item v-bind="validateInfos.firstName" label="Имя">
           <a-input v-model:value="form.firstName" />

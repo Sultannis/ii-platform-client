@@ -65,6 +65,7 @@ const handleFormSubmission = async () => {
         validate-trigger="onBlur"
         layout="vertical"
         class="login__form"
+        @keyup.enter="handleFormSubmission"
       >
         <a-form-item v-bind="validateInfos.email" name="email" label="Почта">
           <a-input v-model:value="form.email" />
