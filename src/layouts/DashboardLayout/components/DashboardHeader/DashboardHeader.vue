@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useAuthenticate } from "@/common/composables/authenticate";
+import { auth } from "@/common/composables/authenticate";
 import { useUser } from "@/common/composables/user";
 import HeaderSearchInput from "@/layouts/DashboardLayout/components/HeaderSearchInput/HeaderSearchInput.vue";
 import { useRouter } from "vue-router";
@@ -7,10 +7,8 @@ import { useRouter } from "vue-router";
 const router = useRouter();
 
 const { user } = useUser();
-const { loggedIn } = useAuthenticate();
-
 const handleProfileClick = () => {
-  if (loggedIn.value) {
+  if (auth.authToken) {
     console.log("should open profile modal");
   } else {
     router.push({

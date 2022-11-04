@@ -1,14 +1,12 @@
 import axios, { type AxiosResponse } from "axios";
 import apiConfig from "@/config/config";
-import { useAuthenticate } from "@/common/composables/authenticate";
+import { auth } from "@/common/composables/authenticate";
 
 const apiVersion = "v1";
 
 const instance = axios.create({
   baseURL: `${apiConfig.baseUrl}/${apiVersion}`,
 });
-
-const { auth } = useAuthenticate();
 
 export class ErrorResponse extends Error {
   constructor(public message: string, public status: number) {
