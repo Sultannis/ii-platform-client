@@ -1,4 +1,4 @@
-import type { UserDao } from "../dao/User.Dao";
+import type { UserDao } from "../dao/User.dao";
 import type { LoginUserDto } from "../dto/LoginUser.dto";
 import type { RegisterUserDto } from "../dto/RegisterUser.dto";
 import { mapRegisterUserDtoToDao } from "../mappers/user/registerUserMapper";

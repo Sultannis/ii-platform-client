@@ -10,15 +10,12 @@ import {
   closePersonModal,
 } from "@/common/composables/personModalState";
 import { ref } from "vue";
-import { useFetchPerson } from "@/common/composables/fetchPerson";
 
 const seletedLinkTitle = ref("");
 
 const setSelectedLinkTitle = (title: string) => {
   seletedLinkTitle.value = title;
 };
-
-const { person, personFetchLoading, fetchPerson } = useFetchPerson();
 </script>
 
 <template>
