@@ -1,17 +1,11 @@
 import { io } from "socket.io-client";
-import config from "../config/config";
 
-export const useSocketIO = (socketUrl: string) => {
+export const useSocketIO = (socketUrl: string, authToken: string) => {
   const socket = io(socketUrl, {
     extraHeaders: {
-      Authorization: config.authToken,
+      Authorization: authToken,
     },
   });
 
-  const closeConnection = () => socket.close();
-
-  return {
-    socket,
-    closeConnection,
-  };
+  return socket;
 };

@@ -1,11 +1,8 @@
 <script setup lang="ts">
-import { onBeforeMount } from "vue";
 import { RouterView } from "vue-router";
-import { useChatSocketIO } from "../../composables/chatSocket";
+import { useChatSocket } from "@/modules/user-chats/composables/chat-socket";
 
-onBeforeMount(() => {
-  useChatSocketIO();
-});
+useChatSocket();
 </script>
 
 <template>

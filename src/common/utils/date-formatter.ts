@@ -1,5 +1,7 @@
 import dayjs from "./dayjs";
 
+export const formatToTimeDate = (value: string) => dayjs(value).format("HH:mm");
+
 export const formatToChatDate = (value: string) => {
   const currentDate = dayjs();
   const formatedDate = dayjs(value);

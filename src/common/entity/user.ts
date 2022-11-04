@@ -5,6 +5,7 @@ export interface User {
   lastName: string;
   role: number;
   password: string;
+  chatColor: string;
   createdAt: string;
   updatedAt: string;
   confirmedAt?: string | null;

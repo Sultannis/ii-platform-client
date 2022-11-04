@@ -7,6 +7,8 @@ export interface ChatMessage {
   roomId: string;
   message: string;
   type: number;
+  position?: number;
+  readedAt: string | null;
   createdAt: string;
   updatedAt: string;
   deletedAt?: string | null;

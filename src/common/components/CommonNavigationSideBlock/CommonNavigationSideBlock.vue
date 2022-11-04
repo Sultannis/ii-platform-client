@@ -8,10 +8,16 @@ defineProps({
 <template>
   <div class="block">
     <h4 class="block__heading">{{ heading }}</h4>
-    <RouterLink v-for="link of links" :to="link.route" class="block__link">
+    <router-link
+      v-ripple
+      v-for="link of links"
+      :to="link.route"
+      :key="link.route"
+      class="block__link"
+    >
       <i :class="['block__icon', 'bx', link.iconClass]" />
       {{ link.title }}
-    </RouterLink>
+    </router-link>
   </div>
 </template>
 

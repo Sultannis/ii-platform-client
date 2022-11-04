@@ -20,7 +20,7 @@ const handleRipple = (
     rippleElement.style.height = "5px";
     rippleElement.style.width = "5px";
     rippleElement.style.borderRadius = "100%";
-    rippleElement.style.backgroundColor = "rgba(0,0,0, 0.15)";
+    rippleElement.style.backgroundColor = "rgba(136, 136, 136, 0.13)";
     rippleElement.style.left = `${offsetX}px`;
     rippleElement.style.top = `${offsetY}px`;
     ev.target.appendChild(rippleElement);

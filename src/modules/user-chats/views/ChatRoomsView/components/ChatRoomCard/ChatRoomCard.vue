@@ -2,6 +2,7 @@
 import type { PropType } from "vue";
 import { formatToChatDate } from "@/common/utils/date-formatter";
 import type { ChatRoom } from "@/common/entity/chat-room";
+import { userId } from "@/modules/user-chats/composables/chat-socket";
 
 defineProps({
   room: {
@@ -19,9 +20,18 @@ const NO_MESSAGE = "Чат создан";
     class="chat-room-card__link"
   >
     <div
-      :class="['chat-room-card', { active: room.not_readed_messages_amount }]"
+      :class="[
+        'chat-room-card',
+        {
+          active:
+            room.notReadedMessagesAmount && userId !== room.message?.user.id,
+        },
+      ]"
     >
-      <div class="chat-room-card__avatar">
+      <div
+        :style="{ backgroundColor: room.backgroundColor ?? '' }"
+        class="chat-room-card__avatar"
+      >
         <span>{{ room.name[0] + room.name[1] }}</span>
       </div>
       <div class="chat-room-card__info">
@@ -30,21 +40,24 @@ const NO_MESSAGE = "Чат создан";
             <span>{{ room.name }}</span>
           </div>
           <div class="chat-room-card__date">
-            {{ formatToChatDate(room.message?.created_at || room.created_at) }}
+            {{ formatToChatDate(room.message?.createdAt || room.createdAt) }}
           </div>
         </div>
         <div class="chat-room-card__info-inner">
           <div class="chat-room-card__message">
-            <span v-if="room.message?.user"
-              >{{ room.message?.user.first_name }}:</span
-            >
+            <span v-if="userId === room.message?.user.id">Вы:</span>
+            <span v-else-if="room.message?.user">
+              {{ room.message?.user.firstName }}:
+            </span>
             {{ room.message?.message ?? NO_MESSAGE }}
           </div>
           <div
-            v-if="room.not_readed_messages_amount"
+            v-if="
+              room.notReadedMessagesAmount && userId !== room.message?.user.id
+            "
             class="chat-room-card__amount"
           >
-            {{ room.not_readed_messages_amount }}
+            {{ room.notReadedMessagesAmount }}
           </div>
         </div>
       </div>
@@ -122,6 +135,11 @@ const NO_MESSAGE = "Чат создан";
   font-size: 13px;
   line-height: 16px;
   color: #262f4c;
+  display: inline-block;
+  max-width: 385px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .chat-room-card__message span {
@@ -145,11 +163,12 @@ const NO_MESSAGE = "Чат создан";
 }
 
 .chat-room-card__amount {
-  width: 18px;
-  height: 18px;
+  padding: 0 5px;
+  min-width: 15px;
+  min-height: 15px;
   background-color: #4338ca;
   color: #fff;
-  border-radius: 100%;
+  border-radius: 0.5rem;
   font-weight: 400;
   font-size: 12px;
   line-height: 15px;
