@@ -53,4 +53,20 @@ import EditActionButtonsForm from "./components/EditActionButtonsForm.vue";
   position: absolute;
   left: 0px;
 }
+
+@media screen and (max-width: 992px) {
+  .edit-layout {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .edit-layout {
+    padding: 20px 0;
+  }
+
+  .cancel-changes {
+    margin-bottom: 0;
+  }
+}
 </style>

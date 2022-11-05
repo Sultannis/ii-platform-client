@@ -38,10 +38,14 @@ const value = ref("");
               <i class='bx bx-trash'></i>
             </button>
         </div>
-        <button class="project__add">
-            <i class='bx bx-plus'></i>
-            Добавить проект
-        </button>
+        <div class="addd">
+          
+          <button class="project__add">
+                <i class='bx bx-plus'></i>
+                Добавить проект
+          </button>
+        </div>
+        
     </div>
 </template>
 
@@ -67,7 +71,7 @@ const value = ref("");
 }
 
 .project__field {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   width: 100%;
   display: flex;
   align-items: center;
@@ -78,7 +82,7 @@ const value = ref("");
 }
 
 .project__label {
-  min-width: 250px;
+  min-width: 200px;
 }
 
 .project__input {
@@ -134,5 +138,48 @@ const value = ref("");
   background: #ffffff;
   color: var(--text-color);
   cursor: pointer;
+}
+
+
+@media screen and (max-width: 768px) {
+
+  .project {
+    padding: none;
+    vertical-align: middle;
+  }
+
+  .project__form {
+    padding: 20px 20px;
+    margin-bottom: 15px;
+  }
+
+  .project__title {
+    margin-bottom: 5px;
+    padding: 0;
+    text-align: center;
+  }
+
+  .project__field {
+    align-items: flex-start;
+    flex-direction: column;
+}
+  .project__label {
+    margin-bottom: 10px;
+}
+
+  .project__add {
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 20px;
+  }
+
+  .addd {
+    display: flex;
+    padding-left: 40px;
+    padding-right: 40px;
+    width: 100%;
+    align-items: center;
+  }
+
 }
 </style>

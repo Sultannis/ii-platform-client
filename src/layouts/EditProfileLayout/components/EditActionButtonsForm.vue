@@ -21,15 +21,16 @@
 .action__form {
     padding: 20px 40px;
     width: 100%;
-
+    display: flex;
+    justify-content: space-between;
+    
     background: #fff;
     border-radius: 10px;    
 }
 
 .action__save {
-    width: 260px;
+    width: 45%;
     height: 40px;
-    margin-right: 100px;
 
     border: none;
     border-radius: 10px;
@@ -42,7 +43,7 @@
 }
 
 .action__cancel {
-    width: 260px;
+    width: 45%;
     height: 40px;
 
     border-color: var(--primary-color);
@@ -55,5 +56,25 @@
 
     font-size: 18px;
     cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    .action__form {
+        flex-direction: column;
+    }
+
+    .action__title {
+        padding: 0;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+    .action__cancel {
+        width: 100%;
+    }
+
+    .action__save {
+        width: 100%;
+        margin-bottom: 10px;
+    }
 }
 </style>
