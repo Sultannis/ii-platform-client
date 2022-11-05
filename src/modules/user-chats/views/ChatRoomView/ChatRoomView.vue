@@ -37,15 +37,14 @@ onMounted(() => {
 
   subscribeOnMessage(`${SocketEvent.JOIN}-${roomId}`, (data: ChatRoomData) => {
     joinedRoom.room = data.room;
-    joinedRoom.messages = [...data.messages, ...joinedRoom.messages];
     joinedRoom.meta = data.meta;
+    data.messages.map(updateChatMessage);
 
     setTimeout(() => {
       itemsRef.value.forEach((el) => {
         messagesObserver.observe(el);
       });
       if (messagesEnd.value) {
-        console.log(chatObserver.rootMargin);
         chatObserver.observe(messagesEnd.value);
       }
     }, 0);
@@ -104,8 +103,6 @@ const handleFetchMessages = (entries: IntersectionObserverEntry[]) => {
   const { page, total, perPage } = joinedRoom.meta;
   const entry = entries[0];
   const maxPages = Math.floor(total / perPage);
-
-  console.log(entries);
 
   if (entry.intersectionRatio > 0 && page <= maxPages) {
     fetchMessagesWithPagination(page + 1);

@@ -59,6 +59,7 @@ export const useChatSocket = () => {
 
   socket.value.on(SocketEvent.ROOMS, (payload: ChatRoom[]) => {
     rooms.value = payload;
+
     finishChatSocketLoading();
   });
 };

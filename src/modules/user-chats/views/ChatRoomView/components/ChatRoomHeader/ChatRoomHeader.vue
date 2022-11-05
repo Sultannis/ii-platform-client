@@ -1,17 +1,24 @@
 <script setup lang="ts">
-import type { PropType } from "vue";
+import { computed, type PropType } from "vue";
 import type { ChatRoom } from "@/common/entity/chat-room";
 import { wordDeclension } from "@/common/helpers/word-declension";
 import { chatParticipantWords } from "@/common/constants/chatParticipantWords";
-import { chatSocketLoading } from "@/modules/user-chats/composables/chat-socket";
+import {
+  chatSocketLoading,
+  userId,
+} from "@/modules/user-chats/composables/chat-socket";
 import ChatHeaderLoading from "@/modules/user-chats/components/ChatLoading/ChatHeaderLoading.vue";
 
 const emit = defineEmits(["back"]);
-defineProps({
+const props = defineProps({
   room: {
     type: Object as PropType<ChatRoom>,
     default: () => ({}),
   },
+});
+
+const direct = computed(() => {
+  return props.room.participants.find((row) => row.userId !== userId);
 });
 
 const handleBackButtonClick = () => emit("back");
@@ -31,18 +38,30 @@ const handleBackButtonClick = () => emit("back");
       </template>
       <template v-else-if="!chatSocketLoading && room">
         <div
-          :style="{ backgroundColor: room.backgroundColor ?? '#fff' }"
+          :style="{
+            backgroundColor:
+              room.type === 2
+                ? direct?.chatColor
+                : room.backgroundColor ?? '#fff',
+          }"
           class="chat-room-header__avatar"
         >
-          {{ room.name[0] }}
+          {{ room.type === 2 ? direct?.name[0] : room.name[0] }}
         </div>
         <div class="chat-room-header__info">
-          <div class="chat-room-header__name">{{ room.name }}</div>
+          <div class="chat-room-header__name">
+            {{ room.type === 2 ? direct?.name : room.name }}
+          </div>
           <div class="chat-room-header__status">
-            {{ room.participantsAmount }}
-            {{
-              wordDeclension(room.participantsAmount ?? 1, chatParticipantWords)
-            }}
+            <template v-if="room.type !== 2">
+              {{ room.participantsAmount }}
+              {{
+                wordDeclension(
+                  room.participantsAmount ?? 1,
+                  chatParticipantWords
+                )
+              }}
+            </template>
           </div>
         </div>
       </template>

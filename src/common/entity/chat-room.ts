@@ -1,18 +1,20 @@
 import type { ChatMessage } from "./chat-message";
+import { ChatParticipant } from "./chat-participant";
 
 export interface ChatRoom {
   id: string;
   roomAdminId: number;
   name: string;
-  usersAccess: number[];
   backgroundColor?: string | null;
   backgroundImage?: string | null;
+  type: number;
   createdAt: string;
   updatedAt: string;
   deletedAt?: string | null;
   messages?: ChatMessage[];
   message?: ChatMessage;
   notReadedMessagesAmount?: number | null;
+  participants: ChatParticipant[];
   participantsAmount?: number;
 }
 

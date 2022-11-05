@@ -1,14 +1,18 @@
 <script setup lang="ts">
-import type { PropType } from "vue";
+import { computed, type PropType } from "vue";
 import { formatToChatDate } from "@/common/utils/date-formatter";
 import type { ChatRoom } from "@/common/entity/chat-room";
 import { userId } from "@/modules/user-chats/composables/chat-socket";
 
-defineProps({
+const props = defineProps({
   room: {
     type: Object as PropType<ChatRoom>,
     default: () => ({}),
   },
+});
+
+const direct = computed(() => {
+  return props.room.participants.find((row) => row.userId !== userId);
 });
 
 const NO_MESSAGE = "Чат создан";
@@ -29,15 +33,20 @@ const NO_MESSAGE = "Чат создан";
       ]"
     >
       <div
-        :style="{ backgroundColor: room.backgroundColor ?? '' }"
+        :style="{
+          backgroundColor:
+            room.type === 2 ? direct?.chatColor : room.backgroundColor ?? '',
+        }"
         class="chat-room-card__avatar"
       >
-        <span>{{ room.name[0] + room.name[1] }}</span>
+        <span>{{
+          room.type === 2 ? direct?.name[0] : room.name[0] + room.name[1]
+        }}</span>
       </div>
       <div class="chat-room-card__info">
         <div class="chat-room-card__info-inner">
           <div class="chat-room-card__name">
-            <span>{{ room.name }}</span>
+            <span>{{ room.type === 2 ? direct?.name : room.name }}</span>
           </div>
           <div class="chat-room-card__date">
             {{ formatToChatDate(room.message?.createdAt || room.createdAt) }}
