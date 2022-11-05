@@ -2,6 +2,7 @@
 import DashboardHeader from "@/layouts/DashboardLayout/components/DashboardHeader/DashboardHeader.vue";
 import CommonNavigationSideBlock from "@/common/components/CommonNavigationSideBlock/CommonNavigationSideBlock.vue";
 import HotProfiles from "@/layouts/DashboardLayout/components/HotProfiles/HotProfiles.vue";
+import CommonPersonModal from "@/common/components/CommonPersonModal/CommonPersonModal.vue";
 import { SIDEBAR_NAVIGATION_LINKS } from "@/common/constants/sidebarNavigationLinks";
 import { SIDEBAR_ACCOUNT_LINKS } from "@/common/constants/sidebarAccountLinks";
 </script>
@@ -24,6 +25,7 @@ import { SIDEBAR_ACCOUNT_LINKS } from "@/common/constants/sidebarAccountLinks";
         <HotProfiles />
       </div>
     </div>
+    <CommonPersonModal />
     <div class="dashboard__center">
       <RouterView />
     </div>
@@ -40,6 +42,7 @@ import { SIDEBAR_ACCOUNT_LINKS } from "@/common/constants/sidebarAccountLinks";
 }
 
 .dashboard__center {
+  z-index: 3;
   margin: 0 auto;
   width: calc(95% - 640px);
   max-width: 1020px;

@@ -1,14 +1,20 @@
 <script setup lang="ts">
+const emit = defineEmits(["click"]);
+
 defineProps({
   name: String,
   occupation: String,
   interactionsCount: Number,
   imgUrl: String,
 });
+
+const emitClick = () => {
+  emit("click");
+};
 </script>
 
 <template>
-  <div class="person">
+  <div class="person" @click="emitClick">
     <img src="@/assets/images/profile-photo.jpg" alt="" class="person__image" />
     <div class="person__row">
       <div class="person__info">

@@ -5,7 +5,7 @@ import { FEED_MENU_LINKS } from "@/common/constants/feedMenuLinks";
 
 <template>
   <div class="feed">
-    <CommonMenuNavigation :links="FEED_MENU_LINKS" />
+    <CommonMenuNavigation :links="FEED_MENU_LINKS" display-router-links />
     <RouterView />
   </div>
 </template>

@@ -1,6 +1,7 @@
 @import "@/assets/styles/fonts.css";
 @import "@/assets/styles/variables.css";
 @import "@/assets/styles/scrollbar.css";
+@import "@/assets/styles/overrside-ant-design.css";
 
 *,
 *::before,
@@ -18,3 +19,7 @@ body {
   background-color: var(--background-color);
 }
 
+button {
+  border: none;
+  outline: none;
+}

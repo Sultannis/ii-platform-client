@@ -1,10 +1,7 @@
 <script setup lang="ts">
 import PersonCard from "@/modules/feed/people-feed/components/PersonCard/PersonCard.vue";
-import CommonModal from "@/common/components/CommonModal/CommonModal.vue";
 import { feedPeople } from "@/modules/feed/people-feed/composable/fetchFeedPeople";
-import { ref } from "vue";
-
-const value = ref("");
+import { openPersonModal } from "@/common/composables/personModalState";
 </script>
 
 <template>
@@ -15,6 +12,7 @@ const value = ref("");
       :occupation="person.occupation"
       :img-url="person.imgUrl"
       :interactions-count="person.interactionsCount"
+      @click="openPersonModal"
     />
   </div>
 </template>
