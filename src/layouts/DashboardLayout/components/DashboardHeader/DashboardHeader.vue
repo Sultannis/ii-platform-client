@@ -6,12 +6,10 @@ import HeaderSearchInput from "@/layouts/DashboardLayout/components/HeaderSearch
 
 const router = useRouter();
 
-const { user } = useUser();
 const { auth, logout } = useAuthenticate();
 
 const handleProfileClick = () => {
   if (auth.authToken) {
-    console.log("should open profile modal");
   } else {
     router.push({
       path: "/auth/login",
@@ -41,7 +39,7 @@ const handleProfileClick = () => {
             <span class="popover__title">Sultan Mustafin</span>
           </template>
           <template #content>
-            <div class="popover__link">
+            <div class="popover__link" @click="openUserModal">
               <i class="bx bx-user popover__link-icon" />Мой профиль
             </div>
             <div class="popover__link" @click="logout">
