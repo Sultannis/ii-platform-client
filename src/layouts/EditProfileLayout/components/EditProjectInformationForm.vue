@@ -1,48 +1,72 @@
 <script setup lang="ts">
 import CommonTag from "@/common/components/CommonTag/CommonTag.vue";
-import { ref } from "vue";
+import { reactive } from "vue";
+import { Form } from "ant-design-vue";
 
-const value = ref("");
+const useForm = Form.useForm;
+
+const rules = reactive({
+  title: [
+    { required: true, message: "Заголовок должен быть заполнен", trigger: "blur"}
+  ],
+  description: [
+    { required: true, message: "Описание должно быть заполнено", trigger: "blur"},
+  ],
+});
+
+const form = reactive({
+  title: "",
+  description: "",
+  link: "",
+});
+
+const { validate, validateInfos } = useForm(form, rules);
+
+const handleFormSubmission = () => {
+  validate();
+};
 </script>
 
 <template>
     <div class="project">
         <div class="project__title">Проекты</div>
         <div class="project__form">
-            <div class="project__field">
-                <div class="project__label">Заголовок</div>
-                <a-input v-model:value="value" class="project__input" />
-            </div>
-            <div class="project__field project__field_align-start">
-                <div class="project__label">Описание *</div>
-                <a-textarea rows="4" class="project__input"></a-textarea>
-            </div>
-            <div class="project__field">
-                <div class="project__label">Ссылка</div>
-                <a-input v-model:value="value" class="project__input" />
-            </div>
-            <div class="project__field project__field_align-start">
-                <div class="project__label">Теги</div>
-                <div class="project__tags">
-                    <CommonTag>иновации</CommonTag>
-                    <CommonTag>роботы</CommonTag>
-                    <CommonTag>работы</CommonTag>
-                    <CommonTag>обучения</CommonTag>
-                    <CommonTag>иновации</CommonTag>
-                    <CommonTag>иновации</CommonTag>
-                    <CommonTag>иновации</CommonTag>
-                    <CommonTag>иновации</CommonTag>
-                </div>
-            </div>
-            <button class="project__delete">
-              <i class='bx bx-trash'></i>
-            </button>
+          <a-form
+          :model="form"
+          layout="vertical"
+          validate-trigger="onBlur"
+          >
+          <a-form-item v-bind="validateInfos.title" name="title" label="Заголовок*">
+            <a-input v-model:value="form.title" />
+          </a-form-item>
+          <a-form-item v-bind="validateInfos.description" name="description" label="Описание*">
+            <a-textarea v-model:value="form.description" rows="4"></a-textarea>
+          </a-form-item>
+          <a-form-item v-bind="validateInfos.link" name="link" label="Ссылка">
+            <a-input v-model:value="form.link" label="Ссылка" />
+          </a-form-item>
+          <div class="project__field project__field_align-start">
+              <div class="project__label">Теги</div>
+              <div class="project__tags">
+                  <CommonTag>иновации</CommonTag>
+                  <CommonTag>роботы</CommonTag>
+                  <CommonTag>работы</CommonTag>
+                  <CommonTag>обучения</CommonTag>
+                  <CommonTag>иновации</CommonTag>
+                  <CommonTag>иновации</CommonTag>
+                  <CommonTag>иновации</CommonTag>
+                  <CommonTag>иновации</CommonTag>
+              </div>
+          </div>
+          <button class="project__delete">
+            <i class='bx bx-trash'></i>
+          </button>
+          </a-form>
         </div>
-        <div class="addd">
-          
+        <div class="add-button">
           <button class="project__add">
-                <i class='bx bx-plus'></i>
-                Добавить проект
+            <i class='bx bx-plus'></i>
+            Добавить проект
           </button>
         </div>
         
@@ -73,7 +97,6 @@ const value = ref("");
 .project__field {
   margin-bottom: 30px;
   width: 100%;
-  display: flex;
   align-items: center;
 }
 
@@ -82,11 +105,9 @@ const value = ref("");
 }
 
 .project__label {
+  display: block;
   min-width: 200px;
-}
-
-.project__input {
-  width: 100%;
+  margin-bottom: 8px;
 }
 
 .project__tags {
@@ -96,9 +117,8 @@ const value = ref("");
 }
 
 .ant-input {
-  border: none;
+  border: 1px solid var(--text-color-grey);
   border-radius: 10px;
-  background: var(--background-color);
 }
 
 .project__add {
@@ -173,7 +193,7 @@ const value = ref("");
     margin-bottom: 20px;
   }
 
-  .addd {
+  .add-button {
     display: flex;
     padding-left: 40px;
     padding-right: 40px;
@@ -183,3 +203,5 @@ const value = ref("");
 
 }
 </style>
+          
+          
