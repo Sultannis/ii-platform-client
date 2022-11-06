@@ -22,6 +22,7 @@ const router = createRouter({
       path: "/",
       name: "home",
       component: DashboardLayout,
+      redirect: { name: "ideas-feed:new" },
       children: [
         {
           path: "/feed",

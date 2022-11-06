@@ -6,10 +6,10 @@ import EditActionButtonsForm from "./components/EditActionButtonsForm.vue";
 
 <template>
   <div class="edit-layout">
-    <button class="cancel-changes">
-      <i class='bx bxs-chevron-left' ></i>
+    <RouterLink to="/feed/new" class="cancel-changes">
+      <i class="bx bxs-chevron-left" />
       На главную без сохранения
-    </button>
+    </RouterLink>
     <EditGeneralInformationForm />
     <EditProjectInformationForm />
     <EditActionButtonsForm />
@@ -28,17 +28,17 @@ import EditActionButtonsForm from "./components/EditActionButtonsForm.vue";
 }
 
 .cancel-changes {
-  width: 360px;
+  width: 560px;
   height: 50px;
-  
+
   margin-bottom: 40px;
   position: absolute;
   border: none;
-  
+
   background: var(--background-color);
   color: var(--primary-color);
   cursor: pointer;
-  
+
   font-size: 18px;
   font-weight: 600;
   transition-duration: 0.2s;
@@ -46,12 +46,6 @@ import EditActionButtonsForm from "./components/EditActionButtonsForm.vue";
 
 .cancel-changes:hover {
   transform: scale(1.01);
-}
-
-.bx {
-  font-size: 30px;
-  position: absolute;
-  left: 0px;
 }
 
 @media screen and (max-width: 992px) {

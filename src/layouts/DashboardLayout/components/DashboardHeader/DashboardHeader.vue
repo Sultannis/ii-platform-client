@@ -3,6 +3,7 @@ import { useAuthenticate } from "@/common/composables/authenticate";
 import { useUser } from "@/common/composables/user";
 import { useRouter } from "vue-router";
 import HeaderSearchInput from "@/layouts/DashboardLayout/components/HeaderSearchInput/HeaderSearchInput.vue";
+import { openUserModal } from "@/common/composables/userModalState";
 
 const router = useRouter();
 

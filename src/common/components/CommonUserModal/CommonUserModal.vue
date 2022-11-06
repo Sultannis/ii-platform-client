@@ -6,9 +6,9 @@ import PersonCommonPage from "@/common/components/PersonCommonPage/PersonCommonP
 import PersonProjectsPage from "@/common/components/PersonProjectsPage/PersonProjectsPage.vue";
 import { PROFILE_MENU_LINKS } from "@/common/constants/profileMenuLinks";
 import {
-  personModalVisible,
-  closePersonModal,
-} from "@/common/composables/personModalState";
+  userModalVisible,
+  closeUserModal,
+} from "@/common/composables/userModalState";
 import { ref } from "vue";
 
 const seletedLinkTitle = ref("");
@@ -20,9 +20,9 @@ const setSelectedLinkTitle = (title: string) => {
 
 <template>
   <CommonModal
-    v-if="personModalVisible"
+    v-if="userModalVisible"
     width="900"
-    @close-click="closePersonModal"
+    @close-click="closeUserModal"
   >
     <div class="person">
       <div class="person__left">
@@ -45,14 +45,14 @@ const setSelectedLinkTitle = (title: string) => {
             которого являются Lil baby, J. Cole, Lil boat.
           </div>
         </div>
-        <button v-if="false" class="person__button person__button_delete">
-          <i class="bx bx-user-minus person__icon" />
-          Удалить из контактов
-        </button>
-        <button v-else class="person__button person__button_add">
-          <i class="bx bx-user-plus person__icon" />
+        <RouterLink
+          to="/user-edit"
+          class="person__button person__button_add"
+          @click="closeUserModal"
+        >
+          <i class="bx bx-edit-alt person__icon" />
           Добавить в контакты
-        </button>
+        </RouterLink>
       </div>
       <div class="person__right">
         <CommonMenuNavigation
