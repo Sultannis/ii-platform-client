@@ -4,7 +4,7 @@ import router from "@/router";
 import { useUser } from "./user";
 
 const AUTH_TOKEN_KEY = "auth_token";
-const { USER_KEY } = useUser();
+const { USER_KEY, clearUserData } = useUser();
 
 const getAuthTokenFromLocalStorage = (): string => {
   const token = localStorage.getItem(AUTH_TOKEN_KEY) || "";
@@ -23,10 +23,11 @@ const setAuth = (payload: Auth): void => {
 };
 
 const logout = (): void => {
+  clearUserData();
   auth.authToken = "";
   localStorage.removeItem(AUTH_TOKEN_KEY);
   localStorage.removeItem(USER_KEY);
-  router.push({ name: "login" });
+  router.push({ path: "/auth/login" });
 };
 
 const loggedIn = ref(!!auth.authToken);

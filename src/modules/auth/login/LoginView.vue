@@ -65,6 +65,7 @@ const handleFormSubmission = async () => {
         validate-trigger="onBlur"
         layout="vertical"
         class="login__form"
+        @keyup.enter="handleFormSubmission"
       >
         <a-form-item v-bind="validateInfos.email" name="email" label="Почта">
           <a-input v-model:value="form.email" />
@@ -107,7 +108,7 @@ const handleFormSubmission = async () => {
   border-radius: 10px;
 }
 
-.login__filed {
+.login__field {
   display: flex;
   flex-direction: column;
 }
@@ -125,6 +126,7 @@ const handleFormSubmission = async () => {
   background: #fff;
   border-radius: 10px;
 }
+
 .login__link {
   font-weight: 400;
   color: var(--primary-color);

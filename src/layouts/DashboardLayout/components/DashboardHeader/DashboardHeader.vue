@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { useAuthenticate } from "@/common/composables/authenticate";
 import { useUser } from "@/common/composables/user";
-import HeaderSearchInput from "@/layouts/DashboardLayout/components/HeaderSearchInput/HeaderSearchInput.vue";
 import { useRouter } from "vue-router";
+import HeaderSearchInput from "@/layouts/DashboardLayout/components/HeaderSearchInput/HeaderSearchInput.vue";
 
 const router = useRouter();
 
 const { user } = useUser();
-const { auth } = useAuthenticate();
+const { auth, logout } = useAuthenticate();
 
 const handleProfileClick = () => {
   if (auth.authToken) {
@@ -32,7 +32,32 @@ const handleProfileClick = () => {
         <button class="header__button">
           <i class="bx bx-bell" />
         </button>
+        <a-popover
+          v-if="auth.authToken"
+          placement="bottomRight"
+          class="header__popover popover"
+        >
+          <template #title>
+            <span class="popover__title">Sultan Mustafin</span>
+          </template>
+          <template #content>
+            <div class="popover__link">
+              <i class="bx bx-user popover__link-icon" />Мой профиль
+            </div>
+            <div class="popover__link" @click="logout">
+              <i class="bx bx-exit popover__link-icon" /> Выйти
+            </div>
+          </template>
+          <button
+            v-if="auth.authToken"
+            class="header__button header__button_profile"
+          >
+            <i class="bx bx-user" />
+          </button>
+        </a-popover>
         <button
+          v-else
+          auth.authToken
           class="header__button header__button_profile"
           @click="handleProfileClick"
         >
@@ -113,7 +138,7 @@ const handleProfileClick = () => {
   height: 40px;
   width: 40px;
   border-radius: 50%;
-  background-color: var(--primary-color);
+  background: var(--primary-color);
   color: #fff;
 }
 
@@ -129,5 +154,28 @@ const handleProfileClick = () => {
   top: 10px;
   content: "";
   display: inline-block;
+}
+
+.popover__title {
+  font-weight: 600;
+}
+
+.popover__link {
+  margin: 10px 0;
+  padding: 10px;
+  cursor: pointer;
+  margin-bottom: 5px;
+
+  display: flex;
+  align-items: center;
+}
+
+.popover__link-icon {
+  margin-right: 5px;
+}
+
+.popover__link:hover {
+  background: var(--background-highlighted-color);
+  color: var(--primary-color);
 }
 </style>

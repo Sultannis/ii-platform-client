@@ -60,7 +60,7 @@ import CommonTransition from "@/common/components/CommonTransition/CommonTransit
   margin: 10px;
   color: var(--primary-color);
   font-weight: 700;
-  font-size: 30px;
+  font-size: 25px;
 
   text-transform: uppercase;
 
