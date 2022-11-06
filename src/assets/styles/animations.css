@@ -1,0 +1,15 @@
+@keyframes shine {
+  to {
+    background-position-x: -200%;
+  }
+}
+
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}

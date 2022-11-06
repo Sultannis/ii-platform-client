@@ -6,7 +6,9 @@ import AuthLayoutVue from "@/layouts/AuthLayout/AuthLayout.vue";
 import IdeasFeedView from "@/modules/feed/ideas-feed/IdeasFeedView.vue";
 import UserIdeasView from "@/modules/user-ideas/UserIdeasView.vue";
 import SavedIdeasView from "@/modules/saved-ideas/SavedIdeasView.vue";
-import UserChatsView from "@/modules/user-chats/UserChatsView.vue";
+import ChatRoomsView from "@/modules/user-chats/views/ChatRoomsView/ChatRoomsView.vue";
+import ChatRoomView from "@/modules/user-chats/views/ChatRoomView/ChatRoomView.vue";
+import UserChatsView from "@/modules/user-chats/views/UserChatsView/UserChatsView.vue";
 import SettingsView from "@/modules/settings/SettingsView.vue";
 import SupportView from "@/modules/support/SupportView.vue";
 import PeopleFeedView from "@/modules/feed/people-feed/PeopleFeedView.vue";
@@ -58,6 +60,18 @@ const router = createRouter({
           path: "/chats",
           name: "chats",
           component: UserChatsView,
+          children: [
+            {
+              path: "/chats",
+              name: "chat-rooms",
+              component: ChatRoomsView,
+            },
+            {
+              path: ":id",
+              name: "chat-room",
+              component: ChatRoomView,
+            },
+          ],
         },
         {
           path: "/support",
