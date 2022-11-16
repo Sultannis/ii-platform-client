@@ -1,47 +1,12 @@
+import type { QueryParamsDto } from "@/api/converters/query-params/QueryParams.dto";
+import type { Idea } from "@/api/entities/Idea";
+import { fetchIdeasRequest } from "@/api/repositories/ideas.repository";
 import { reactive } from "vue";
 
-const ideas = reactive([
-  {
-    title: "Открыть робо-бешпармачную на проспекте Гоголя ",
-    description:
-      "Ищу сокамандников, в частности поворов и программистов. Пока роботов нет, но скоро будут",
-    score: 763,
-    images: [
-      {
-        id: 1,
-        url: "/some-url",
-      },
-      {
-        id: 2,
-        url: "/some-url",
-      },
-      {
-        id: 3,
-        url: "/some-url",
-      },
-    ],
-  },
-  {
-    title: "Открыть робо-бешпармачную на проспекте Гоголя ",
-    description:
-      "Проект “Binco” создает умные мусоробаки остеживающие заполненность и уведомляющие компанию по сбору мусора. Админ панел доступная с любого устройства помогает со сбором путем формирования самых выгодных маршрутов",
-    score: 323,
-    imageUrl: "/some-url",
-  },
-  {
-    title: "Открыть робо-бешпармачную на проспекте Гоголя ",
-    description:
-      "Ищу сокамандников, в частности поворов и программистов. Пока роботов нет, но скоро будут",
-    score: 23,
-    imageUrl: "/some-url",
-  },
-  {
-    title: "Открыть робо-бешпармачную на проспекте Гоголя ",
-    description:
-      "Ищу сокамандников, в частности поворов и программистов. Пока роботов нет, но скоро будут",
-    score: 443,
-    imageUrl: "/some-url",
-  },
-]);
+const ideasList: Idea[] = reactive([]);
+const fetchIdeasChunk = async (queryParams: QueryParamsDto) => {
+  const ideasChunk = await fetchIdeasRequest(queryParams);
+  ideasList.concat(ideasChunk);
+};
 
-export { ideas };
+export { fetchIdeasChunk, ideasList };

@@ -1,13 +1,10 @@
 import request from "../request";
-import type { UserDao } from "../dao/User.dao";
 import type { IdeaDao } from "../dao/Idea.dao";
-import type { LoginUserDto } from "../converters/login-user/LoginUser.dto";
 import type { QueryParamsDto } from "../converters/query-params/QueryParams.dto";
-import { mapQueryParamsForRequest } from "../converters/query-params/queryParamsMapper";
-import { mapUserDaoToEntity } from "../mappers/userMappers";
+import { mapQueryParamsForRequest } from "../converters/query-params/queryParamsRequestMapper";
 import { mapIdeaDaoToEntity } from "../mappers/ideaMapper";
 
-export const fetchIdeas = (queryParams: QueryParamsDto) =>
+export const fetchIdeasRequest = (queryParams: QueryParamsDto) =>
   request
     .get("/ideas", {
       params: mapQueryParamsForRequest(queryParams),
