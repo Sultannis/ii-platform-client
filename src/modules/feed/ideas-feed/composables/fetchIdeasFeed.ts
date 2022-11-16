@@ -3,10 +3,11 @@ import type { Idea } from "@/api/entities/Idea";
 import { fetchIdeasRequest } from "@/api/repositories/ideas.repository";
 import { reactive } from "vue";
 
-const ideasList: Idea[] = reactive([]);
+const ideas: Idea[] = reactive([]);
+
 const fetchIdeasChunk = async (queryParams: QueryParamsDto) => {
   const ideasChunk = await fetchIdeasRequest(queryParams);
-  ideasList.concat(ideasChunk);
+  ideas.concat(ideasChunk);
 };
 
-export { fetchIdeasChunk, ideasList };
+export { fetchIdeasChunk, ideas };
