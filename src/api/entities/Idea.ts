@@ -1,9 +1,11 @@
-export class Idea {
-  id: string = "";
-  userId: string = "";
-  title: string = "";
-  description: string = "";
-  createdAt: string = "";
-  updatedAt: string = "";
-  deletedAt: string = "";
-}
+export type Idea = {
+  id: string;
+  userId: string;
+  title: string;
+  description: string;
+  score: number;
+  mainImageUrl: string;
+  createdAt: string;
+  updatedAt: string;
+  deletedAt: string;
+};

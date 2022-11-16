@@ -11,7 +11,7 @@ import { ideas } from "@/modules/feed/ideas-feed/composables/fetchIdeasFeed";
       :title="idea.title"
       :description="idea.description"
       :score="idea.score"
-      :image-url="idea.imageUrl"
+      :image-url="idea.mainImageUrl"
     />
   </div>
 </template>
