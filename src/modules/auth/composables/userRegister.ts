@@ -2,7 +2,10 @@ import { ref } from "vue";
 import { registerUser as registerUserRequest } from "@/api/repositories/users.repository";
 import { useAuthenticate } from "@/common/composables/authenticate";
 import { useUser } from "@/common/composables/user";
-import { showErrorNotification } from "@/common/helpers/notifications";
+import {
+  showErrorNotification,
+  showServerErrorNotification,
+} from "@/common/helpers/notifications";
 import type { RegisterUserDto } from "@/api/converters/register-user/RegisterUser.dto";
 import {
   IncorrectDataError,
@@ -48,10 +51,7 @@ const registerUser = async (form: RegisterUserDto) => {
         "Пользователь с такой почтой уже зарегистрирован"
       );
     } else if (error instanceof InternalServerError) {
-      showErrorNotification(
-        "Что-то пошло не так",
-        "Произошла непредвиденная ошибка. Обратитесь в службу технической поддержки."
-      );
+      showServerErrorNotification();
     }
 
     throw error;

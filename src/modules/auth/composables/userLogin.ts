@@ -2,7 +2,10 @@ import { ref } from "vue";
 import { loginUser as loginUserRequest } from "@/api/repositories/users.repository";
 import { useAuthenticate } from "@/common/composables/authenticate";
 import { useUser } from "@/common/composables/user";
-import { showErrorNotification } from "@/common/helpers/notifications";
+import {
+  showErrorNotification,
+  showServerErrorNotification,
+} from "@/common/helpers/notifications";
 import type { LoginUserDto } from "@/api/converters/login-user/LoginUser.dto";
 import {
   IncorrectDataError,
@@ -46,10 +49,7 @@ const loginUser = async (form: LoginUserDto) => {
         "Пользователь с такой почтой не зарегистрирован"
       );
     } else if (error instanceof InternalServerError) {
-      showErrorNotification(
-        "Что-то пошло не так",
-        "Произошла непредвиденная ошибка. Обратитесь в службу технической поддержки."
-      );
+      showServerErrorNotification();
     }
 
     throw error;

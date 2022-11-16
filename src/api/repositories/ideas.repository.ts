@@ -11,6 +11,7 @@ export const fetchIdeasRequest = (queryParams: QueryParamsDto) =>
     })
     .then((response) => {
       const ideaDaos = response.data.ideas as IdeaDao[];
+      const meta = response.data.meta as IdeaDao[];
 
       return ideaDaos.map(mapIdeaDaoToEntity);
     });

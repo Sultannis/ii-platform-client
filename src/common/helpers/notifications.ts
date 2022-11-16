@@ -10,6 +10,15 @@ const showErrorNotification = (title: string, description: string) => {
   });
 };
 
+const showServerErrorNotification = () => {
+  notification.error({
+    message: "Что-то пошло не так",
+    description:
+      "Произошла непредвиденная ошибка. Обратитесь в службу технической поддержки.",
+    duration: 8,
+  });
+};
+
 const showWarningNotification = (title: string, description: string) => {
   notification.warning({
     message: title,
@@ -32,6 +41,7 @@ const showErrorMessage = (content: string) => {
 
 export {
   showErrorNotification,
+  showServerErrorNotification,
   showWarningNotification,
   showSuccessMessage,
   showWarningMessage,

@@ -1,7 +1,10 @@
 import { fetchPerson as fetchPersonRequest } from "@/api/repositories/person.respository";
 import { InternalServerError, NotExistError } from "@/api/request";
 import { reactive, ref } from "vue";
-import { showErrorNotification } from "../helpers/notifications";
+import {
+  showErrorNotification,
+  showServerErrorNotification,
+} from "../helpers/notifications";
 
 let person = reactive({});
 
@@ -27,10 +30,7 @@ const fetchPerson = async (personId: number) => {
         "Пользователь с такой почтой не зарегистрирован"
       );
     } else if (error instanceof InternalServerError) {
-      showErrorNotification(
-        "Что-то пошло не так",
-        "Произошла непредвиденная ошибка. Обратитесь в службу технической поддержки."
-      );
+      showServerErrorNotification();
     }
 
     throw error;
