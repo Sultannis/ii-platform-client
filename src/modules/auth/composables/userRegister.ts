@@ -3,7 +3,7 @@ import { registerUser as registerUserRequest } from "@/api/repositories/users.re
 import { useAuthenticate } from "@/common/composables/authenticate";
 import { useUser } from "@/common/composables/user";
 import { showErrorNotification } from "@/common/helpers/notifications";
-import type { RegisterUserDto } from "@/api/dto/RegisterUser.dto";
+import type { RegisterUserDto } from "@/api/converters/register-user/RegisterUser.dto";
 import {
   IncorrectDataError,
   InternalServerError,

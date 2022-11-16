@@ -1,13 +1,16 @@
 import type { UserDao } from "../dao/User.dao";
 import type { LoginUserDto } from "../converters/login-user/LoginUser.dto";
-import type { RegisterUserDto } from "../converters/register-user/RegisterUser.dto";
 import { mapRegisterUserDtoToDao } from "../converters/register-user/registerUserMapper";
 import { mapUserDaoToEntity } from "../mappers/userMappers";
 import request from "../request";
+import type { QueryParamsDto } from "../converters/query-params/QueryParams.dto";
+import { mapQueryParamsForRequest } from "../converters/query-params/queryParamsMapper";
 
-export const registerUser = (payload: RegisterUserDto) =>
+export const fetchIdeas = (queryParams: QueryParamsDto) =>
   request
-    .post("/users/register", mapRegisterUserDtoToDao(payload))
+    .get("/ideas", {
+      params: mapQueryParamsForRequest(queryParams),
+    })
     .then((response) => {
       const authDao = response.data.auth;
       const userDao = response.data.user as UserDao;

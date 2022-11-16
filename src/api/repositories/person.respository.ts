@@ -1,5 +1,5 @@
 import type { PersonDao } from "../dao/Person.dao";
-import { mapPersonDaoToEntity } from "../mappers/user/personMapper";
+import { mapPersonDaoToEntity } from "../mappers/personMapper";
 import request from "../request";
 
 export const fetchPerson = (personId: number) =>

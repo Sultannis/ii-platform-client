@@ -1,5 +1,5 @@
-import type { UserDao } from "../../dao/User.dao";
-import type { User } from "../../entities/User";
+import type { UserDao } from "../dao/User.dao";
+import type { User } from "../entities/User";
 
 export const mapUserDaoToEntity = (userDao: UserDao): User => ({
   id: userDao.id,

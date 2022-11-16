@@ -3,7 +3,7 @@ import { loginUser as loginUserRequest } from "@/api/repositories/users.reposito
 import { useAuthenticate } from "@/common/composables/authenticate";
 import { useUser } from "@/common/composables/user";
 import { showErrorNotification } from "@/common/helpers/notifications";
-import type { LoginUserDto } from "@/api/dto/LoginUser.dto";
+import type { LoginUserDto } from "@/api/converters/login-user/LoginUser.dto";
 import {
   IncorrectDataError,
   InternalServerError,
