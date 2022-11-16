@@ -1,6 +1,6 @@
-export class QueryParamsDto {
-  page: number = 1;
-  perPage: number = 20;
-  orderBy: string = "";
-  order: string = "";
+export type QueryParamsDto = {
+  page: number;
+  perPage: number;
+  orderBy: string;
+  order: string;
 }
