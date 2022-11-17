@@ -10,13 +10,13 @@ let fetchIdeasQueryParams = reactive({
   perPage: 20,
   total: 0,
 });
-let initalChuckLoaded: Ref<Boolean> = ref(false);
+let initalChunkLoaded: Ref<Boolean> = ref(false);
 let totalIdeasCount: Ref<Number> = ref(0);
 let ideasLoading: Ref<Boolean> = ref(false);
 let fetchStartTimestamp: Ref<String> = ref(new Date().toISOString());
 
 const setInitialChuckLoadedAsTrue = () => {
-  initalChuckLoaded.value = true;
+  initalChunkLoaded.value = true;
 };
 
 const startIdeasLoading = () => {
@@ -53,9 +53,7 @@ const fetchInitialIdeasChunk = async () => {
       fetchStartTimestamp.value
     );
 
-    console.log(ideasChunk);
     ideas.push(...ideasChunk);
-    console.log(ideas);
     fetchIdeasQueryParams.total = meta.total ? meta.total : 0;
 
     setInitialChuckLoadedAsTrue();
@@ -70,6 +68,8 @@ const fetchInitialIdeasChunk = async () => {
 
 const fetchNextIdeasChunkAndConcat = async () => {
   startIdeasLoading();
+
+  fetchIdeasQueryParams.page++;
 
   try {
     const [ideasChunk, meta] = await fetchIdeasRequest(
@@ -91,6 +91,7 @@ const fetchNextIdeasChunkAndConcat = async () => {
 export {
   fetchInitialIdeasChunk,
   fetchNextIdeasChunkAndConcat,
+  initalChunkLoaded,
   ideasLoading,
   ideas,
   fetchIdeasQueryParams,

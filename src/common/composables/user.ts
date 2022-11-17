@@ -16,7 +16,6 @@ const getUserFromLocalStorage = (): User =>
 let user = reactive(getUserFromLocalStorage());
 
 const setUser = (payload: User) => {
-  console.log('User got set')
   user = payload;
 
   localStorage.setItem(USER_KEY, JSON.stringify(payload));

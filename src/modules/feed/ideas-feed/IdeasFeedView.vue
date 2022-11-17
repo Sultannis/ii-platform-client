@@ -4,6 +4,7 @@ import IdeaCard from "@/modules/feed/ideas-feed/components/IdeaCard/IdeaCard.vue
 import CommonLoadingBlock from "@/common/components/CommonLoadingBlock/CommonLoadingBlock.vue";
 import {
   fetchInitialIdeasChunk,
+  initalChunkLoaded,
   fetchNextIdeasChunkAndConcat,
   ideas,
 } from "@/modules/feed/ideas-feed/composables/fetchIdeasFeed";
@@ -13,12 +14,14 @@ const feedLoadingTrigger = ref(null);
 const feedLoadingTriggerVisible = useElementVisibility(feedLoadingTrigger);
 
 onBeforeMount(() => {
+  console.log("initial fetch");
   fetchInitialIdeasChunk();
 });
 
 watch(feedLoadingTriggerVisible, () => {
-  if (feedLoadingTriggerVisible.value) {
+  if (feedLoadingTriggerVisible.value && initalChunkLoaded.value) {
     fetchNextIdeasChunkAndConcat();
+    console.log("next fetch");
   }
 });
 </script>

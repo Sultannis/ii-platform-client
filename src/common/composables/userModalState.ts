@@ -7,7 +7,6 @@ import {
 const userModalVisible = ref(false);
 
 const openUserModal = () => {
-  console.log("fired");
   userModalVisible.value = true;
   setBodyOverflowHidden();
 };
