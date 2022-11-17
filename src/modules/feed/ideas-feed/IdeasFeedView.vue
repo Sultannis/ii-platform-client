@@ -13,12 +13,12 @@ const feedLoadingTrigger = ref(null);
 const feedLoadingTriggerVisible = useElementVisibility(feedLoadingTrigger);
 
 onBeforeMount(() => {
-  
-})
+  fetchInitialIdeasChunk();
+});
 
 watch(feedLoadingTriggerVisible, () => {
   if (feedLoadingTriggerVisible.value) {
-    fetchIdeasChunkAndConcat({});
+    fetchNextIdeasChunkAndConcat();
   }
 });
 </script>
@@ -27,13 +27,12 @@ watch(feedLoadingTriggerVisible, () => {
   <div class="feed">
     <IdeaCard
       v-for="idea of ideas"
-      :key="idea.title"
+      :key="idea.id"
       :title="idea.title"
-      :description="idea.description"
+      :subtitle="idea.subtitle"
       :score="idea.score"
       :image-url="idea.mainImageUrl"
     />
-    <div style="width: 100%; height: 200vh"></div>
 
     <CommonLoadingBlock />
     <div ref="feedLoadingTrigger" class="feed__loading-trigger" />

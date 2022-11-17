@@ -9,11 +9,15 @@ import { mapIdeaDaoToEntity } from "../mappers/ideaMapper";
 import { mapMetaDaoToEntity } from "../mappers/metaMapper";
 
 export const fetchIdeasRequest = (
-  queryParams: QueryParamsDto
+  queryParams: QueryParamsDto,
+  fetchStartTimestamp: String
 ): Promise<[Idea[], Meta]> =>
   request
     .get("/ideas", {
-      params: mapQueryParamsForRequest(queryParams),
+      params: {
+        start_timestamp: fetchStartTimestamp,
+        ...mapQueryParamsForRequest(queryParams),
+      },
     })
     .then((response) => {
       const ideaDaos = response.data.ideas as IdeaDao[];

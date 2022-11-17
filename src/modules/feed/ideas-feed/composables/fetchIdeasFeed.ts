@@ -1,4 +1,3 @@
-import type { QueryParamsDto } from "@/api/converters/query-params/QueryParams.dto";
 import type { Idea } from "@/api/entities/Idea";
 import { fetchIdeasRequest } from "@/api/repositories/ideas.repository";
 import { InternalServerError } from "@/api/request";
@@ -11,8 +10,14 @@ let fetchIdeasQueryParams = reactive({
   perPage: 20,
   total: 0,
 });
+let initalChuckLoaded: Ref<Boolean> = ref(false);
 let totalIdeasCount: Ref<Number> = ref(0);
 let ideasLoading: Ref<Boolean> = ref(false);
+let fetchStartTimestamp: Ref<String> = ref(new Date().toISOString());
+
+const setInitialChuckLoadedAsTrue = () => {
+  initalChuckLoaded.value = true;
+};
 
 const startIdeasLoading = () => {
   ideasLoading.value = true;
@@ -30,20 +35,30 @@ const resetQueryParams = () => {
 };
 
 const clearIdeas = () => {
-  ideas = [];
+  ideas = reactive([]);
+};
+
+const resetFetchStartTimestamp = () => {
+  fetchStartTimestamp.value = new Date().toISOString();
 };
 
 const fetchInitialIdeasChunk = async () => {
   resetQueryParams();
-  clearIdeas();
 
   startIdeasLoading();
 
   try {
-    const [ideasChunk, meta] = await fetchIdeasRequest(fetchIdeasQueryParams);
+    const [ideasChunk, meta] = await fetchIdeasRequest(
+      fetchIdeasQueryParams,
+      fetchStartTimestamp.value
+    );
 
-    ideas.concat(ideasChunk);
+    console.log(ideasChunk);
+    ideas.push(...ideasChunk);
+    console.log(ideas);
     fetchIdeasQueryParams.total = meta.total ? meta.total : 0;
+
+    setInitialChuckLoadedAsTrue();
   } catch (error) {
     if (error instanceof InternalServerError) {
       showServerErrorNotification();
@@ -57,9 +72,12 @@ const fetchNextIdeasChunkAndConcat = async () => {
   startIdeasLoading();
 
   try {
-    const [ideasChunk, meta] = await fetchIdeasRequest(fetchIdeasQueryParams);
+    const [ideasChunk, meta] = await fetchIdeasRequest(
+      fetchIdeasQueryParams,
+      fetchStartTimestamp.value
+    );
 
-    ideas.concat(ideasChunk);
+    ideas.push(...ideasChunk);
     totalIdeasCount.value = meta.total ? meta.total : 0;
   } catch (error) {
     if (error instanceof InternalServerError) {

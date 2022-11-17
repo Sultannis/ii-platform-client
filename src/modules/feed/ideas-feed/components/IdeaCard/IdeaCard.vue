@@ -5,7 +5,7 @@ defineProps({
     type: String,
     required: true,
   },
-  description: {
+  subtitle: {
     type: String,
     required: true,
   },
@@ -38,7 +38,7 @@ defineProps({
       </div>
       <div class="idea__time">2 мин</div>
     </div>
-    <p class="idea__description">{{ description }}</p>
+    <p class="idea__description">{{ subtitle }}</p>
     <div class="idea__tags">
       <CommonTag>идея</CommonTag>
       <CommonTag>роботы</CommonTag>
