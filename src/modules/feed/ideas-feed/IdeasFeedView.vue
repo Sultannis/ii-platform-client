@@ -6,6 +6,8 @@ import {
   fetchInitialIdeasChunk,
   initalChunkLoaded,
   fetchNextIdeasChunkAndConcat,
+  fetchIdeasQueryParams,
+  ideasLoading,
   ideas,
 } from "@/modules/feed/ideas-feed/composables/fetchIdeasFeed";
 import { onBeforeMount, ref, watch } from "vue";
@@ -14,14 +16,16 @@ const feedLoadingTrigger = ref(null);
 const feedLoadingTriggerVisible = useElementVisibility(feedLoadingTrigger);
 
 onBeforeMount(() => {
-  console.log("initial fetch");
   fetchInitialIdeasChunk();
 });
 
 watch(feedLoadingTriggerVisible, () => {
-  if (feedLoadingTriggerVisible.value && initalChunkLoaded.value) {
+  if (
+    feedLoadingTriggerVisible.value &&
+    initalChunkLoaded.value &&
+    ideas.length < fetchIdeasQueryParams.total
+  ) {
     fetchNextIdeasChunkAndConcat();
-    console.log("next fetch");
   }
 });
 </script>
@@ -37,7 +41,7 @@ watch(feedLoadingTriggerVisible, () => {
       :image-url="idea.mainImageUrl"
     />
 
-    <CommonLoadingBlock />
+    <CommonLoadingBlock v-if="ideasLoading" />
     <div ref="feedLoadingTrigger" class="feed__loading-trigger" />
   </div>
 </template>

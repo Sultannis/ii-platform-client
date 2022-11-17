@@ -23,7 +23,7 @@ const startIdeasLoading = () => {
   ideasLoading.value = true;
 };
 const finishIdeasLoading = () => {
-  ideasLoading.value = true;
+  ideasLoading.value = false;
 };
 
 const resetQueryParams = () => {

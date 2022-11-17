@@ -47,12 +47,6 @@ defineProps({
       <CommonTag>роботы</CommonTag>
       <CommonTag>иновации</CommonTag>
       <CommonTag>иновации</CommonTag>
-      <CommonTag>иновации</CommonTag>
-      <CommonTag>иновации</CommonTag>
-      <CommonTag>иновации</CommonTag>
-      <CommonTag>иновации</CommonTag>
-      <CommonTag>иновации</CommonTag>
-      <CommonTag>иновации</CommonTag>
     </div>
     <img src="@/assets/images/idea image.png" alt="" class="idea__image" />
     <footer class="idea__footer">
