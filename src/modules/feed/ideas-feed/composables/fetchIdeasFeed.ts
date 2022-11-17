@@ -6,6 +6,7 @@ import { showServerErrorNotification } from "@/common/helpers/notifications";
 import { reactive, ref, type Ref } from "vue";
 
 const ideas: Idea[] = reactive([]);
+let totalIdeasCount: Ref<Number> = ref(0);
 let ideasLoading: Ref<Boolean> = ref(false);
 
 const startIdeasLoading = () => {
@@ -15,13 +16,14 @@ const finishIdeasLoading = () => {
   ideasLoading.value = true;
 };
 
-const fetchIdeasChunk = async (queryParams: QueryParamsDto) => {
+const fetchIdeasChunkAndConcat = async (queryParams: QueryParamsDto) => {
   startIdeasLoading();
 
   try {
-    const ideasChunk = await fetchIdeasRequest(queryParams);
+    const [ideasChunk, meta] = await fetchIdeasRequest(queryParams);
 
     ideas.concat(ideasChunk);
+    totalIdeasCount.value = meta.total ? meta.total : 0;
   } catch (error) {
     if (error instanceof InternalServerError) {
       showServerErrorNotification();
@@ -31,4 +33,4 @@ const fetchIdeasChunk = async (queryParams: QueryParamsDto) => {
   }
 };
 
-export { fetchIdeasChunk, ideas };
+export { fetchIdeasChunkAndConcat, ideas };
