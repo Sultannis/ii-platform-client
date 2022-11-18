@@ -140,7 +140,7 @@ const handleFormSubmission = async () => {
   margin-top: 10px;
   cursor: pointer;
   padding: 7px 30px;
-  background: var(--background-color);
+  background: #fff;
   border-radius: 10px;
   color: var(--text-color);
   transition: all 0.2s linear;

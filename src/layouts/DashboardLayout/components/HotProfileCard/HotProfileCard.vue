@@ -48,7 +48,7 @@ defineProps({
 }
 
 .card:hover {
-  background: var(--background-color);
+  background: #fff;
 }
 
 .card__image {

@@ -68,7 +68,7 @@ defineProps({
 
 .modal {
   margin: 5vh auto;
-  background: var(--background-color);
+  background: #fff;
   border-radius: 10px;
   position: relative;
 }

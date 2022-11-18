@@ -2,6 +2,7 @@
 import { useElementVisibility } from "@vueuse/core";
 import IdeaCard from "@/modules/feed/ideas-feed/components/IdeaCard/IdeaCard.vue";
 import CommonLoadingBlock from "@/common/components/CommonLoadingBlock/CommonLoadingBlock.vue";
+import CommonAllFinishedBlock from "@/common/components/CommonAllFinishedBlock/CommonAllFinishedBlock.vue";
 import {
   fetchInitialIdeasChunk,
   initalChunkLoaded,
@@ -42,6 +43,7 @@ watch(feedLoadingTriggerVisible, () => {
     />
 
     <CommonLoadingBlock v-if="ideasLoading" />
+    <CommonAllFinishedBlock />
     <div ref="feedLoadingTrigger" class="feed__loading-trigger" />
   </div>
 </template>

@@ -35,7 +35,7 @@ import EditActionButtonsForm from "./components/EditActionButtonsForm.vue";
   position: absolute;
   border: none;
 
-  background: var(--background-color);
+  background: #fff;
   color: var(--primary-color);
   cursor: pointer;
 
