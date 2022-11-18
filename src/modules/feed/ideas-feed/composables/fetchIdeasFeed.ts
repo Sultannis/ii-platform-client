@@ -26,6 +26,9 @@ const finishIdeasLoading = () => {
   ideasLoading.value = false;
 };
 
+const clearIdeasArray = () => {
+  ideas.length = 0;
+};
 const resetQueryParams = () => {
   fetchIdeasQueryParams = {
     page: 1,
@@ -34,17 +37,13 @@ const resetQueryParams = () => {
   };
 };
 
-const clearIdeas = () => {
-  ideas = reactive([]);
-};
-
 const resetFetchStartTimestamp = () => {
   fetchStartTimestamp.value = new Date().toISOString();
 };
 
 const fetchInitialIdeasChunk = async () => {
   resetQueryParams();
-
+  clearIdeasArray();
   startIdeasLoading();
 
   try {

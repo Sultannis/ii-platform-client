@@ -18,7 +18,7 @@
   align-items: center;
 
   border-radius: 5px;
-  background: #fff;
+  background: var(--background-color);
 }
 
 .search__icon {
@@ -29,7 +29,7 @@
 .search__input {
   margin-right: 15px;
   width: 100%;
-  background: #fff;
+  background: var(--background-color);
   outline: none;
   border: none;
 }

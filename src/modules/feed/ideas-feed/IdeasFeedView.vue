@@ -17,6 +17,7 @@ const feedLoadingTrigger = ref(null);
 const feedLoadingTriggerVisible = useElementVisibility(feedLoadingTrigger);
 
 onBeforeMount(() => {
+  console.log("mounted");
   fetchInitialIdeasChunk();
 });
 
