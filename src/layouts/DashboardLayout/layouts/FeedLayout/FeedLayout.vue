@@ -49,20 +49,21 @@ const displayAddButton = computed(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #fff;
+  background: var(--background-highlighted-color);
 
   border-radius: 10px;
-  transition: width 0.2s linear;
   margin-bottom: 10px;
 
   cursor: pointer;
 
-  color: var(--text-color-light);
+  color: var(--primary-color);
   font-weight: 600;
+  transition: all 0.2s linear;
 }
 
 .feed__create-idea:hover {
-  color: var(--text-color);
+  background-color: var(--primary-color);
+  color: #fff;
 }
 
 .feed__create-idea_visible {

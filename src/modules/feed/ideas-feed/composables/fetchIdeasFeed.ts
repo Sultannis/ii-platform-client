@@ -42,6 +42,7 @@ const resetFetchStartTimestamp = () => {
 };
 
 const fetchInitialIdeasChunk = async () => {
+  resetFetchStartTimestamp();
   resetQueryParams();
   clearIdeasArray();
   startIdeasLoading();
