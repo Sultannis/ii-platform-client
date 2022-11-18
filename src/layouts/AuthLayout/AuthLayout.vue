@@ -26,7 +26,7 @@ import CommonTransition from "@/common/components/CommonTransition/CommonTransit
 .layout {
   width: 100%;
   height: 100vh;
-  background-color: #fff;
+  background-color: var(--background-color);
   position: relative;
   display: flex;
   align-items: center;

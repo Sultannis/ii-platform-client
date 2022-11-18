@@ -31,7 +31,7 @@ defineProps({
   height: 60px;
   margin-bottom: 10px;
 
-  background-color: #ffffff;
+  background-color: #fff;
   color: var(--text-color-light);
 
   border-radius: 10px;
@@ -48,7 +48,7 @@ defineProps({
 }
 
 .card:hover {
-  background: #fff;
+  background: var(--background-color);
 }
 
 .card__image {
