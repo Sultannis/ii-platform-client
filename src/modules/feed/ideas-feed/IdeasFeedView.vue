@@ -16,10 +16,7 @@ import { onBeforeMount, ref, watch } from "vue";
 const feedLoadingTrigger = ref(null);
 const feedLoadingTriggerVisible = useElementVisibility(feedLoadingTrigger);
 
-onBeforeMount(() => {
-  console.log("mounted");
-  fetchInitialIdeasChunk();
-});
+onBeforeMount(fetchInitialIdeasChunk);
 
 watch(feedLoadingTriggerVisible, () => {
   if (
