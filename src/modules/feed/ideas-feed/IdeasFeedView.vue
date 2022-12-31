@@ -11,12 +11,16 @@ import {
   ideasLoading,
   ideas,
 } from "@/modules/feed/ideas-feed/composables/fetchIdeasFeed";
-import { onBeforeMount, ref, watch } from "vue";
+import { computed, onBeforeMount, ref, watch } from "vue";
 
 const feedLoadingTrigger = ref(null);
 const feedLoadingTriggerVisible = useElementVisibility(feedLoadingTrigger);
 
 onBeforeMount(fetchInitialIdeasChunk);
+
+const showAllFinishedBlock = computed(() => {
+  return ideas.length === fetchIdeasQueryParams.total;
+});
 
 watch(feedLoadingTriggerVisible, () => {
   if (
@@ -41,7 +45,7 @@ watch(feedLoadingTriggerVisible, () => {
     />
 
     <CommonLoadingBlock v-if="ideasLoading" />
-    <CommonAllFinishedBlock />
+    <CommonAllFinishedBlock v-if="showAllFinishedBlock" />
     <div ref="feedLoadingTrigger" class="feed__loading-trigger" />
   </div>
 </template>

@@ -11,6 +11,9 @@ import { SIDEBAR_ACCOUNT_LINKS } from "@/common/constants/sidebarAccountLinks";
 <template>
   <main class="dashboard">
     <DashboardHeader />
+    <div class="dashboard__center">
+      <RouterView />
+    </div>
     <div class="dashboard__fixed">
       <div class="dashboard__left">
         <CommonNavigationSideBlock
@@ -28,9 +31,6 @@ import { SIDEBAR_ACCOUNT_LINKS } from "@/common/constants/sidebarAccountLinks";
     </div>
     <CommonPersonModal />
     <CommonUserModal />
-    <div class="dashboard__center">
-      <RouterView />
-    </div>
   </main>
 </template>
 
