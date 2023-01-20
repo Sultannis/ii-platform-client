@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const emit = defineEmits(["click"]);
+
 defineProps({
   name: {
     type: String,
@@ -13,10 +15,14 @@ defineProps({
     required: true,
   },
 });
+
+const emitClick = () => {
+  emit("click");
+};
 </script>
 
 <template>
-  <div class="card">
+  <div class="card" @click="emitClick">
     <div class="card__left">
       <img src="@/assets/images/profile-photo.jpg" class="card__image" />
     </div>
