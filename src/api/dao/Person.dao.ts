@@ -4,7 +4,7 @@ export type PersonDao = {
   first_name: string;
   last_name: string;
   occupation: string,
-  img_url: string;
+  avatar_url: string;
   interactions_count: number;
   role: number;
   confirmed_at: string;

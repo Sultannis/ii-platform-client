@@ -12,6 +12,6 @@ export const mapPersonDaoToEntity = (personDao: PersonDao): Person => ({
   createdAt: personDao.created_at,
   updatedAt: personDao.updated_at,
   deletedAt: personDao.deleted_at,
-  imgUrl: personDao.img_url,
+  avatarUrl: personDao.avatar_url,
   interactionsCount: personDao.interactions_count,
 });

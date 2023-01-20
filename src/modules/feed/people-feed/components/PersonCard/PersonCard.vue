@@ -6,7 +6,7 @@ defineProps({
   lastName: String,
   occupation: String,
   interactionsCount: Number,
-  imgUrl: String,
+  avatarUrl: String,
 });
 
 const emitClick = () => {
@@ -16,7 +16,7 @@ const emitClick = () => {
 
 <template>
   <div class="person" @click="emitClick">
-    <img :src= "imgUrl" alt="" class="person__image" />
+    <img :src= "avatarUrl" alt="" class="person__image" />
     <div class="person__row">
       <div class="person__info">
         <div class="person__name">{{ fistName }} {{ lastName }}</div>
