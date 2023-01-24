@@ -4,7 +4,7 @@ export type Person = {
   firstName: string;
   lastName: string;
   occupation: string;
-  imgUrl: string;
+  avatarUrl: string;
   interactionsCount: number;
   role: number;
   confirmedAt: string;

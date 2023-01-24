@@ -6,7 +6,7 @@ defineProps({
   lastName: String,
   occupation: String,
   interactionsCount: Number,
-  imgUrl: String,
+  avatarUrl: String,
 });
 
 const emitClick = () => {
@@ -16,12 +16,12 @@ const emitClick = () => {
 
 <template>
   <div class="person" @click="emitClick">
-    <img src="@/assets/images/profile-photo.jpg" alt="" class="person__image" />
+    <img :src= "avatarUrl" alt="" class="person__image" />
     <div class="person__row">
       <div class="person__info">
         <div class="person__name">{{ fistName }} {{ lastName }}</div>
         <div class="person__occupation">
-          {{ occupation ? occupation : "programmer" }}
+          {{ occupation }}
         </div>
       </div>
       <a-tooltip placement="top" color="rgba(68, 56, 202, 0.684)">

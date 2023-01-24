@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import HotProfileCard from "@/layouts/DashboardLayout/components/HotProfileCard/HotProfileCard.vue";
 import { hotprofiles } from "@/common/composables/fetchHotprofilesList";
+import { openPersonModal } from "@/common/composables/personModalState";
+import { onBeforeMount, ref, watch } from "vue";
+import { useElementVisibility } from "@vueuse/core";
 </script>
 
 <template>
@@ -18,6 +21,7 @@ import { hotprofiles } from "@/common/composables/fetchHotprofilesList";
       :name="hotprofile.name"
       :interactionsCount="hotprofile.interactionsCount"
       :image-url="hotprofile.imageUrl"
+      @click="openPersonModal"
     />
   </div>
 </template>

@@ -28,7 +28,7 @@ watch(feedLoadingTriggerVisible, () => {
       :fist-name="person.firstName"
       :last-name="person.lastName"
       :occupation="person.occupation"
-      :img-url="person.imgUrl"
+      :avatar-url="person.avatarUrl"
       :interactions-count="person.interactionsCount"
       @click="openPersonModal"
     />
