@@ -29,53 +29,59 @@ const { person, personFetchLoading, fetchPerson } = useFetchPerson();
     width="900"
     @close-click="closePersonModal"
   >
-    <div v-if="!personFetchLoading" class="person">
-      <div class="person__left">
-        <div v-if="false" class="person__left-loader">
+    <div class="person">
+      <template v-if="!personFetchLoading">
+        <div class="person__left">
+          <div class="person__left-top">
+            <CommonProfileImageUpload />
+            <div class="person__name">Sultan Mustafin</div>
+            <div class="person__username">@ its.sultan</div>
+            <div class="person__bio">
+              <i class="bx bx-info-circle perison__bio-icon" /> get rich or die
+              trying
+            </div>
+            <div class="person__description">
+              Основатель рекорд-лейбла Epinefrin suplex. Одними из участиников
+              которого являются Lil baby, J. Cole, Lil boat.
+            </div>
+          </div>
+          <button v-if="false" class="person__button person__button_delete">
+            <i class="bx bx-user-minus person__icon" />
+            Удалить из контактов
+          </button>
+          <button v-else class="person__button person__button_add">
+            <i class="bx bx-user-plus person__icon" />
+            Добавить в контакты
+          </button>
+        </div>
+        <div class="person__right">
+          <CommonMenuNavigation
+            :links="PROFILE_MENU_LINKS"
+            @click="setSelectedLinkTitle"
+          />
+          <div class="person__content">
+            <PersonCommonPage v-if="seletedLinkTitle == 'Общая'" />
+            <PersonProjectsPage v-if="seletedLinkTitle === 'Проекты'" />
+          </div>
+        </div>
+      </template>
+      <template v-else>
+        <div class="person__left-skeleton">
           <a-skeleton-avatar active avatar :size="260" />
           <a-skeleton active :paragraph="{ rows: 4 }" />
           <a-skeleton active :paragraph="{ rows: 2 }" />
         </div>
-
-        <div v-else class="person__left-top">
-          <CommonProfileImageUpload />
-          <div class="person__name">Sultan Mustafin</div>
-          <div class="person__username">@ its.sultan</div>
-          <div class="person__bio">
-            <i class="bx bx-info-circle perison__bio-icon" /> get rich or die
-            trying
+        <div class="person__right">
+          <div class="person__nav-skeleton">
+            <a-skeleton active :paragraph="{ rows: 1 }" :title="false"/>
           </div>
-          <div class="person__description">
-            Основатель рекорд-лейбла Epinefrin suplex. Одними из участиников
-            которого являются Lil baby, J. Cole, Lil boat.
-          </div>
-        </div>
-        <button v-if="false" class="person__button person__button_delete">
-          <i class="bx bx-user-minus person__icon" />
-          Удалить из контактов
-        </button>
-        <button v-else class="person__button person__button_add">
-          <i class="bx bx-user-plus person__icon" />
-          Добавить в контакты
-        </button>
-      </div>
-      <div class="person__right">
-        <CommonMenuNavigation
-          :links="PROFILE_MENU_LINKS"
-          @click="setSelectedLinkTitle"
-        />
-        <div class="person__content">
-          <div v-if="false" class="person__content-loader">
+          <div class="person__content-skeleton">
             <a-skeleton active :paragraphs="{ rows: 4 }" />
             <a-skeleton active :paragraphs="{ rows: 4 }" />
           </div>
-
-          <PersonCommonPage v-if="seletedLinkTitle == 'Общая'" />
-          <PersonProjectsPage v-if="seletedLinkTitle === 'Проекты'" />
         </div>
-      </div>
+      </template>
     </div>
-    <CommonLoadingBlock v-else :block-height="600" :indicator-size="100" />
   </CommonModal>
 </template>
 
@@ -113,13 +119,6 @@ const { person, personFetchLoading, fetchPerson } = useFetchPerson();
 
 .person__content {
   height: 100%;
-}
-
-.person__content-loader {
-  height: 100%;
-  background: #fff;
-  border-radius: 10px;
-  padding: 20px;
 }
 
 .person__name {
@@ -172,5 +171,32 @@ const { person, personFetchLoading, fetchPerson } = useFetchPerson();
 .person__icon {
   font-size: 25px;
   margin-right: 15px;
+}
+
+.person__left-skeleton {
+  padding: 20px;
+  height: 100%;
+  width: 300px;
+  background: #fff;
+  border-radius: 10px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.person__content-skeleton {
+  height: 100%;
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.person__nav-skeleton {
+  margin-bottom: 10px;
+  min-height: 55px;
+  padding: 20px 20px 0 20px;
+  background: #fff;
+  border-radius: 10px;
 }
 </style>

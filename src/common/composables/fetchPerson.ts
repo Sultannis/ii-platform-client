@@ -8,7 +8,7 @@ import {
 
 let person = reactive({});
 
-const personFetchLoading = ref(false);
+const personFetchLoading = ref(true);
 
 const startPersonLoading = () => {
   personFetchLoading.value = true;

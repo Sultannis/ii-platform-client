@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 const emit = defineEmits(["closeClick"]);
 
 const emitCloseClick = () => {
@@ -7,7 +6,7 @@ const emitCloseClick = () => {
 };
 
 const handleClick = () => {
-    emitCloseClick();
+  emitCloseClick();
 };
 
 defineProps({
@@ -30,7 +29,6 @@ defineProps({
         height: height + 'px',
       }"
       class="modal"
-
     >
       <i class="bx bx-x modal__exit" @click="emitCloseClick" />
       <slot />
@@ -54,7 +52,7 @@ defineProps({
 
 .modal {
   margin: 5vh auto;
-  background: #fff;
+  background: var(--background-color);
   border-radius: 10px;
   position: relative;
 }
