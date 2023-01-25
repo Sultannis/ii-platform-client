@@ -19,6 +19,7 @@ const blockStyle = computed(() => ({
 const indicatorStyle = computed(() => ({
   height: `${props.indicatorSize}px`,
   width: `${props.indicatorSize}px`,
+  "--indicatorSize": `${props.indicatorSize}px`,
 }));
 </script>
 
@@ -48,8 +49,8 @@ const indicatorStyle = computed(() => ({
 .loading__indicator::before {
   content: "";
   box-sizing: border-box;
-  width: 48px;
-  height: 48px;
+  width: var(--indicatorSize);
+  height: var(--indicatorSize);
   border-radius: 50%;
   background: var(--primary-color);
   position: absolute;
@@ -59,7 +60,7 @@ const indicatorStyle = computed(() => ({
 }
 
 .loading__indicator::after {
-  animation-delay: 1s;
+  animation-delay: -1s;
 }
 
 @keyframes animloader {

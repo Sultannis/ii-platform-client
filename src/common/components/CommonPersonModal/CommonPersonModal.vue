@@ -8,10 +8,11 @@ import { PROFILE_MENU_LINKS } from "@/common/constants/profileMenuLinks";
 import {
   personModalVisible,
   closePersonModal,
-  selectedPersonId
+  selectedPersonId,
 } from "@/common/composables/personModalState";
 import { ref } from "vue";
 import { useFetchPerson } from "@/common/composables/fetchPerson";
+import CommonLoadingBlock from "../CommonLoadingBlock/CommonLoadingBlock.vue";
 
 const seletedLinkTitle = ref("");
 
@@ -28,7 +29,7 @@ const { person, personFetchLoading, fetchPerson } = useFetchPerson();
     width="900"
     @close-click="closePersonModal"
   >
-    <div class="person">
+    <div v-if="!personFetchLoading" class="person">
       <div class="person__left">
         <div v-if="false" class="person__left-loader">
           <a-skeleton-avatar active avatar :size="260" />
@@ -74,6 +75,7 @@ const { person, personFetchLoading, fetchPerson } = useFetchPerson();
         </div>
       </div>
     </div>
+    <CommonLoadingBlock v-else :block-height="600" :indicator-size="100" />
   </CommonModal>
 </template>
 
