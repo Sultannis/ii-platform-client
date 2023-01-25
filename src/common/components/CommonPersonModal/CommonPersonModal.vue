@@ -10,9 +10,15 @@ import {
   closePersonModal,
   selectedPersonId,
 } from "@/common/composables/personModalState";
-import { ref } from "vue";
+import { onUpdated, ref } from "vue";
 import { useFetchPerson } from "@/common/composables/fetchPerson";
-import CommonLoadingBlock from "../CommonLoadingBlock/CommonLoadingBlock.vue";
+
+onUpdated(() => {
+  if(personModalVisible.value) {
+    fetchPerson(selectedPersonId.value).catch(closePersonModal)
+
+  }
+})
 
 const seletedLinkTitle = ref("");
 
@@ -21,7 +27,13 @@ const setSelectedLinkTitle = (title: string) => {
 };
 
 const { person, personFetchLoading, fetchPerson } = useFetchPerson();
+
+const consoleLog = () => {
+  console.log(person.value)
+}
+
 </script>
+
 
 <template>
   <CommonModal
@@ -29,7 +41,7 @@ const { person, personFetchLoading, fetchPerson } = useFetchPerson();
     width="900"
     @close-click="closePersonModal"
   >
-    <div class="person">
+    <div class="person" @click="consoleLog">
       <template v-if="!personFetchLoading">
         <div class="person__left">
           <div class="person__left-top">

@@ -6,7 +6,7 @@ import {
   showServerErrorNotification,
 } from "../helpers/notifications";
 
-let person = reactive({});
+let person = ref({});
 
 const personFetchLoading = ref(true);
 
@@ -22,7 +22,7 @@ const fetchPerson = async (personId: number) => {
   startPersonLoading();
 
   try {
-    person = await fetchPersonRequest(personId);
+    person.value = await fetchPersonRequest(personId);
   } catch (error) {
     if (error instanceof NotExistError) {
       showErrorNotification(
