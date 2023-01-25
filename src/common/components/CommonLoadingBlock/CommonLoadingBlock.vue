@@ -1,12 +1,35 @@
+<script setup lang="ts">
+import { computed } from "vue";
+
+const props = defineProps({
+  indicatorSize: {
+    type: Number,
+    default: 48,
+  },
+  blockHeight: {
+    type: Number,
+    default: 80,
+  },
+});
+
+const blockStyle = computed(() => ({
+  height: `${props.blockHeight}px`,
+}));
+
+const indicatorStyle = computed(() => ({
+  height: `${props.indicatorSize}px`,
+  width: `${props.indicatorSize}px`,
+}));
+</script>
+
 <template>
-  <div class="loading">
-    <div class="loading__indicator"></div>
+  <div class="loading" :style="blockStyle">
+    <div class="loading__indicator" :style="indicatorStyle"></div>
   </div>
 </template>
 
 <style scoped>
 .loading {
-  height: 80px;
   width: 100%;
   margin-bottom: 20px;
   border-radius: 10px;
@@ -17,8 +40,6 @@
 }
 
 .loading__indicator {
-  width: 48px;
-  height: 48px;
   display: inline-block;
   position: relative;
 }

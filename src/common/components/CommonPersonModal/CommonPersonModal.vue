@@ -8,6 +8,7 @@ import { PROFILE_MENU_LINKS } from "@/common/constants/profileMenuLinks";
 import {
   personModalVisible,
   closePersonModal,
+  selectedPersonId
 } from "@/common/composables/personModalState";
 import { ref } from "vue";
 import { useFetchPerson } from "@/common/composables/fetchPerson";
