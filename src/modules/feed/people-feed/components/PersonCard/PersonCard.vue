@@ -2,7 +2,7 @@
 const emit = defineEmits(["click"]);
 
 defineProps({
-  fistName: String,
+  firstName: String,
   lastName: String,
   occupation: String,
   interactionsCount: Number,
@@ -19,7 +19,7 @@ const emitClick = () => {
     <img :src= "avatarUrl" alt="" class="person__image" />
     <div class="person__row">
       <div class="person__info">
-        <div class="person__name">{{ fistName }} {{ lastName }}</div>
+        <div class="person__name">{{ firstName }} {{ lastName }}</div>
         <div class="person__occupation">
           {{ occupation }}
         </div>
@@ -29,7 +29,7 @@ const emitClick = () => {
           <span>Количество взаимодействии</span>
         </template>
         <div class="person__interactions-count">
-          {{ interactionsCount ? interactionsCount : 20 }}
+          {{ interactionsCount }}
         </div>
       </a-tooltip>
     </div>

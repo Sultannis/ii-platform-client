@@ -12,11 +12,11 @@ import {
 } from "@/common/composables/personModalState";
 import { onUpdated, ref } from "vue";
 import { useFetchPerson } from "@/common/composables/fetchPerson";
+import { string } from "vue-types";
 
 onUpdated(() => {
   if(personModalVisible.value) {
     fetchPerson(selectedPersonId.value).catch(closePersonModal)
-
   }
 })
 
@@ -28,10 +28,6 @@ const setSelectedLinkTitle = (title: string) => {
 
 const { person, personFetchLoading, fetchPerson } = useFetchPerson();
 
-const consoleLog = () => {
-  console.log(person.value)
-}
-
 </script>
 
 
@@ -41,16 +37,15 @@ const consoleLog = () => {
     width="900"
     @close-click="closePersonModal"
   >
-    <div class="person" @click="consoleLog">
+    <div class="person">
       <template v-if="!personFetchLoading">
         <div class="person__left">
           <div class="person__left-top">
             <CommonProfileImageUpload />
-            <div class="person__name">Sultan Mustafin</div>
-            <div class="person__username">@ its.sultan</div>
+            <div class="person__name"> {{ person.firstName }} {{ person.lastName }} </div>
+            <div class="person__username"> {{ person.nickName }} </div>
             <div class="person__bio">
-              <i class="bx bx-info-circle perison__bio-icon" /> get rich or die
-              trying
+              <i class="bx bx-info-circle perison__bio-icon" /> {{ person.bio }}
             </div>
             <div class="person__description">
               Основатель рекорд-лейбла Epinefrin suplex. Одними из участиников

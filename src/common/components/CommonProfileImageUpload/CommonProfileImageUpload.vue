@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { reactive, ref } from "vue";
+import { useFetchPerson } from "@/common/composables/fetchPerson";
+import { string } from "vue-types";
 
+const { person, personFetchLoading, fetchPerson } = useFetchPerson();
 const fileList = reactive([""]);
 const imageUrl = ref("/url");
 const loading = ref(false);
@@ -11,6 +14,7 @@ const beforeUpload = () => {
 const handleChange = () => {
   console.log("Change");
 };
+
 </script>
 
 <template>
@@ -26,7 +30,7 @@ const handleChange = () => {
   >
     <img
       v-if="imageUrl"
-      src="@/assets/images/profile-photo.jpg"
+      :src= "person.avatarUrl"
       alt="avatar"
       class="uploader__image"
     />
