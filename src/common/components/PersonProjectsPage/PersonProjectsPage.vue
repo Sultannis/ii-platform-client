@@ -1,42 +1,24 @@
 <script setup lang="ts">
 import WorkCompanyCard from "./components/WorkCompanyCard.vue";
-import CommonTag from "@/common/components/CommonTag/CommonTag.vue";
 import {
-  fetchInitialWorkCompaniesChunk,
-  fetchNextWorkCompaniesChunkAndConcat,
-  fetchWorkCompaniesQueryParams,
-  initialChunkLoaded,
+  fetchPersonWorkCompanies,
+  workCompaniesLoading,
   workCompanies,
-} from "@/common/components/PersonProjectsPage/composables/fetchWorkCompanies"
-import { onBeforeMount, ref, watch } from "vue";
-import { useElementVisibility } from "@vueuse/core";
-import { fetchWorkCompany } from "@/api/repositories/work-companies.repository";
-import { closePersonModal, selectedPersonId } from "@/common/composables/personModalState";
+} from "@/common/components/PersonProjectsPage/composables/fetchWorkCompanies";
+import { onBeforeMount } from "vue";
+import { selectedPersonId } from "@/common/composables/personModalState";
 
-const feedLoadingTrigger = ref(null);
-const feedLoadingTriggerVisible = useElementVisibility(feedLoadingTrigger);
-
-onBeforeMount(fetchInitialWorkCompaniesChunk);
-
-watch(feedLoadingTrigger, () => {
-  if (
-    feedLoadingTriggerVisible.value &&
-    initialChunkLoaded.value &&
-    workCompanies.length < fetchWorkCompaniesQueryParams.total
-  ) {
-    fetchNextWorkCompaniesChunkAndConcat();
-  }
+onBeforeMount(() => {
+  fetchPersonWorkCompanies(selectedPersonId.value);
 });
-
 </script>
-
 
 <template>
   <div class="projects">
     <WorkCompanyCard
       v-for="workcompany in workCompanies"
       :company-name="workcompany.companyName"
-      :description="workcompany.description" 
+      :description="workcompany.description"
     />
   </div>
 </template>

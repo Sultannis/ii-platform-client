@@ -1,25 +1,25 @@
 <script setup lang="ts">
-import { closePersonModal, selectedPersonId } from '@/common/composables/personModalState';
-import { useFetchWorkCompany } from '@/common/composables/fetchWorkCompany';
-import { onUpdated } from 'vue';
-
-onUpdated(() => {
-    fetchWorkCompany(selectedPersonId.value).catch(closePersonModal)
-})
-
-const { workCompany, workCompanyFetchLoading, fetchWorkCompany} = useFetchWorkCompany();
-
+defineProps({
+  companyName: {
+    type: String,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+});
 </script>
 
 <template>
-    <div class="projects__item">
-      <div class="projects__title">
-        {{ workCompany.companyName }}
-      </div>
-      <div class="projects__description">
-        {{ workCompany.description }}
-      </div>
+  <div class="projects__item">
+    <div class="projects__title">
+      {{ companyName }}
     </div>
+    <div class="projects__description">
+      {{ description }}
+    </div>
+  </div>
 </template>
 
 <style scoped>
