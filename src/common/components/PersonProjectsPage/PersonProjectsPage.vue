@@ -1,89 +1,43 @@
 <script setup lang="ts">
+import WorkCompanyCard from "./components/WorkCompanyCard.vue";
 import CommonTag from "@/common/components/CommonTag/CommonTag.vue";
+import {
+  fetchInitialWorkCompaniesChunk,
+  fetchNextWorkCompaniesChunkAndConcat,
+  fetchWorkCompaniesQueryParams,
+  initialChunkLoaded,
+  workCompanies,
+} from "@/common/components/PersonProjectsPage/composables/fetchWorkCompanies"
+import { onBeforeMount, ref, watch } from "vue";
+import { useElementVisibility } from "@vueuse/core";
+import { fetchWorkCompany } from "@/api/repositories/work-companies.repository";
+import { closePersonModal, selectedPersonId } from "@/common/composables/personModalState";
+
+const feedLoadingTrigger = ref(null);
+const feedLoadingTriggerVisible = useElementVisibility(feedLoadingTrigger);
+
+onBeforeMount(fetchInitialWorkCompaniesChunk);
+
+watch(feedLoadingTrigger, () => {
+  if (
+    feedLoadingTriggerVisible.value &&
+    initialChunkLoaded.value &&
+    workCompanies.length < fetchWorkCompaniesQueryParams.total
+  ) {
+    fetchNextWorkCompaniesChunkAndConcat();
+  }
+});
+
 </script>
+
 
 <template>
   <div class="projects">
-    <div class="projects__item">
-      <div class="projects__title">
-        CRM система для малого и среднего бизнеса
-      </div>
-      <div class="projects__description">
-        Разработал гибкую CRM систему с использованием Vue js и Nest js которой
-        пользуются 2400 пользователей ежедневно.
-      </div>
-      <div class="projects__tags">
-        <CommonTag> роботы </CommonTag>
-        <CommonTag> роботы </CommonTag>
-        <CommonTag> роботы </CommonTag>
-        <CommonTag> роботы </CommonTag>
-      </div>
-      <a class="projects__link" target="_blank"> https://www.moysklad.ru/</a>
-    </div>
-    <div class="projects__item">
-      <div class="projects__title">
-        CRM система для малого и среднего бизнеса
-      </div>
-      <div class="projects__description">
-        Разработал гибкую CRM систему с использованием Vue js и Nest js которой
-        пользуются 2400 пользователей ежедневно.
-      </div>
-      <div class="projects__tags">
-        <CommonTag> роботы </CommonTag>
-        <CommonTag> роботы </CommonTag>
-        <CommonTag> роботы </CommonTag>
-        <CommonTag> роботы </CommonTag>
-      </div>
-      <a class="projects__link" target="_blank"> https://www.moysklad.ru/</a>
-    </div>
-    <div class="projects__item">
-      <div class="projects__title">
-        CRM система для малого и среднего бизнеса
-      </div>
-      <div class="projects__description">
-        Разработал гибкую CRM систему с использованием Vue js и Nest js которой
-        пользуются 2400 пользователей ежедневно.
-      </div>
-      <div class="projects__tags">
-        <CommonTag> роботы </CommonTag>
-        <CommonTag> роботы </CommonTag>
-        <CommonTag> роботы </CommonTag>
-        <CommonTag> роботы </CommonTag>
-      </div>
-      <a class="projects__link" target="_blank"> https://www.moysklad.ru/</a>
-    </div>
-    <div class="projects__item">
-      <div class="projects__title">
-        CRM система для малого и среднего бизнеса
-      </div>
-      <div class="projects__description">
-        Разработал гибкую CRM систему с использованием Vue js и Nest js которой
-        пользуются 2400 пользователей ежедневно.
-      </div>
-      <div class="projects__tags">
-        <CommonTag> роботы </CommonTag>
-        <CommonTag> роботы </CommonTag>
-        <CommonTag> роботы </CommonTag>
-        <CommonTag> роботы </CommonTag>
-      </div>
-      <a class="projects__link" target="_blank"> https://www.moysklad.ru/</a>
-    </div>
-    <div class="projects__item">
-      <div class="projects__title">
-        CRM система для малого и среднего бизнеса
-      </div>
-      <div class="projects__description">
-        Разработал гибкую CRM систему с использованием Vue js и Nest js которой
-        пользуются 2400 пользователей ежедневно.
-      </div>
-      <div class="projects__tags">
-        <CommonTag> роботы </CommonTag>
-        <CommonTag> роботы </CommonTag>
-        <CommonTag> роботы </CommonTag>
-        <CommonTag> роботы </CommonTag>
-      </div>
-      <a class="projects__link" target="_blank"> https://www.moysklad.ru/</a>
-    </div>
+    <WorkCompanyCard
+      v-for="workcompany in workCompanies"
+      :company-name="workcompany.companyName"
+      :description="workcompany.description" 
+    />
   </div>
 </template>
 

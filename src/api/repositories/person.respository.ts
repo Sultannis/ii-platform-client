@@ -19,7 +19,6 @@ export const fetchPeopleRequest = (
   queryParams: QueryParamsDto,
   fetchStartTimestamp: String
 ): Promise<[Person[], Meta]> => {
-  console.log("request method started");
   return request
     .get("/users", {
       params: {

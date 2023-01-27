@@ -4,7 +4,7 @@ import {
   fetchInitialPeopleChunk,
   fetchNextPeopleChunkAndConcat,
   fetchPeopleQueryParams,
-  initalChunkLoaded,
+  initialChunkLoaded,
   people,
 } from "@/modules/feed/people-feed/composable/fetchFeedPeople";
 import { openPersonModal, setSelectedPersonId } from "@/common/composables/personModalState";
@@ -24,7 +24,7 @@ const handlePersonCardClick = (personId: number) => {
 watch(feedLoadingTriggerVisible, () => {
   if (
     feedLoadingTriggerVisible.value &&
-    initalChunkLoaded.value &&
+    initialChunkLoaded.value &&
     people.length < fetchPeopleQueryParams.total
   ) {
     fetchNextPeopleChunkAndConcat();

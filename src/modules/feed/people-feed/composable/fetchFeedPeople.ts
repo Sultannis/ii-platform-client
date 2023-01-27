@@ -10,13 +10,13 @@ let fetchPeopleQueryParams = reactive({
   perPage: 20,
   total: 0,
 });
-let initalChunkLoaded: Ref<Boolean> = ref(false);
+let initialChunkLoaded: Ref<Boolean> = ref(false);
 let totalPeopleCount: Ref<Number> = ref(0);
 let peopleLoading: Ref<Boolean> = ref(false);
 let fetchStartTimestamp: Ref<String> = ref(new Date().toISOString());
 
 const setInitialChuckLoadedAsTrue = () => {
-  initalChunkLoaded.value = true;
+  initialChunkLoaded.value = true;
 };
 
 const startPeopleLoading = () => {
@@ -91,7 +91,7 @@ const fetchNextPeopleChunkAndConcat = async () => {
 export {
   fetchInitialPeopleChunk,
   fetchNextPeopleChunkAndConcat,
-  initalChunkLoaded,
+  initialChunkLoaded,
   peopleLoading,
   people,
   fetchPeopleQueryParams,

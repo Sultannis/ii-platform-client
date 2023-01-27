@@ -12,7 +12,6 @@ import {
 } from "@/common/composables/personModalState";
 import { onUpdated, ref } from "vue";
 import { useFetchPerson } from "@/common/composables/fetchPerson";
-import { string } from "vue-types";
 
 onUpdated(() => {
   if(personModalVisible.value) {
@@ -45,11 +44,7 @@ const { person, personFetchLoading, fetchPerson } = useFetchPerson();
             <div class="person__name"> {{ person.firstName }} {{ person.lastName }} </div>
             <div class="person__username"> {{ person.nickName }} </div>
             <div class="person__bio">
-              <i class="bx bx-info-circle perison__bio-icon" /> {{ person.bio }}
-            </div>
-            <div class="person__description">
-              Основатель рекорд-лейбла Epinefrin suplex. Одними из участиников
-              которого являются Lil baby, J. Cole, Lil boat.
+              <i class="bx bx-info-circle person__bio-icon" /> {{ person.bio }}
             </div>
           </div>
           <button v-if="false" class="person__button person__button_delete">
@@ -135,16 +130,12 @@ const { person, personFetchLoading, fetchPerson } = useFetchPerson();
 
 .person__bio {
   display: flex;
-  align-items: center;
 }
 
-.perison__bio-icon {
+.person__bio-icon {
+  position: relative;
+  top: 5px;
   margin-right: 5px;
-}
-
-.person__description {
-  margin-top: 5px;
-  font-size: 12px;
 }
 
 .person__username {
