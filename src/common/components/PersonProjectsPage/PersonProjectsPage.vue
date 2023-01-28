@@ -9,7 +9,6 @@ onBeforeMount(() => {
   fetchPersonWorkCompanies(selectedPersonId.value);
 });
 
-
 </script>
 
 <template>

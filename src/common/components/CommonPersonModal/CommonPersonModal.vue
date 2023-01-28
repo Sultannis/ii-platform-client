@@ -4,6 +4,7 @@ import CommonProfileImageUpload from "@/common/components/CommonProfileImageUplo
 import CommonMenuNavigation from "@/common/components/CommonMenuNavigation/CommonMenuNavigation.vue";
 import PersonCommonPage from "@/common/components/PersonCommonPage/PersonCommonPage.vue";
 import PersonProjectsPage from "@/common/components/PersonProjectsPage/PersonProjectsPage.vue";
+import PersonEducationPage from "../PersonEducationPage/PersonEducationPage.vue";
 import { PROFILE_MENU_LINKS } from "@/common/constants/profileMenuLinks";
 import {
   personModalVisible,
@@ -21,10 +22,10 @@ onUpdated(() => {
 });
 
 
-const seletedLinkTitle = ref("");
+const seleсtedLinkTitle = ref("");
 
 const setSelectedLinkTitle = (title: string) => {
-  seletedLinkTitle.value = title;
+  seleсtedLinkTitle.value = title;
 };
 
 const { person, personFetchLoading, fetchPerson } = useFetchPerson();
@@ -65,8 +66,9 @@ const { person, personFetchLoading, fetchPerson } = useFetchPerson();
             @click="setSelectedLinkTitle"
           />
           <div class="person__content">
-            <PersonCommonPage v-if="seletedLinkTitle == 'Общая'" />
-            <PersonProjectsPage v-if="seletedLinkTitle === 'Проекты'" />
+            <PersonCommonPage v-if="seleсtedLinkTitle == 'Общая'" />
+            <PersonProjectsPage v-if="seleсtedLinkTitle == 'Проекты'" />
+            <PersonEducationPage v-if="seleсtedLinkTitle == 'Educational Institutions'"/>
           </div>
         </div>
       </template>

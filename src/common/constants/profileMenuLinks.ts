@@ -9,4 +9,9 @@ export const PROFILE_MENU_LINKS = [
     title: "Проекты",
     route: "",
   },
+  {
+    iconClass: "bxs-graduation",
+    title: "Educational Institutions",
+    route: "",
+  },
 ];

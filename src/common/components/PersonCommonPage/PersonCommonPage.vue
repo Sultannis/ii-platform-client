@@ -3,8 +3,11 @@ import CommonTag from "@/common/components/CommonTag/CommonTag.vue";
 import { useFetchPersonContactList } from "@/common/composables/fetchContactList";
 import { onBeforeMount } from "vue";
 import { selectedPersonId } from "@/common/composables/personModalState";
+import { useFetchPerson } from "@/common/composables/fetchPerson";
 
-const { contactList, contactListLoading, fetchPersonContactList } = useFetchPersonContactList();
+
+const { person } = useFetchPerson();
+const { contactList, fetchPersonContactList } = useFetchPersonContactList();
 onBeforeMount(() => {
   fetchPersonContactList(selectedPersonId.value);
 });
@@ -15,7 +18,7 @@ onBeforeMount(() => {
   <div class="common">
     <div class="common__item">
       <div class="common__title">Профессия</div>
-      <div class="common__occupation">UI-UX дизайнер</div>
+      <div class="common__occupation">{{ person.occupation }}</div>
     </div>
     <div class="common__item">
       <div class="common__title">Теги</div>
@@ -38,7 +41,13 @@ onBeforeMount(() => {
         {{ contactList.linkedinLink }}
       </div>
       <div class="common__contact">
-        <i class="bx bxs-envelope common__icon" /> {{contactList.phoneNumber}}
+        <i class='bx bxl-github common__icon' /> {{ contactList.githubLink }}
+      </div>
+      <div class="common__contact">
+        <i class='bx bxs-envelope common__icon' /> {{ contactList.email }}
+      </div>
+      <div class="common__contact">
+        <i class='bx bxs-phone-call common__icon'/> {{contactList.phoneNumber}}
       </div>
     </div>
   </div>
@@ -62,6 +71,7 @@ onBeforeMount(() => {
 
 .common__occupation {
   color: var(--primary-color);
+  font-size: 18px;
 }
 
 .common__tags {
