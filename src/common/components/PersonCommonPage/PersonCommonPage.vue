@@ -1,5 +1,14 @@
 <script setup lang="ts">
 import CommonTag from "@/common/components/CommonTag/CommonTag.vue";
+import { useFetchPersonContactList } from "@/common/composables/fetchContactList";
+import { onBeforeMount } from "vue";
+import { selectedPersonId } from "@/common/composables/personModalState";
+
+const { contactList, contactListLoading, fetchPersonContactList } = useFetchPersonContactList();
+onBeforeMount(() => {
+  fetchPersonContactList(selectedPersonId.value);
+});
+
 </script>
 
 <template>
@@ -22,14 +31,14 @@ import CommonTag from "@/common/components/CommonTag/CommonTag.vue";
     <div class="common__item">
       <div class="common__title">Контакты</div>
       <div class="common__contact">
-        <i class="bx bxl-telegram common__icon" /> Sultan_Mus
+        <i class="bx bxl-telegram common__icon" /> {{ contactList.telegramNickname }} 
       </div>
       <div class="common__contact">
         <i class="bx bxl-linkedin-square common__icon" />
-        https://www.linkedin.com/in/sultan-mustafin-44382b1a6/
+        {{ contactList.linkedinLink }}
       </div>
       <div class="common__contact">
-        <i class="bx bxs-envelope common__icon" /> sultan.fb29@gmail.com
+        <i class="bx bxs-envelope common__icon" /> {{contactList.phoneNumber}}
       </div>
     </div>
   </div>

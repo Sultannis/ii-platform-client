@@ -34,4 +34,8 @@ const fetchPersonWorkCompanies = async (personId: number) => {
   }
 };
 
-export { workCompaniesLoading, workCompanies, fetchPersonWorkCompanies };
+export const useFetchWorkCompany = () => ({ 
+  workCompaniesLoading, 
+  workCompanies, 
+  fetchPersonWorkCompanies 
+});

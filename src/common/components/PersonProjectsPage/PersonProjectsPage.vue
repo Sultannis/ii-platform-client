@@ -1,25 +1,42 @@
 <script setup lang="ts">
 import WorkCompanyCard from "./components/WorkCompanyCard.vue";
-import {
-  fetchPersonWorkCompanies,
-  workCompaniesLoading,
-  workCompanies,
-} from "@/common/components/PersonProjectsPage/composables/fetchWorkCompanies";
+import { useFetchWorkCompany } from "./composables/fetchWorkCompanies";
 import { onBeforeMount } from "vue";
 import { selectedPersonId } from "@/common/composables/personModalState";
 
+const { fetchPersonWorkCompanies, workCompanies, workCompaniesLoading } = useFetchWorkCompany();
 onBeforeMount(() => {
   fetchPersonWorkCompanies(selectedPersonId.value);
 });
+
+
 </script>
 
 <template>
-  <div class="projects">
+  <div class="projects" v-if="!workCompaniesLoading">
     <WorkCompanyCard
       v-for="workcompany in workCompanies"
       :company-name="workcompany.companyName"
       :description="workcompany.description"
     />
+  </div>
+  <div class="projects" v-else>
+    <div class="projects__item-skeleton">
+      <div class="projects__title-skeleton">
+        <a-skeleton active :paragraph="{ rows: 1 } "/>
+      </div>
+      <div class="projects__description-skeleton">
+        <a-skeleton active :paragraph="{ rows: 2 } "/>
+      </div>
+    </div>
+    <div class="projects__item-skeleton">
+      <div class="projects__title-skeleton">
+        <a-skeleton active :paragraph="{ rows: 1 } "/>
+      </div>
+      <div class="projects__description-skeleton">
+        <a-skeleton active :paragraph="{ rows: 3 } "/>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -29,7 +46,7 @@ onBeforeMount(() => {
   flex-direction: column;
 }
 
-.projects__item {
+.projects__item-skeleton {
   margin-bottom: 10px;
   padding: 10px 20px;
   width: 100%;
@@ -50,16 +67,4 @@ onBeforeMount(() => {
   font-size: 13px;
 }
 
-.projects__tags {
-  margin-bottom: 10px;
-  display: flex;
-  flex-wrap: wrap;
-  font-weight: 400;
-}
-
-.projects__link {
-  text-decoration: underline;
-  font-weight: 400;
-  color: var(--primary-color);
-}
 </style>

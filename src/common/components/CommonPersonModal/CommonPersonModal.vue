@@ -13,11 +13,13 @@ import {
 import { onUpdated, ref } from "vue";
 import { useFetchPerson } from "@/common/composables/fetchPerson";
 
+
 onUpdated(() => {
   if(personModalVisible.value) {
-    fetchPerson(selectedPersonId.value).catch(closePersonModal)
+    fetchPerson(selectedPersonId.value).catch(closePersonModal);
   }
-})
+});
+
 
 const seletedLinkTitle = ref("");
 
@@ -26,6 +28,7 @@ const setSelectedLinkTitle = (title: string) => {
 };
 
 const { person, personFetchLoading, fetchPerson } = useFetchPerson();
+
 
 </script>
 
