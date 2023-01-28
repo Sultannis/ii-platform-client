@@ -5,6 +5,14 @@ defineProps({
     type: String,
     required: true,
   },
+  levelOfEducation : {
+    type: String,
+    required: true,
+  },
+  country : {
+    type: String,
+    reqauired: true,
+  },
   description: {
     type: String,
     required: true,
@@ -15,12 +23,15 @@ defineProps({
 
 <template>
   <div class="institutions__item">
-    <div class="instituions__title">
-      {{ institutionName }}
-    </div>
-    <div class="institutions__description">
-      {{ description }}
-    </div>
+      <div class="institutions__title">
+          {{ institutionName }} | {{ country }}
+      </div>
+      <div class="institutions__degree">
+          {{ levelOfEducation }}
+      </div>
+      <div class="institutions__description">
+          {{ description }}
+      </div>
   </div>
 </template>
 
@@ -37,7 +48,12 @@ defineProps({
 }
 
 .institutions__title {
-  margin-bottom: 5px;
+  color: var(--primary-color);
+  font-size: 17px;
+}
+
+.institutions__degree {
+  font-size: 15px;
 }
 
 .institutions__description {

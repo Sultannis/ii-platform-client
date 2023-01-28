@@ -3,7 +3,7 @@ export type WorkCompany = {
     userId: number;
     companyName: string;
     description: string;
-    position: number;
+    position: string;
     country: string;
     startDate: string;
     endDate: string;

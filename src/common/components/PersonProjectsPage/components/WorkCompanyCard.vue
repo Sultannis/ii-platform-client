@@ -5,6 +5,10 @@ defineProps({
     type: String,
     required: true,
   },
+  position: {
+    type: String,
+    required: true,
+  },
   description: {
     type: String,
     required: true,
@@ -17,6 +21,9 @@ defineProps({
   <div class="projects__item">
     <div class="projects__title">
       {{ companyName }}
+    </div>
+    <div class="projects__position">
+      {{ position }}
     </div>
     <div class="projects__description">
       {{ description }}
@@ -37,9 +44,13 @@ defineProps({
 }
 
 .projects__title {
-  margin-bottom: 5px;
+  color: var(--primary-color);
+  font-size: 17px;
 }
 
+.projects__position {
+  font-size: 15px;
+}
 .projects__description {
   margin-bottom: 10px;
   font-weight: 400;

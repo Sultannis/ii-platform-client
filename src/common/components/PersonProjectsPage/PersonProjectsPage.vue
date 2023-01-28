@@ -16,6 +16,7 @@ onBeforeMount(() => {
     <WorkCompanyCard
       v-for="workcompany in workCompanies"
       :company-name="workcompany.companyName"
+      :position="workcompany.position"
       :description="workcompany.description"
     />
   </div>
