@@ -1,17 +1,17 @@
 export const PROFILE_MENU_LINKS = [
   {
     iconClass: "bx-data",
-    title: "Общая",
+    title: "Common",
     route: "",
   },
   {
     iconClass: "bx-package",
-    title: "Проекты",
+    title: "Work",
     route: "",
   },
   {
     iconClass: "bxs-graduation",
-    title: "Educational Institutions",
+    title: "Education",
     route: "",
   },
 ];

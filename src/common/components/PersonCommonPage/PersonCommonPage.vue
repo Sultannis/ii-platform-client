@@ -4,24 +4,23 @@ import { useFetchPersonContactList } from "@/common/composables/fetchContactList
 import { onBeforeMount } from "vue";
 import { selectedPersonId } from "@/common/composables/personModalState";
 import { useFetchPerson } from "@/common/composables/fetchPerson";
-
+import type Title from "ant-design-vue/lib/typography/Title";
 
 const { person } = useFetchPerson();
-const { contactList, fetchPersonContactList } = useFetchPersonContactList();
+const { contactList, fetchPersonContactList, contactListLoading } = useFetchPersonContactList();
 onBeforeMount(() => {
   fetchPersonContactList(selectedPersonId.value);
 });
-
 </script>
 
 <template>
   <div class="common">
     <div class="common__item">
-      <div class="common__title">Профессия</div>
+      <div class="common__title">Profession</div>
       <div class="common__occupation">{{ person.occupation }}</div>
     </div>
     <div class="common__item">
-      <div class="common__title">Теги</div>
+      <div class="common__title">Tags</div>
       <div class="common__tags">
         <CommonTag> роботы </CommonTag>
         <CommonTag> роботы </CommonTag>
@@ -32,22 +31,26 @@ onBeforeMount(() => {
       </div>
     </div>
     <div class="common__item">
-      <div class="common__title">Контакты</div>
-      <div class="common__contact">
-        <i class="bx bxl-telegram common__icon" /> {{ contactList.telegramNickname }} 
+      <div class="common__title">Contacts</div>
+      <div class="common__contacts" v-if="!contactListLoading">
+        <div class="common__contacts-item">
+          <i class="bx bxl-telegram common__icon" /> {{ contactList.telegramNickname }}
+        </div>
+        <div class="common__contacts-item">
+          <i class="bx bxl-linkedin-square common__icon" /> <a target="_blank" class="common__link">{{ contactList.linkedinLink }}</a>
+        </div>
+        <div class="common__contacts-item">
+          <i class='bx bxl-github common__icon' /> <a target="_blank" class="common__link">{{ contactList.githubLink }}</a>
+        </div>
+        <div class="common__contacts-item">
+          <i class='bx bxs-envelope common__icon' /> {{ contactList.email }}
+        </div>
+        <div class="common__contacts-item">
+          <i class='bx bxs-phone-call common__icon'/> {{contactList.phoneNumber}}
+        </div>
       </div>
-      <div class="common__contact">
-        <i class="bx bxl-linkedin-square common__icon" />
-        {{ contactList.linkedinLink }}
-      </div>
-      <div class="common__contact">
-        <i class='bx bxl-github common__icon' /> {{ contactList.githubLink }}
-      </div>
-      <div class="common__contact">
-        <i class='bx bxs-envelope common__icon' /> {{ contactList.email }}
-      </div>
-      <div class="common__contact">
-        <i class='bx bxs-phone-call common__icon'/> {{contactList.phoneNumber}}
+      <div class="common__contacts-skeleton" v-else>
+        <a-skeleton active :paragraph="{ rows: 4 }" :title="false"/>
       </div>
     </div>
   </div>
@@ -89,15 +92,34 @@ onBeforeMount(() => {
   font-size: 11px;
 }
 
-.common__contact {
+.common__contacts {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 3px;
+}
+
+.common__contacts-item {
   display: flex;
   align-items: center;
   margin-bottom: 3px;
 }
-
 .common__icon {
   margin-right: 8px;
   font-size: 20px;
   color: var(--primary-color);
+}
+
+.common__link {
+  color: black;
+}
+
+.common__link:hover {
+  color: var(--primary-color);
+}
+
+.common__contacts-skeleton {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 3px;
 }
 </style>

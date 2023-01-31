@@ -3,7 +3,7 @@ import CommonModal from "@/common/components/CommonModal/CommonModal.vue";
 import CommonProfileImageUpload from "@/common/components/CommonProfileImageUpload/CommonProfileImageUpload.vue";
 import CommonMenuNavigation from "@/common/components/CommonMenuNavigation/CommonMenuNavigation.vue";
 import PersonCommonPage from "@/common/components/PersonCommonPage/PersonCommonPage.vue";
-import PersonProjectsPage from "@/common/components/PersonProjectsPage/PersonProjectsPage.vue";
+import PersonWorksPage from "../PersonWorksPage/PersonWorksPage.vue";
 import PersonEducationPage from "../PersonEducationPage/PersonEducationPage.vue";
 import { PROFILE_MENU_LINKS } from "@/common/constants/profileMenuLinks";
 import {
@@ -13,7 +13,6 @@ import {
 } from "@/common/composables/personModalState";
 import { onUpdated, ref } from "vue";
 import { useFetchPerson } from "@/common/composables/fetchPerson";
-
 
 onUpdated(() => {
   if(personModalVisible.value) {
@@ -53,11 +52,11 @@ const { person, personFetchLoading, fetchPerson } = useFetchPerson();
           </div>
           <button v-if="false" class="person__button person__button_delete">
             <i class="bx bx-user-minus person__icon" />
-            Удалить из контактов
+            Delete from contacts
           </button>
           <button v-else class="person__button person__button_add">
             <i class="bx bx-user-plus person__icon" />
-            Добавить в контакты
+            Add to contacts
           </button>
         </div>
         <div class="person__right">
@@ -66,9 +65,9 @@ const { person, personFetchLoading, fetchPerson } = useFetchPerson();
             @click="setSelectedLinkTitle"
           />
           <div class="person__content">
-            <PersonCommonPage v-if="seleсtedLinkTitle == 'Общая'" />
-            <PersonProjectsPage v-if="seleсtedLinkTitle == 'Проекты'" />
-            <PersonEducationPage v-if="seleсtedLinkTitle == 'Educational Institutions'"/>
+            <PersonCommonPage v-if="seleсtedLinkTitle == 'Common'" />
+            <PersonWorksPage v-if="seleсtedLinkTitle == 'Work'" />
+            <PersonEducationPage v-if="seleсtedLinkTitle == 'Education'"/>
           </div>
         </div>
       </template>
@@ -138,8 +137,7 @@ const { person, personFetchLoading, fetchPerson } = useFetchPerson();
 }
 
 .person__bio-icon {
-  position: relative;
-  top: 5px;
+  margin-top: 5px;
   margin-right: 5px;
 }
 

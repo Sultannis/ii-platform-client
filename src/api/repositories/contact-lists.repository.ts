@@ -1,8 +1,9 @@
 import request from "../request";
 import type { ContactListDao } from "../dao/ContactList.dao";
 import { mapContactListDaoToEntity } from "../mappers/contactListMapper";
+import type { ContactList } from "../entities/ContactList";
 
-export const fetchPersonContactList = (personId: number) =>
+export const fetchPersonContactList = (personId: number): Promise<ContactList> =>
     request.get("/contact-lists/one/", {
         params: {
             user_id: personId,

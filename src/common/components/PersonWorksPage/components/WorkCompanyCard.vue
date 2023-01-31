@@ -11,28 +11,27 @@ defineProps({
   },
   description: {
     type: String,
-    required: true,
+    required: false,
   },
 });
-
 </script>
 
 <template>
-  <div class="projects__item">
-    <div class="projects__title">
+  <div class="works__item">
+    <div class="works__title">
       {{ companyName }}
     </div>
-    <div class="projects__position">
+    <div class="works__position">
       {{ position }}
     </div>
-    <div class="projects__description">
+    <div class="works__description">
       {{ description }}
     </div>
   </div>
 </template>
 
 <style scoped>
-.projects__item {
+.works__item {
   margin-bottom: 10px;
   padding: 10px 20px;
   width: 100%;
@@ -43,15 +42,15 @@ defineProps({
   border-radius: 10px;
 }
 
-.projects__title {
+.works__title {
   color: var(--primary-color);
   font-size: 17px;
 }
 
-.projects__position {
+.works__position {
   font-size: 15px;
 }
-.projects__description {
+.works__description {
   margin-bottom: 10px;
   font-weight: 400;
   font-size: 13px;

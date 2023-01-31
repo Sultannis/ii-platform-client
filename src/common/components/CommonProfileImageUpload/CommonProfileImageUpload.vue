@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import { reactive, ref } from "vue";
 import { useFetchPerson } from "@/common/composables/fetchPerson";
-import { string } from "vue-types";
 
-const { person, personFetchLoading, fetchPerson } = useFetchPerson();
+const { person } = useFetchPerson();
 const fileList = reactive([""]);
 const imageUrl = ref("/url");
 const loading = ref(false);

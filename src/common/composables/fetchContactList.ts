@@ -5,23 +5,18 @@ import { showServerErrorNotification } from "@/common/helpers/notifications";
 import { InternalServerError } from "@/api/request";
 
 let contactList = ref({} as ContactList);
-
 const contactListLoading = ref(false);
-
 const startContactListLoading = () => {
     contactListLoading.value = true;
 };
-
 const finishContactListLoading = () => {
     contactListLoading.value = false;
 };
-
 const fetchPersonContactList = async (personId: number) => {
     startContactListLoading();
 
     try {
         contactList.value = await fetchPersonContactListRequest(personId);
-
     } catch (error) {
         if (error instanceof InternalServerError) {
             showServerErrorNotification();

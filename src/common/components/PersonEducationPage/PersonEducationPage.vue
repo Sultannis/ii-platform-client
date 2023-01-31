@@ -8,37 +8,25 @@ const { fetchPersonEducationalInstitutions, educationalInstitutions, educational
 onBeforeMount(() => {
     fetchPersonEducationalInstitutions(selectedPersonId.value);
 });
-
 </script>
 
 <template>
-    <div class="institutions" v-if="!educationalInstitutionsLoading">
-    <EducationalInstitutionCard
-        v-for="educationalInstitution in educationalInstitutions"
-        :institution-name="educationalInstitution.institutionName"
-        :level-of-education="educationalInstitution.levelOfEducation"
-        :country="educationalInstitution.country"
-        :description="educationalInstitution.description"
-    />
-    </div>
-    <div class="institutions" v-else>
-        <div class="institutions__item-skeleton">
-            <div class="institutions__title-skeleton">
-                <a-skeleton active :paragraph="{ rows: 1 } "/>
-            </div>
-            <div class="institutions__description-skeleton">
+    <div class="institutions">
+        <template v-if="!educationalInstitutionsLoading">
+            <EducationalInstitutionCard
+                v-for="educationalInstitution in educationalInstitutions"
+                :institution-name="educationalInstitution.institutionName"
+                :level-of-education="educationalInstitution.levelOfEducation"
+                :country="educationalInstitution.country"
+                :description="educationalInstitution.description"
+            />
+        </template>
+        <template v-else>
+            <div class="institutions__item-skeleton">
                 <a-skeleton active :paragraph="{ rows: 2 } "/>
             </div>
-        </div>
-        <div class="institutions__item-skeleton">
-            <div class="institutions__title-skeleton">
-                <a-skeleton active :paragraph="{ rows: 1 } "/>
-            </div>
-            <div class="institutions__description-skeleton">
-                <a-skeleton active :paragraph="{ rows: 3 } "/>
-            </div>
-        </div>
-  </div>
+        </template>
+    </div>
 </template>
 
 <style scoped>

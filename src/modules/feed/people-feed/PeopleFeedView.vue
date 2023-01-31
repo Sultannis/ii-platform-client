@@ -36,7 +36,7 @@ watch(feedLoadingTriggerVisible, () => {
   <div class="feed">
     <PersonCard
       v-for="person in people"
-      :fist-name="person.firstName"
+      :first-name="person.firstName"
       :last-name="person.lastName"
       :occupation="person.occupation"
       :avatar-url="person.avatarUrl"

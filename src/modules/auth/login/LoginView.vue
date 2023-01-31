@@ -59,7 +59,7 @@ const handleFormSubmission = async () => {
 <template>
   <div class="login">
     <div class="login__top">
-      <div class="login__heading">Войти в аккаунт</div>
+      <div class="login__heading">Sign in</div>
       <a-form
         :model="form"
         validate-trigger="onBlur"
@@ -67,13 +67,13 @@ const handleFormSubmission = async () => {
         class="login__form"
         @keyup.enter="handleFormSubmission"
       >
-        <a-form-item v-bind="validateInfos.email" name="email" label="Почта">
+        <a-form-item v-bind="validateInfos.email" name="email" label="Email">
           <a-input v-model:value="form.email" />
         </a-form-item>
         <a-form-item
           v-bind="validateInfos.password"
           name="password"
-          label="Пароль"
+          label="Password"
           class="login__field"
         >
           <a-input-password v-model:value="form.password" />
@@ -83,13 +83,13 @@ const handleFormSubmission = async () => {
           @click="handleFormSubmission"
           class="login__button"
         >
-          Войти
+          Log in
         </CommonButton>
       </a-form>
     </div>
     <div class="login__bottom">
       <RouterLink to="/auth/register" class="login__link">
-        У меня нет аккаунта
+        No account? Create one
       </RouterLink>
     </div>
   </div>

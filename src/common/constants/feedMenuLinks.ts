@@ -1,17 +1,17 @@
 export const FEED_MENU_LINKS = [
   {
     iconClass: "bx-time",
-    title: "Новые",
+    title: "New",
     route: "/feed/new",
   },
   {
     iconClass: "bx-cool",
-    title: "Популярные",
+    title: "Popular",
     route: "/feed/popular",
   },
   {
     iconClass: "bx-face",
-    title: "Люди",
+    title: "People",
     route: "/feed/people",
   },
 ];

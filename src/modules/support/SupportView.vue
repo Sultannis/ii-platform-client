@@ -1,3 +1,3 @@
 <template>
-  <h1>Поддежка</h1>
+  <h1>Support</h1>
 </template>

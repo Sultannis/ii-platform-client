@@ -2,14 +2,13 @@
 import HotProfileCard from "@/layouts/DashboardLayout/components/HotProfileCard/HotProfileCard.vue";
 import { hotprofiles } from "@/common/composables/fetchHotprofilesList";
 import { openPersonModal } from "@/common/composables/personModalState";
-import { onBeforeMount, ref, watch } from "vue";
-import { useElementVisibility } from "@vueuse/core";
+
 </script>
 
 <template>
   <div class="list">
     <div class="list__header">
-      <div class="list__heading">Горячие профили</div>
+      <div class="list__heading">Hot profiles</div>
       <img
         src="@/assets/icons/fire-emoji.svg"
         alt="Hot emoji"

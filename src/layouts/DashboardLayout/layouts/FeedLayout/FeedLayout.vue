@@ -26,7 +26,7 @@ const displayAddButton = computed(() => {
         ]"
       >
         <i class="bx bx-plus feed__create-icon" />
-        Создать
+        Create
       </div>
     </div>
     <RouterView />

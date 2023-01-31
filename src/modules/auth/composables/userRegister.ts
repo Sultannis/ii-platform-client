@@ -42,13 +42,13 @@ const registerUser = async (form: RegisterUserDto) => {
   } catch (error) {
     if (error instanceof IncorrectDataError) {
       showErrorNotification(
-        "Неверные данные",
-        "Вы ввели неверный пароль. Пожалуйста, проверьте данные и попробуйте снова"
+        "Incorrect data",
+        "You entered the wrong password. Please check your details and try again"
       );
     } else if (error instanceof DbConcurrencyError) {
       showErrorNotification(
-        "Пользователь уже существует",
-        "Пользователь с такой почтой уже зарегистрирован"
+        "This user already exists",
+        "This email is already taken"
       );
     } else if (error instanceof InternalServerError) {
       showServerErrorNotification();

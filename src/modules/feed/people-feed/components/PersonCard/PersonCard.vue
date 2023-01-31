@@ -1,12 +1,29 @@
 <script setup lang="ts">
+import { string } from 'vue-types';
+
 const emit = defineEmits(["click"]);
 
 defineProps({
-  firstName: String,
-  lastName: String,
-  occupation: String,
-  interactionsCount: Number,
-  avatarUrl: String,
+  firstName: {
+    type: String,
+    required: true,
+  },
+  lastName: {
+    type: String,
+    required: true,
+  },
+  occupation: {
+    type: String,
+    required: false,
+  },
+  interactionsCount: {
+    type: Number,
+    required: false,
+  },
+  avatarUrl: {
+    type: String,
+    required: false,
+  },
 });
 
 const emitClick = () => {
@@ -36,7 +53,7 @@ const emitClick = () => {
     <div class="person__row">
       <div class="person__action">
         <i class="bx bx-conversation person__icon person__icon_margin-right" />
-        Написать
+        Chat
       </div>
       <div class="person__action">
         <i class="bx bx-bookmark person__icon" />
@@ -56,6 +73,7 @@ const emitClick = () => {
 
   display: flex;
   flex-direction: column;
+  transition-duration: 0.2s;
 }
 
 .person:hover {

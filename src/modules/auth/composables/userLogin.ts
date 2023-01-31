@@ -40,13 +40,13 @@ const loginUser = async (form: LoginUserDto) => {
   } catch (error) {
     if (error instanceof IncorrectDataError) {
       showErrorNotification(
-        "Неверные данные",
-        "Вы ввели неверный пароль. Пожалуйста, проверьте данные и попробуйте снова"
+        "Incorrect data",
+        "You entered the wrong password. Please check your details and try again"
       );
     } else if (error instanceof NotExistError) {
       showErrorNotification(
-        "Пользователь не существует",
-        "Пользователь с такой почтой не зарегистрирован"
+        "This user does not exist",
+        "User with this email is not registered"
       );
     } else if (error instanceof InternalServerError) {
       showServerErrorNotification();

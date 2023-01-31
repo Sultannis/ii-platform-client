@@ -2,7 +2,7 @@ export type WorkCompany = {
     id: number;
     userId: number;
     companyName: string;
-    description: string;
+    description?: string;
     position: string;
     country: string;
     startDate: string;

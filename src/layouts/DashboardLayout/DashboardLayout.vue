@@ -17,11 +17,11 @@ import { SIDEBAR_ACCOUNT_LINKS } from "@/common/constants/sidebarAccountLinks";
     <div class="dashboard__fixed">
       <div class="dashboard__left">
         <CommonNavigationSideBlock
-          heading="Основные"
+          heading="General"
           :links="SIDEBAR_NAVIGATION_LINKS"
         />
         <CommonNavigationSideBlock
-          heading="Аккаунт"
+          heading="Account"
           :links="SIDEBAR_ACCOUNT_LINKS"
         />
       </div>

@@ -11,18 +11,18 @@ defineProps({
   },
   country : {
     type: String,
-    reqauired: true,
+    required: true,
   },
   description: {
     type: String,
-    required: true,
+    required: false,
   },
 });
 
 </script>
 
 <template>
-  <div class="institutions__item">
+  <div class="institutions">
       <div class="institutions__title">
           {{ institutionName }} | {{ country }}
       </div>
@@ -36,7 +36,7 @@ defineProps({
 </template>
 
 <style scoped>
-.institutions__item {
+.institutions {
   margin-bottom: 10px;
   padding: 10px 20px;
   width: 100%;

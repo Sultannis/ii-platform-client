@@ -2,7 +2,7 @@ export type WorkCompanyDao = {
     id: number;
     user_id: number;
     company_name: string;
-    description: string;
+    description?: string;
     position: string;
     country: string;
     start_date: string;

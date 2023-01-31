@@ -1,14 +1,11 @@
 <script setup lang="ts">
 import { useAuthenticate } from "@/common/composables/authenticate";
-import { useUser } from "@/common/composables/user";
 import { useRouter } from "vue-router";
 import HeaderSearchInput from "@/layouts/DashboardLayout/components/HeaderSearchInput/HeaderSearchInput.vue";
 import { openUserModal } from "@/common/composables/userModalState";
 
 const router = useRouter();
-
 const { auth, logout } = useAuthenticate();
-
 const handleProfileClick = () => {
   if (auth.authToken) {
   } else {
@@ -41,10 +38,10 @@ const handleProfileClick = () => {
           </template>
           <template #content>
             <div class="popover__link" @click="openUserModal">
-              <i class="bx bx-user popover__link-icon" />Мой профиль
+              <i class="bx bx-user popover__link-icon" />My profile
             </div>
             <div class="popover__link" @click="logout">
-              <i class="bx bx-exit popover__link-icon" /> Выйти
+              <i class="bx bx-exit popover__link-icon" /> Log out
             </div>
           </template>
           <button

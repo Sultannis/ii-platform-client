@@ -78,7 +78,7 @@ const handleFormSubmission = async () => {
 <template>
   <div class="register">
     <div class="register__top">
-      <div class="register__heading">Создать аккаунт</div>
+      <div class="register__heading">Create account</div>
       <a-form
         :model="form"
         validate-trigger="onBlur"
@@ -86,18 +86,18 @@ const handleFormSubmission = async () => {
         class="register__form"
         @keyup.enter="handleFormSubmission"
       >
-        <a-form-item v-bind="validateInfos.firstName" label="Имя">
+        <a-form-item v-bind="validateInfos.firstName" label="First name">
           <a-input v-model:value="form.firstName" />
         </a-form-item>
-        <a-form-item v-bind="validateInfos.lastName" label="Фамилия">
+        <a-form-item v-bind="validateInfos.lastName" label="Last name">
           <a-input v-model:value="form.lastName" />
         </a-form-item>
-        <a-form-item v-bind="validateInfos.email" label="Почта">
+        <a-form-item v-bind="validateInfos.email" label="Email">
           <a-input v-model:value="form.email" />
         </a-form-item>
         <a-form-item
           v-bind="validateInfos.password"
-          label="Пароль"
+          label="Password"
           class="register__field"
         >
           <a-input-password v-model:value="form.password" />
@@ -107,13 +107,13 @@ const handleFormSubmission = async () => {
           @click="handleFormSubmission"
           class="register__button"
         >
-          Создать
+          Sign up
         </CommonButton>
       </a-form>
     </div>
     <div class="register__bottom">
       <RouterLink to="/auth/login" class="register__link">
-        У меня уже есть аккаунт
+        Already have an account? Sign in
       </RouterLink>
     </div>
   </div>

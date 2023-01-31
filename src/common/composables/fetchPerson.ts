@@ -26,7 +26,10 @@ const fetchPerson = async (personId: number) => {
     person.value = await fetchPersonRequest(personId);
   } catch (error) {
     if (error instanceof NotExistError) {
-      
+      showErrorNotification(
+        "This user does not exist",
+        "User with this email is not registered"
+      );
     } else if (error instanceof InternalServerError) {
       showServerErrorNotification();
     }

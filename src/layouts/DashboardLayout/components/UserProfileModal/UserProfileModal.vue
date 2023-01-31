@@ -3,7 +3,7 @@ import CommonModal from "@/common/components/CommonModal/CommonModal.vue";
 import CommonProfileImageUpload from "@/common/components/CommonProfileImageUpload/CommonProfileImageUpload.vue";
 import CommonMenuNavigation from "@/common/components/CommonMenuNavigation/CommonMenuNavigation.vue";
 import PersonCommonPage from "@/common/components/PersonCommonPage/PersonCommonPage.vue";
-import PersonProjectsPage from "@/common/components/PersonProjectsPage/PersonProjectsPage.vue";
+import PersonWorksPage from "@/common/components/PersonWorksPage/PersonWorksPage.vue";
 import { PROFILE_MENU_LINKS } from "@/common/constants/profileMenuLinks";
 import {
   personModalVisible,
@@ -65,8 +65,8 @@ const setSelectedLinkTitle = (title: string) => {
             <a-skeleton active :paragraphs="{ rows: 4 }" />
           </div>
 
-          <PersonCommonPage v-if="seletedLinkTitle == 'Общая'" />
-          <PersonProjectsPage v-if="seletedLinkTitle === 'Проекты'" />
+          <PersonCommonPage v-if="seletedLinkTitle == 'Common'" />
+          <PersonWorksPage v-if="seletedLinkTitle == 'Work'" />
         </div>
       </div>
     </div>
