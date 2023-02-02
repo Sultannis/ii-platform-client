@@ -20,16 +20,11 @@ onUpdated(() => {
   }
 });
 
-
 const seleсtedLinkTitle = ref("");
-
 const setSelectedLinkTitle = (title: string) => {
   seleсtedLinkTitle.value = title;
 };
-
 const { person, personFetchLoading, fetchPerson } = useFetchPerson();
-
-
 </script>
 
 
@@ -43,7 +38,9 @@ const { person, personFetchLoading, fetchPerson } = useFetchPerson();
       <template v-if="!personFetchLoading">
         <div class="person__left">
           <div class="person__left-top">
-            <CommonProfileImageUpload />
+            <CommonProfileImageUpload
+              :avatar-url="person.avatarUrl"
+             />
             <div class="person__name"> {{ person.firstName }} {{ person.lastName }} </div>
             <div class="person__username"> {{ person.nickName }} </div>
             <div class="person__bio">

@@ -8,4 +8,4 @@ export type ContactListDao = {
     telegram_nickname?: string;
     created_at: string;
     updated_at: string;
-}
+};

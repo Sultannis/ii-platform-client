@@ -1,8 +1,13 @@
 <script setup lang="ts">
 import { reactive, ref } from "vue";
-import { useFetchPerson } from "@/common/composables/fetchPerson";
 
-const { person } = useFetchPerson();
+defineProps({
+  avatarUrl: {
+    type: String,
+    required: false,
+  },
+});
+
 const fileList = reactive([""]);
 const imageUrl = ref("/url");
 const loading = ref(false);
@@ -29,14 +34,14 @@ const handleChange = () => {
   >
     <img
       v-if="imageUrl"
-      :src= "person.avatarUrl"
+      :src= "avatarUrl"
       alt="avatar"
       class="uploader__image"
     />
     <div v-else>
       <loading-outlined v-if="loading"></loading-outlined>
       <plus-outlined v-else></plus-outlined>
-      <div class="ant-upload-text">Загрузить изображение</div>
+      <div class="ant-upload-text">Upload image</div>
     </div>
   </a-upload>
 </template>

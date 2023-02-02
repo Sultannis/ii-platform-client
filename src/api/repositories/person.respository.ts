@@ -8,7 +8,7 @@ import { mapMetaDaoToEntity } from "../mappers/metaMapper";
 import { mapPersonDaoToEntity } from "../mappers/personMapper";
 import request from "../request";
 
-export const fetchPerson = (personId: number) =>
+export const fetchPerson = (personId: number): Promise<Person> =>
   request.get(`/users/${personId}`).then((response) => {
     const personDao = response.data.user as PersonDao;
 

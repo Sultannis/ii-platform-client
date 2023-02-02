@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { string } from 'vue-types';
-
 const emit = defineEmits(["click"]);
 
 defineProps({

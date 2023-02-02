@@ -6,6 +6,6 @@ export type EducationalInstitution = {
     levelOfEducation: string;
     country: string;
     startDate: string;
-    endDate?: string;
+    endDate: string;
     createdAt: string;
 };

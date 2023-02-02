@@ -1,6 +1,6 @@
 import type { ContactList } from "@/api/entities/ContactList";
 import { fetchPersonContactList as fetchPersonContactListRequest } from "@/api/repositories/contact-lists.repository";
-import { reactive, ref } from "vue";
+import { ref } from "vue";
 import { showServerErrorNotification } from "@/common/helpers/notifications";
 import { InternalServerError } from "@/api/request";
 
