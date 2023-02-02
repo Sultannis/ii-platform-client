@@ -1,21 +1,21 @@
 <script setup lang="ts">
-import CommonModal from "@/common/components/CommonModal/CommonModal.vue";
-import CommonProfileImageUpload from "@/common/components/CommonProfileImageUpload/CommonProfileImageUpload.vue";
-import CommonMenuNavigation from "@/common/components/CommonMenuNavigation/CommonMenuNavigation.vue";
-import PersonCommonPage from "@/common/components/PersonCommonPage/PersonCommonPage.vue";
-import PersonWorksPage from "../PersonWorksPage/PersonWorksPage.vue";
-import { PROFILE_MENU_LINKS } from "@/common/constants/profileMenuLinks";
+import CommonModal from '@/common/components/CommonModal/CommonModal.vue'
+import CommonProfileImageUpload from '@/common/components/CommonProfileImageUpload/CommonProfileImageUpload.vue'
+import CommonMenuNavigation from '@/common/components/CommonMenuNavigation/CommonMenuNavigation.vue'
+import PersonCommonPage from '@/common/components/PersonCommonPage/PersonCommonPage.vue'
+import PersonWorksPage from '../PersonWorksPage/PersonWorksPage.vue'
+import { PROFILE_MENU_LINKS } from '@/common/constants/profileMenuLinks'
 import {
   userModalVisible,
   closeUserModal,
-} from "@/common/composables/userModalState";
-import { ref } from "vue";
+} from '@/common/composables/userModalState'
+import { ref } from 'vue'
 
-const seletedLinkTitle = ref("");
+const seletedLinkTitle = ref('')
 
 const setSelectedLinkTitle = (title: string) => {
-  seletedLinkTitle.value = title;
-};
+  seletedLinkTitle.value = title
+}
 </script>
 
 <template>
@@ -26,13 +26,29 @@ const setSelectedLinkTitle = (title: string) => {
   >
     <div class="person">
       <div class="person__left">
-        <div v-if="false" class="person__left-loader">
-          <a-skeleton-avatar active avatar :size="260" />
-          <a-skeleton active :paragraph="{ rows: 4 }" />
-          <a-skeleton active :paragraph="{ rows: 2 }" />
+        <div
+          v-if="false"
+          class="person__left-loader"
+        >
+          <a-skeleton-avatar
+            active
+            avatar
+            :size="260"
+          />
+          <a-skeleton
+            active
+            :paragraph="{ rows: 4 }"
+          />
+          <a-skeleton
+            active
+            :paragraph="{ rows: 2 }"
+          />
         </div>
 
-        <div v-else class="person__left-top">
+        <div
+          v-else
+          class="person__left-top"
+        >
           <CommonProfileImageUpload />
           <div class="person__name">Sultan Mustafin</div>
           <div class="person__username">@ its.sultan</div>
@@ -60,9 +76,18 @@ const setSelectedLinkTitle = (title: string) => {
           @click="setSelectedLinkTitle"
         />
         <div class="person__content">
-          <div v-if="false" class="person__content-loader">
-            <a-skeleton active :paragraphs="{ rows: 4 }" />
-            <a-skeleton active :paragraphs="{ rows: 4 }" />
+          <div
+            v-if="false"
+            class="person__content-loader"
+          >
+            <a-skeleton
+              active
+              :paragraphs="{ rows: 4 }"
+            />
+            <a-skeleton
+              active
+              :paragraphs="{ rows: 4 }"
+            />
           </div>
 
           <PersonCommonPage v-if="seletedLinkTitle == 'Common'" />

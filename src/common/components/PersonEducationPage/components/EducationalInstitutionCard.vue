@@ -1,15 +1,14 @@
 <script setup lang="ts">
-
 defineProps({
   institutionName: {
     type: String,
     required: true,
   },
-  levelOfEducation : {
+  levelOfEducation: {
     type: String,
     required: true,
   },
-  country : {
+  country: {
     type: String,
     required: true,
   },
@@ -17,21 +16,18 @@ defineProps({
     type: String,
     required: false,
   },
-});
-
+})
 </script>
 
 <template>
   <div class="institutions">
-      <div class="institutions__title">
-          {{ institutionName }} | {{ country }}
-      </div>
-      <div class="institutions__degree">
-          {{ levelOfEducation }}
-      </div>
-      <div class="institutions__description">
-          {{ description }}
-      </div>
+    <div class="institutions__title">{{ institutionName }} | {{ country }}</div>
+    <div class="institutions__degree">
+      {{ levelOfEducation }}
+    </div>
+    <div class="institutions__description">
+      {{ description }}
+    </div>
   </div>
 </template>
 

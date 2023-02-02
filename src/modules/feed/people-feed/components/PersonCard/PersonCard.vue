@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const emit = defineEmits(["click"]);
+const emit = defineEmits(['click'])
 
 defineProps({
   firstName: {
@@ -22,16 +22,23 @@ defineProps({
     type: String,
     required: false,
   },
-});
+})
 
 const emitClick = () => {
-  emit("click");
-};
+  emit('click')
+}
 </script>
 
 <template>
-  <div class="person" @click="emitClick">
-    <img :src= "avatarUrl" alt="" class="person__image" />
+  <div
+    class="person"
+    @click="emitClick"
+  >
+    <img
+      :src="avatarUrl"
+      alt=""
+      class="person__image"
+    />
     <div class="person__row">
       <div class="person__info">
         <div class="person__name">{{ firstName }} {{ lastName }}</div>
@@ -39,7 +46,10 @@ const emitClick = () => {
           {{ occupation }}
         </div>
       </div>
-      <a-tooltip placement="top" color="rgba(68, 56, 202, 0.684)">
+      <a-tooltip
+        placement="top"
+        color="rgba(68, 56, 202, 0.684)"
+      >
         <template #title>
           <span>Количество взаимодействии</span>
         </template>

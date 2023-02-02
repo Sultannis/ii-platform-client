@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import WorkCompanyCard from "./components/WorkCompanyCard.vue";
-import { useFetchWorkCompany } from "./composables/fetchWorkCompanies";
-import { onBeforeMount } from "vue";
-import { selectedPersonId } from "@/common/composables/personModalState";
+import WorkCompanyCard from './components/WorkCompanyCard.vue'
+import { useFetchWorkCompany } from './composables/fetchWorkCompanies'
+import { onBeforeMount } from 'vue'
+import { selectedPersonId } from '@/common/composables/personModalState'
 
-const { fetchPersonWorkCompanies, workCompanies, workCompaniesLoading } = useFetchWorkCompany();
+const { fetchPersonWorkCompanies, workCompanies, workCompaniesLoading } =
+  useFetchWorkCompany()
 onBeforeMount(() => {
-  fetchPersonWorkCompanies(selectedPersonId.value);
-});
-
+  fetchPersonWorkCompanies(selectedPersonId.value)
+})
 </script>
 
 <template>
@@ -24,10 +24,16 @@ onBeforeMount(() => {
     <template v-else>
       <div class="works__item-skeleton">
         <div class="works__title-skeleton">
-          <a-skeleton active :paragraph="{ rows: 1 } "/>
+          <a-skeleton
+            active
+            :paragraph="{ rows: 1 }"
+          />
         </div>
         <div class="works__description-skeleton">
-          <a-skeleton active :paragraph="{ rows: 2 } "/>
+          <a-skeleton
+            active
+            :paragraph="{ rows: 2 }"
+          />
         </div>
       </div>
     </template>
@@ -60,5 +66,4 @@ onBeforeMount(() => {
   font-weight: 400;
   font-size: 13px;
 }
-
 </style>

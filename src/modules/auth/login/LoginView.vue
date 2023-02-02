@@ -1,59 +1,59 @@
 <script setup lang="ts">
-import { useUserLogin } from "@/modules/auth/composables/userLogin";
-import { reactive } from "vue";
-import { useRouter } from "vue-router";
-import CommonButton from "@/common/components/CommonButton/CommonButton.vue";
-import { Form } from "ant-design-vue";
+import { useUserLogin } from '@/modules/auth/composables/userLogin'
+import { reactive } from 'vue'
+import { useRouter } from 'vue-router'
+import CommonButton from '@/common/components/CommonButton/CommonButton.vue'
+import { Form } from 'ant-design-vue'
 
-const { userLoginLoading, loginUser } = useUserLogin();
-const useForm = Form.useForm;
+const { userLoginLoading, loginUser } = useUserLogin()
+const useForm = Form.useForm
 
 const rules = reactive({
   email: [
-    { type: "email", message: "Почта не валидна", trigger: "blur" },
-    { required: true, message: "Почта должна быть заполнена", trigger: "blur" },
+    { type: 'email', message: 'Почта не валидна', trigger: 'blur' },
+    { required: true, message: 'Почта должна быть заполнена', trigger: 'blur' },
     {
       max: 255,
-      message: "Почта должна быть короче ${max} символов",
-      trigger: "blur",
+      message: 'Почта должна быть короче ${max} символов',
+      trigger: 'blur',
     },
   ],
   password: [
-    { required: true, message: "Пароль должно быть заполнен", trigger: "blur" },
+    { required: true, message: 'Пароль должно быть заполнен', trigger: 'blur' },
     {
       min: 6,
       max: 255,
-      message: "Пароль должен быть длиннее ${min} и короче ${max}",
-      trigger: "blur",
+      message: 'Пароль должен быть длиннее ${min} и короче ${max}',
+      trigger: 'blur',
     },
   ],
-});
+})
 
 const form = reactive({
-  email: "",
-  password: "",
-});
+  email: '',
+  password: '',
+})
 
-const { resetFields, validate, validateInfos } = useForm(form, rules);
+const { resetFields, validate, validateInfos } = useForm(form, rules)
 
-const router = useRouter();
+const router = useRouter()
 const navigateToApp = () => {
-  router.push({ path: "/feed/new" });
-};
+  router.push({ path: '/feed/new' })
+}
 
 const clearForm = () => {
-  form.email = "";
-  form.password = "";
-  setTimeout(() => resetFields(), 0);
-};
+  form.email = ''
+  form.password = ''
+  setTimeout(() => resetFields(), 0)
+}
 
 const handleFormSubmission = async () => {
-  await validate();
+  await validate()
   loginUser(form).then(() => {
-    navigateToApp();
-    clearForm();
-  });
-};
+    navigateToApp()
+    clearForm()
+  })
+}
 </script>
 
 <template>
@@ -67,7 +67,11 @@ const handleFormSubmission = async () => {
         class="login__form"
         @keyup.enter="handleFormSubmission"
       >
-        <a-form-item v-bind="validateInfos.email" name="email" label="Email">
+        <a-form-item
+          v-bind="validateInfos.email"
+          name="email"
+          label="Email"
+        >
           <a-input v-model:value="form.email" />
         </a-form-item>
         <a-form-item
@@ -88,7 +92,10 @@ const handleFormSubmission = async () => {
       </a-form>
     </div>
     <div class="login__bottom">
-      <RouterLink to="/auth/register" class="login__link">
+      <RouterLink
+        to="/auth/register"
+        class="login__link"
+      >
         No account? Create one
       </RouterLink>
     </div>

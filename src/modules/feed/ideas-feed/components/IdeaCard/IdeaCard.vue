@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import CommonTag from "@/common/components/CommonTag/CommonTag.vue";
+import CommonTag from '@/common/components/CommonTag/CommonTag.vue'
 defineProps({
   title: {
     type: String,
@@ -17,7 +17,7 @@ defineProps({
     type: String,
     required: false,
   },
-});
+})
 </script>
 
 <template>
@@ -48,7 +48,11 @@ defineProps({
       <CommonTag>иновации</CommonTag>
       <CommonTag>иновации</CommonTag>
     </div>
-    <img src="@/assets/images/idea image.png" alt="" class="idea__image" />
+    <img
+      src="@/assets/images/idea image.png"
+      alt=""
+      class="idea__image"
+    />
     <footer class="idea__footer">
       <div class="idea__action">
         <i class="bx bx-like idea__action-icon" />

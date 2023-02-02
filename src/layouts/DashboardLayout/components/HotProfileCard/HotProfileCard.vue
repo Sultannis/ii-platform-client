@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const emit = defineEmits(["click"]);
+const emit = defineEmits(['click'])
 
 defineProps({
   name: {
@@ -14,17 +14,23 @@ defineProps({
     type: String,
     required: true,
   },
-});
+})
 
 const emitClick = () => {
-  emit("click");
-};
+  emit('click')
+}
 </script>
 
 <template>
-  <div class="card" @click="emitClick">
+  <div
+    class="card"
+    @click="emitClick"
+  >
     <div class="card__left">
-      <img src="@/assets/images/profile-photo.jpg" class="card__image" />
+      <img
+        src="@/assets/images/profile-photo.jpg"
+        class="card__image"
+      />
     </div>
     <div class="card__name">{{ name }}</div>
     <div class="card__like-number">{{ interactionsCount }}</div>

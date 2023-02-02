@@ -1,28 +1,31 @@
 <script setup lang="ts">
-const emit = defineEmits(["closeClick"]);
+const emit = defineEmits(['closeClick'])
 
 const emitCloseClick = () => {
-  emit("closeClick");
-};
+  emit('closeClick')
+}
 
 const handleClick = () => {
-  emitCloseClick();
-};
+  emitCloseClick()
+}
 
 defineProps({
   width: {
     type: String,
-    default: "800",
+    default: '800',
   },
   height: {
     type: String,
-    default: "600",
+    default: '600',
   },
-});
+})
 </script>
 
 <template>
-  <div class="modal__background" @click.self="handleClick">
+  <div
+    class="modal__background"
+    @click.self="handleClick"
+  >
     <div
       :style="{
         width: width + 'px',
@@ -30,7 +33,10 @@ defineProps({
       }"
       class="modal"
     >
-      <i class="bx bx-x modal__exit" @click="emitCloseClick" />
+      <i
+        class="bx bx-x modal__exit"
+        @click="emitCloseClick"
+      />
       <slot />
     </div>
   </div>

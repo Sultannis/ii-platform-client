@@ -1,25 +1,28 @@
 <script setup lang="ts">
-import PersonCard from "@/modules/feed/people-feed/components/PersonCard/PersonCard.vue";
+import PersonCard from '@/modules/feed/people-feed/components/PersonCard/PersonCard.vue'
 import {
   fetchInitialPeopleChunk,
   fetchNextPeopleChunkAndConcat,
   fetchPeopleQueryParams,
   initialChunkLoaded,
   people,
-} from "@/modules/feed/people-feed/composable/fetchFeedPeople";
-import { openPersonModal, setSelectedPersonId } from "@/common/composables/personModalState";
-import { onBeforeMount, ref, watch } from "vue";
-import { useElementVisibility } from "@vueuse/core";
+} from '@/modules/feed/people-feed/composable/fetchFeedPeople'
+import {
+  openPersonModal,
+  setSelectedPersonId,
+} from '@/common/composables/personModalState'
+import { onBeforeMount, ref, watch } from 'vue'
+import { useElementVisibility } from '@vueuse/core'
 
-const feedLoadingTrigger = ref(null);
-const feedLoadingTriggerVisible = useElementVisibility(feedLoadingTrigger);
+const feedLoadingTrigger = ref(null)
+const feedLoadingTriggerVisible = useElementVisibility(feedLoadingTrigger)
 
-onBeforeMount(fetchInitialPeopleChunk);
+onBeforeMount(fetchInitialPeopleChunk)
 
 const handlePersonCardClick = (personId: number) => {
-  setSelectedPersonId(personId);
+  setSelectedPersonId(personId)
   openPersonModal()
-};
+}
 
 watch(feedLoadingTriggerVisible, () => {
   if (
@@ -27,9 +30,9 @@ watch(feedLoadingTriggerVisible, () => {
     initialChunkLoaded.value &&
     people.length < fetchPeopleQueryParams.total
   ) {
-    fetchNextPeopleChunkAndConcat();
+    fetchNextPeopleChunkAndConcat()
   }
-});
+})
 </script>
 
 <template>
@@ -43,7 +46,10 @@ watch(feedLoadingTriggerVisible, () => {
       :interactions-count="person.interactionsCount"
       @click="handlePersonCardClick(person.id)"
     />
-    <div ref="feedLoadingTrigger" class="feed__loading-trigger" />
+    <div
+      ref="feedLoadingTrigger"
+      class="feed__loading-trigger"
+    />
   </div>
 </template>
 

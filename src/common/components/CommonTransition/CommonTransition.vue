@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import type { PropType } from "vue";
+import type { PropType } from 'vue'
 
 defineProps({
   speed: {
-    type: String as PropType<"normal" | "fast">,
-    default: "normal",
+    type: String as PropType<'normal' | 'fast'>,
+    default: 'normal',
   },
-});
+})
 </script>
 
 <template>

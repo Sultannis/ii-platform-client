@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import HotProfileCard from "@/layouts/DashboardLayout/components/HotProfileCard/HotProfileCard.vue";
-import { hotprofiles } from "@/common/composables/fetchHotprofilesList";
-import { openPersonModal } from "@/common/composables/personModalState";
-
+import HotProfileCard from '@/layouts/DashboardLayout/components/HotProfileCard/HotProfileCard.vue'
+import { hotprofiles } from '@/common/composables/fetchHotprofilesList'
+import { openPersonModal } from '@/common/composables/personModalState'
 </script>
 
 <template>

@@ -1,15 +1,16 @@
 <script setup lang="ts">
-import CommonTag from "@/common/components/CommonTag/CommonTag.vue";
-import { useFetchPersonContactList } from "@/common/composables/fetchContactList";
-import { onBeforeMount } from "vue";
-import { selectedPersonId } from "@/common/composables/personModalState";
-import { useFetchPerson } from "@/common/composables/fetchPerson";
+import CommonTag from '@/common/components/CommonTag/CommonTag.vue'
+import { useFetchPersonContactList } from '@/common/composables/fetchContactList'
+import { onBeforeMount } from 'vue'
+import { selectedPersonId } from '@/common/composables/personModalState'
+import { useFetchPerson } from '@/common/composables/fetchPerson'
 
-const { person } = useFetchPerson();
-const { contactList, fetchPersonContactList, contactListLoading } = useFetchPersonContactList();
+const { person } = useFetchPerson()
+const { contactList, fetchPersonContactList, contactListLoading } =
+  useFetchPersonContactList()
 onBeforeMount(() => {
-  fetchPersonContactList(selectedPersonId.value);
-});
+  fetchPersonContactList(selectedPersonId.value)
+})
 </script>
 
 <template>
@@ -31,28 +32,64 @@ onBeforeMount(() => {
     </div>
     <div class="common__item">
       <div class="common__title">Contacts</div>
-      <div class="common__contacts" v-if="!contactListLoading">
-        <div class="common__contacts-item" v-if="contactList.telegramNickname">
-          <i class="bx bxl-telegram common__icon" /> 
+      <div
+        class="common__contacts"
+        v-if="!contactListLoading"
+      >
+        <div
+          class="common__contacts-item"
+          v-if="contactList.telegramNickname"
+        >
+          <i class="bx bxl-telegram common__icon" />
           {{ contactList.telegramNickname }}
         </div>
-        <div class="common__contacts-item" v-if="contactList.linkedinLink">
-          <i class="bx bxl-linkedin-square common__icon" /> 
-          <a :href="contactList.linkedinLink" target="_blank" class="common__link">{{ contactList.linkedinLink }}</a>
+        <div
+          class="common__contacts-item"
+          v-if="contactList.linkedinLink"
+        >
+          <i class="bx bxl-linkedin-square common__icon" />
+          <a
+            :href="contactList.linkedinLink"
+            target="_blank"
+            class="common__link"
+            >{{ contactList.linkedinLink }}</a
+          >
         </div>
-        <div class="common__contacts-item" v-if="contactList.githubLink">
-          <i class='bx bxl-github common__icon' /> 
-          <a :href="contactList.githubLink" target="_blank" class="common__link">{{ contactList.githubLink }}</a>
+        <div
+          class="common__contacts-item"
+          v-if="contactList.githubLink"
+        >
+          <i class="bx bxl-github common__icon" />
+          <a
+            :href="contactList.githubLink"
+            target="_blank"
+            class="common__link"
+            >{{ contactList.githubLink }}</a
+          >
         </div>
-        <div class="common__contacts-item" v-if="contactList.email">
-          <i class='bx bxs-envelope common__icon' /> {{ contactList.email }}
+        <div
+          class="common__contacts-item"
+          v-if="contactList.email"
+        >
+          <i class="bx bxs-envelope common__icon" /> {{ contactList.email }}
         </div>
-        <div class="common__contacts-item" v-if="contactList.phoneNumber">
-          <i class='bx bxs-phone-call common__icon'/> {{contactList.phoneNumber}}
+        <div
+          class="common__contacts-item"
+          v-if="contactList.phoneNumber"
+        >
+          <i class="bx bxs-phone-call common__icon" />
+          {{ contactList.phoneNumber }}
         </div>
       </div>
-      <div class="common__contacts-skeleton" v-else>
-        <a-skeleton active :paragraph="{ rows: 4 }" :title="false"/>
+      <div
+        class="common__contacts-skeleton"
+        v-else
+      >
+        <a-skeleton
+          active
+          :paragraph="{ rows: 4 }"
+          :title="false"
+        />
       </div>
     </div>
   </div>

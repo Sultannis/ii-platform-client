@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 defineProps({
   companyName: {
     type: String,
@@ -13,7 +12,7 @@ defineProps({
     type: String,
     required: false,
   },
-});
+})
 </script>
 
 <template>

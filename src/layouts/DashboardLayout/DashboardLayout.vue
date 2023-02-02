@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import DashboardHeader from "@/layouts/DashboardLayout/components/DashboardHeader/DashboardHeader.vue";
-import CommonNavigationSideBlock from "@/common/components/CommonNavigationSideBlock/CommonNavigationSideBlock.vue";
-import HotProfiles from "@/layouts/DashboardLayout/components/HotProfiles/HotProfiles.vue";
-import CommonPersonModal from "@/common/components/CommonPersonModal/CommonPersonModal.vue";
-import CommonUserModal from "@/common/components/CommonUserModal/CommonUserModal.vue";
-import { SIDEBAR_NAVIGATION_LINKS } from "@/common/constants/sidebarNavigationLinks";
-import { SIDEBAR_ACCOUNT_LINKS } from "@/common/constants/sidebarAccountLinks";
+import DashboardHeader from '@/layouts/DashboardLayout/components/DashboardHeader/DashboardHeader.vue'
+import CommonNavigationSideBlock from '@/common/components/CommonNavigationSideBlock/CommonNavigationSideBlock.vue'
+import HotProfiles from '@/layouts/DashboardLayout/components/HotProfiles/HotProfiles.vue'
+import CommonPersonModal from '@/common/components/CommonPersonModal/CommonPersonModal.vue'
+import CommonUserModal from '@/common/components/CommonUserModal/CommonUserModal.vue'
+import { SIDEBAR_NAVIGATION_LINKS } from '@/common/constants/sidebarNavigationLinks'
+import { SIDEBAR_ACCOUNT_LINKS } from '@/common/constants/sidebarAccountLinks'
 </script>
 
 <template>

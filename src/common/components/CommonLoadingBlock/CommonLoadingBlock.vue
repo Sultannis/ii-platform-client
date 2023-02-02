@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed } from 'vue'
 
 const props = defineProps({
   indicatorSize: {
@@ -10,22 +10,28 @@ const props = defineProps({
     type: Number,
     default: 80,
   },
-});
+})
 
 const blockStyle = computed(() => ({
   height: `${props.blockHeight}px`,
-}));
+}))
 
 const indicatorStyle = computed(() => ({
   height: `${props.indicatorSize}px`,
   width: `${props.indicatorSize}px`,
-  "--indicatorSize": `${props.indicatorSize}px`,
-}));
+  '--indicatorSize': `${props.indicatorSize}px`,
+}))
 </script>
 
 <template>
-  <div class="loading" :style="blockStyle">
-    <div class="loading__indicator" :style="indicatorStyle"></div>
+  <div
+    class="loading"
+    :style="blockStyle"
+  >
+    <div
+      class="loading__indicator"
+      :style="indicatorStyle"
+    ></div>
   </div>
 </template>
 
@@ -47,7 +53,7 @@ const indicatorStyle = computed(() => ({
 
 .loading__indicator::after,
 .loading__indicator::before {
-  content: "";
+  content: '';
   box-sizing: border-box;
   width: var(--indicatorSize);
   height: var(--indicatorSize);

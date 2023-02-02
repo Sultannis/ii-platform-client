@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { PropType } from "vue";
+import type { PropType } from 'vue'
 
 defineProps({
   disabled: {
@@ -15,17 +15,17 @@ defineProps({
     default: false,
   },
   type: {
-    type: String as PropType<"primary" | "secondary" | "cancel">,
-    default: "primary",
+    type: String as PropType<'primary' | 'secondary' | 'cancel'>,
+    default: 'primary',
   },
   loading: {
     type: Boolean,
   },
   leftIcon: {
     type: String,
-    default: "",
+    default: '',
   },
-});
+})
 </script>
 
 <template>
@@ -53,7 +53,10 @@ defineProps({
       :class="['button__left-icon', 'bx', leftIcon]"
       data-test="common-button-left-icon"
     />
-    <span class="button__content" data-test="button-content">
+    <span
+      class="button__content"
+      data-test="button-content"
+    >
       <slot />
     </span>
   </button>
@@ -129,7 +132,7 @@ defineProps({
 }
 
 .button_loading::after {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;

@@ -1,32 +1,31 @@
 <script setup lang="ts">
-import CommonModal from "@/common/components/CommonModal/CommonModal.vue";
-import CommonProfileImageUpload from "@/common/components/CommonProfileImageUpload/CommonProfileImageUpload.vue";
-import CommonMenuNavigation from "@/common/components/CommonMenuNavigation/CommonMenuNavigation.vue";
-import PersonCommonPage from "@/common/components/PersonCommonPage/PersonCommonPage.vue";
-import PersonWorksPage from "../PersonWorksPage/PersonWorksPage.vue";
-import PersonEducationPage from "../PersonEducationPage/PersonEducationPage.vue";
-import { PROFILE_MENU_LINKS } from "@/common/constants/profileMenuLinks";
+import CommonModal from '@/common/components/CommonModal/CommonModal.vue'
+import CommonProfileImageUpload from '@/common/components/CommonProfileImageUpload/CommonProfileImageUpload.vue'
+import CommonMenuNavigation from '@/common/components/CommonMenuNavigation/CommonMenuNavigation.vue'
+import PersonCommonPage from '@/common/components/PersonCommonPage/PersonCommonPage.vue'
+import PersonWorksPage from '../PersonWorksPage/PersonWorksPage.vue'
+import PersonEducationPage from '../PersonEducationPage/PersonEducationPage.vue'
+import { PROFILE_MENU_LINKS } from '@/common/constants/profileMenuLinks'
 import {
   personModalVisible,
   closePersonModal,
   selectedPersonId,
-} from "@/common/composables/personModalState";
-import { onUpdated, ref } from "vue";
-import { useFetchPerson } from "@/common/composables/fetchPerson";
+} from '@/common/composables/personModalState'
+import { onUpdated, ref } from 'vue'
+import { useFetchPerson } from '@/common/composables/fetchPerson'
 
 onUpdated(() => {
-  if(personModalVisible.value) {
-    fetchPerson(selectedPersonId.value).catch(closePersonModal);
+  if (personModalVisible.value) {
+    fetchPerson(selectedPersonId.value).catch(closePersonModal)
   }
-});
+})
 
-const seleсtedLinkTitle = ref("");
+const seleсtedLinkTitle = ref('')
 const setSelectedLinkTitle = (title: string) => {
-  seleсtedLinkTitle.value = title;
-};
-const { person, personFetchLoading, fetchPerson } = useFetchPerson();
+  seleсtedLinkTitle.value = title
+}
+const { person, personFetchLoading, fetchPerson } = useFetchPerson()
 </script>
-
 
 <template>
   <CommonModal
@@ -38,20 +37,26 @@ const { person, personFetchLoading, fetchPerson } = useFetchPerson();
       <template v-if="!personFetchLoading">
         <div class="person__left">
           <div class="person__left-top">
-            <CommonProfileImageUpload
-              :avatar-url="person.avatarUrl"
-             />
-            <div class="person__name"> {{ person.firstName }} {{ person.lastName }} </div>
-            <div class="person__username"> {{ person.nickName }} </div>
+            <CommonProfileImageUpload :avatar-url="person.avatarUrl" />
+            <div class="person__name">
+              {{ person.firstName }} {{ person.lastName }}
+            </div>
+            <div class="person__username">{{ person.nickName }}</div>
             <div class="person__bio">
               <i class="bx bx-info-circle person__bio-icon" /> {{ person.bio }}
             </div>
           </div>
-          <button v-if="false" class="person__button person__button_delete">
+          <button
+            v-if="false"
+            class="person__button person__button_delete"
+          >
             <i class="bx bx-user-minus person__icon" />
             Delete from contacts
           </button>
-          <button v-else class="person__button person__button_add">
+          <button
+            v-else
+            class="person__button person__button_add"
+          >
             <i class="bx bx-user-plus person__icon" />
             Add to contacts
           </button>
@@ -64,23 +69,43 @@ const { person, personFetchLoading, fetchPerson } = useFetchPerson();
           <div class="person__content">
             <PersonCommonPage v-if="seleсtedLinkTitle == 'Common'" />
             <PersonWorksPage v-if="seleсtedLinkTitle == 'Work'" />
-            <PersonEducationPage v-if="seleсtedLinkTitle == 'Education'"/>
+            <PersonEducationPage v-if="seleсtedLinkTitle == 'Education'" />
           </div>
         </div>
       </template>
       <template v-else>
         <div class="person__left-skeleton">
-          <a-skeleton-avatar active avatar :size="260" />
-          <a-skeleton active :paragraph="{ rows: 4 }" />
-          <a-skeleton active :paragraph="{ rows: 2 }" />
+          <a-skeleton-avatar
+            active
+            avatar
+            :size="260"
+          />
+          <a-skeleton
+            active
+            :paragraph="{ rows: 4 }"
+          />
+          <a-skeleton
+            active
+            :paragraph="{ rows: 2 }"
+          />
         </div>
         <div class="person__right">
           <div class="person__nav-skeleton">
-            <a-skeleton active :paragraph="{ rows: 1 }" :title="false"/>
+            <a-skeleton
+              active
+              :paragraph="{ rows: 1 }"
+              :title="false"
+            />
           </div>
           <div class="person__content-skeleton">
-            <a-skeleton active :paragraphs="{ rows: 4 }" />
-            <a-skeleton active :paragraphs="{ rows: 4 }" />
+            <a-skeleton
+              active
+              :paragraphs="{ rows: 4 }"
+            />
+            <a-skeleton
+              active
+              :paragraphs="{ rows: 4 }"
+            />
           </div>
         </div>
       </template>
