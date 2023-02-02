@@ -1,23 +1,23 @@
 <script setup lang="ts">
-import { reactive, ref } from 'vue'
+import { reactive, ref } from 'vue';
 
 defineProps({
   avatarUrl: {
     type: String,
     required: false,
   },
-})
+});
 
-const fileList = reactive([''])
-const imageUrl = ref('/url')
-const loading = ref(false)
+const fileList = reactive(['']);
+const imageUrl = ref('/url');
+const loading = ref(false);
 
 const beforeUpload = () => {
-  console.log('Upload')
-}
+  console.log('Upload');
+};
 const handleChange = () => {
-  console.log('Change')
-}
+  console.log('Change');
+};
 </script>
 
 <template>

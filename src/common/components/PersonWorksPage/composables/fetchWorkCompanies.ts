@@ -1,7 +1,7 @@
-import type { WorkCompany } from "@/api/entities/WorkCompany";
-import { fetchPersonWorkCompaniesRequest } from "@/api/repositories/work-companies.repository";
-import { reactive, ref, type Ref } from "vue";
-import { showServerErrorNotification } from "@/common/helpers/notifications";
+import type { WorkCompany } from '@/api/entities/WorkCompany';
+import { fetchPersonWorkCompaniesRequest } from '@/api/repositories/work-companies.repository';
+import { reactive, ref, type Ref } from 'vue';
+import { showServerErrorNotification } from '@/common/helpers/notifications';
 
 let workCompanies: WorkCompany[] = reactive([]);
 let workCompaniesLoading: Ref<Boolean> = ref(false);
@@ -34,8 +34,8 @@ const fetchPersonWorkCompanies = async (personId: number) => {
   }
 };
 
-export const useFetchWorkCompany = () => ({ 
-  workCompaniesLoading, 
-  workCompanies, 
-  fetchPersonWorkCompanies, 
+export const useFetchWorkCompany = () => ({
+  workCompaniesLoading,
+  workCompanies,
+  fetchPersonWorkCompanies,
 });

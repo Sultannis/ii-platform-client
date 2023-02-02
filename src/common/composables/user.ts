@@ -1,5 +1,5 @@
-import { reactive } from "vue";
-import type { User } from "@/api/entities/User";
+import { reactive } from 'vue';
+import type { User } from '@/api/entities/User';
 
 interface UseUser {
   user: User;
@@ -8,10 +8,10 @@ interface UseUser {
   USER_KEY: string;
 }
 
-const USER_KEY = "user";
+const USER_KEY = 'user';
 
 const getUserFromLocalStorage = (): User =>
-  JSON.parse(localStorage.getItem(USER_KEY) || "{}");
+  JSON.parse(localStorage.getItem(USER_KEY) || '{}');
 
 let user = reactive(getUserFromLocalStorage());
 
@@ -24,14 +24,14 @@ const setUser = (payload: User) => {
 const clearUserData = () => {
   user = {
     id: 0,
-    email: "",
-    firstName: "",
-    lastName: "",
+    email: '',
+    firstName: '',
+    lastName: '',
     role: 0,
-    confirmedAt: "",
-    createdAt: "",
-    updatedAt: "",
-    deletedAt: "",
+    confirmedAt: '',
+    createdAt: '',
+    updatedAt: '',
+    deletedAt: '',
   };
   localStorage.removeItem(USER_KEY);
 };

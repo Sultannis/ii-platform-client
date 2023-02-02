@@ -1,8 +1,8 @@
-import type { Idea } from "@/api/entities/Idea";
-import { fetchIdeasRequest } from "@/api/repositories/ideas.repository";
-import { InternalServerError } from "@/api/request";
-import { showServerErrorNotification } from "@/common/helpers/notifications";
-import { reactive, ref, type Ref } from "vue";
+import type { Idea } from '@/api/entities/Idea';
+import { fetchIdeasRequest } from '@/api/repositories/ideas.repository';
+import { InternalServerError } from '@/api/request';
+import { showServerErrorNotification } from '@/common/helpers/notifications';
+import { reactive, ref, type Ref } from 'vue';
 
 let ideas: Idea[] = reactive([]);
 let fetchIdeasQueryParams = reactive({

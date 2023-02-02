@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const emit = defineEmits(['click'])
+const emit = defineEmits(['click']);
 
 defineProps({
   firstName: {
@@ -22,11 +22,14 @@ defineProps({
     type: String,
     required: false,
   },
-})
+});
 
 const emitClick = () => {
-  emit('click')
-}
+  emit('click');
+};
+
+const defaultAvatar =
+  'https://www.ktoeos.org/wp-content/uploads/2021/11/default-avatar.png';
 </script>
 
 <template>
@@ -34,29 +37,37 @@ const emitClick = () => {
     class="person"
     @click="emitClick"
   >
-    <img
-      :src="avatarUrl"
-      alt=""
-      class="person__image"
-    />
-    <div class="person__row">
-      <div class="person__info">
-        <div class="person__name">{{ firstName }} {{ lastName }}</div>
-        <div class="person__occupation">
-          {{ occupation }}
+    <div class="person__data">
+      <img
+        v-if="avatarUrl"
+        :src="avatarUrl"
+        alt=""
+        class="person__image"
+      />
+      <img
+        v-else
+        :src="defaultAvatar"
+        class="person__image"
+      />
+      <div class="person__row">
+        <div class="person__info">
+          <div class="person__name">{{ firstName }} {{ lastName }}</div>
+          <div class="person__occupation">
+            {{ occupation }}
+          </div>
         </div>
+        <a-tooltip
+          placement="top"
+          color="rgba(68, 56, 202, 0.684)"
+        >
+          <template #title>
+            <span>Количество взаимодействии</span>
+          </template>
+          <div class="person__interactions-count">
+            {{ interactionsCount }}
+          </div>
+        </a-tooltip>
       </div>
-      <a-tooltip
-        placement="top"
-        color="rgba(68, 56, 202, 0.684)"
-      >
-        <template #title>
-          <span>Количество взаимодействии</span>
-        </template>
-        <div class="person__interactions-count">
-          {{ interactionsCount }}
-        </div>
-      </a-tooltip>
     </div>
     <div class="person__row">
       <div class="person__action">
@@ -82,8 +93,13 @@ const emitClick = () => {
   display: flex;
   flex-direction: column;
   transition-duration: 0.2s;
+  justify-content: space-between;
 }
 
+.person__data {
+  display: flex;
+  flex-direction: column;
+}
 .person:hover {
   background: var(--background-highlighted-color);
 }

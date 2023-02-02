@@ -1,11 +1,11 @@
-import type { Person } from "@/api/entities/Person";
-import { fetchPerson as fetchPersonRequest } from "@/api/repositories/person.respository";
-import { InternalServerError, NotExistError } from "@/api/request";
-import { reactive, ref } from "vue";
+import type { Person } from '@/api/entities/Person';
+import { fetchPerson as fetchPersonRequest } from '@/api/repositories/person.respository';
+import { InternalServerError, NotExistError } from '@/api/request';
+import { reactive, ref } from 'vue';
 import {
   showErrorNotification,
   showServerErrorNotification,
-} from "../helpers/notifications";
+} from '../helpers/notifications';
 
 let person = ref({} as Person);
 
@@ -27,8 +27,8 @@ const fetchPerson = async (personId: number) => {
   } catch (error) {
     if (error instanceof NotExistError) {
       showErrorNotification(
-        "This user does not exist",
-        "User with this email is not registered"
+        'This user does not exist',
+        'User with this email is not registered'
       );
     } else if (error instanceof InternalServerError) {
       showServerErrorNotification();

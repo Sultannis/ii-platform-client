@@ -1,17 +1,17 @@
-import { ref } from "vue";
-import { loginUser as loginUserRequest } from "@/api/repositories/users.repository";
-import { useAuthenticate } from "@/common/composables/authenticate";
-import { useUser } from "@/common/composables/user";
+import { ref } from 'vue';
+import { loginUser as loginUserRequest } from '@/api/repositories/users.repository';
+import { useAuthenticate } from '@/common/composables/authenticate';
+import { useUser } from '@/common/composables/user';
 import {
   showErrorNotification,
   showServerErrorNotification,
-} from "@/common/helpers/notifications";
-import type { LoginUserDto } from "@/api/converters/login-user/LoginUser.dto";
+} from '@/common/helpers/notifications';
+import type { LoginUserDto } from '@/api/converters/login-user/LoginUser.dto';
 import {
   IncorrectDataError,
   InternalServerError,
   NotExistError,
-} from "@/api/request";
+} from '@/api/request';
 
 const { setUser } = useUser();
 const { setAuth } = useAuthenticate();
@@ -40,13 +40,13 @@ const loginUser = async (form: LoginUserDto) => {
   } catch (error) {
     if (error instanceof IncorrectDataError) {
       showErrorNotification(
-        "Incorrect data",
-        "You entered the wrong password. Please check your details and try again"
+        'Incorrect data',
+        'You entered the wrong password. Please check your details and try again'
       );
     } else if (error instanceof NotExistError) {
       showErrorNotification(
-        "This user does not exist",
-        "User with this email is not registered"
+        'This user does not exist',
+        'User with this email is not registered'
       );
     } else if (error instanceof InternalServerError) {
       showServerErrorNotification();

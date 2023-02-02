@@ -1,17 +1,25 @@
 <script setup lang="ts">
-import EducationalInstitutionCard from './components/EducationalInstitutionCard.vue'
-import { useFetchEducationalInstitution } from './composables/fetchEducationalInstitutions'
-import { onBeforeMount } from 'vue'
-import { selectedPersonId } from '@/common/composables/personModalState'
+import EducationalInstitutionCard from './components/EducationalInstitutionCard.vue';
+import { useFetchEducationalInstitution } from './composables/fetchEducationalInstitutions';
+import { onBeforeMount } from 'vue';
+import { selectedPersonId } from '@/common/composables/personModalState';
+import { computed } from 'vue';
+import CommonAllFinishedBlock from '../CommonAllFinishedBlock/CommonAllFinishedBlock.vue';
 
 const {
   fetchPersonEducationalInstitutions,
   educationalInstitutions,
   educationalInstitutionsLoading,
-} = useFetchEducationalInstitution()
+} = useFetchEducationalInstitution();
 onBeforeMount(() => {
-  fetchPersonEducationalInstitutions(selectedPersonId.value)
-})
+  fetchPersonEducationalInstitutions(selectedPersonId.value);
+});
+
+const message = 'There is no education...';
+
+const showNoEducationBlock = computed(() => {
+  return educationalInstitutions.length === 0;
+});
 </script>
 
 <template>
@@ -23,6 +31,10 @@ onBeforeMount(() => {
         :level-of-education="educationalInstitution.levelOfEducation"
         :country="educationalInstitution.country"
         :description="educationalInstitution.description"
+      />
+      <CommonAllFinishedBlock
+        v-if="showNoEducationBlock"
+        :finished-entity="message"
       />
     </template>
     <template v-else>

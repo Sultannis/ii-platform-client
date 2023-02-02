@@ -1,8 +1,8 @@
-import type { Person } from "@/api/entities/Person";
-import { fetchPeopleRequest } from "@/api/repositories/person.respository";
-import { InternalServerError } from "@/api/request";
-import { showServerErrorNotification } from "@/common/helpers/notifications";
-import { reactive, ref, type Ref } from "vue";
+import type { Person } from '@/api/entities/Person';
+import { fetchPeopleRequest } from '@/api/repositories/person.respository';
+import { InternalServerError } from '@/api/request';
+import { showServerErrorNotification } from '@/common/helpers/notifications';
+import { reactive, ref, type Ref } from 'vue';
 
 let people: Person[] = reactive([]);
 let fetchPeopleQueryParams = reactive({

@@ -1,6 +1,6 @@
-import { notification, message } from "ant-design-vue";
-import "ant-design-vue/es/message/style/css";
-import "ant-design-vue/es/notification/style/css";
+import { notification, message } from 'ant-design-vue';
+import 'ant-design-vue/es/message/style/css';
+import 'ant-design-vue/es/notification/style/css';
 
 const showErrorNotification = (title: string, description: string) => {
   notification.error({
@@ -12,9 +12,9 @@ const showErrorNotification = (title: string, description: string) => {
 
 const showServerErrorNotification = () => {
   notification.error({
-    message: "Что-то пошло не так",
+    message: 'Что-то пошло не так',
     description:
-      "Произошла непредвиденная ошибка. Обратитесь в службу технической поддержки.",
+      'Произошла непредвиденная ошибка. Обратитесь в службу технической поддержки.',
     duration: 8,
   });
 };

@@ -1,7 +1,15 @@
+<script setup lang="ts">
+defineProps({
+  finishedEntity: {
+    type: String,
+  },
+});
+</script>
+
 <template>
   <div class="finished">
     <i class="bx bx-wind finished__icon" />
-    <div class="finished__title">Looks like you have seen all ideas...</div>
+    <div class="finished__title">{{ finishedEntity }}</div>
     <div class="finished__subtitle">
       Refresh the page or go to another section
     </div>

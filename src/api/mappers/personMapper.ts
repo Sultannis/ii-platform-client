@@ -1,5 +1,5 @@
-import type { PersonDao } from "@/api/dao/Person.dao";
-import type { Person } from "@/api/entities/Person";
+import type { PersonDao } from '@/api/dao/Person.dao';
+import type { Person } from '@/api/entities/Person';
 
 export const mapPersonDaoToEntity = (personDao: PersonDao): Person => ({
   id: personDao.id,

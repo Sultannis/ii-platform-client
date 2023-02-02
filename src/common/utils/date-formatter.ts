@@ -1,23 +1,23 @@
-import dayjs from "./dayjs";
+import dayjs from './dayjs';
 
-export const formatToTimeDate = (value: string) => dayjs(value).format("HH:mm");
+export const formatToTimeDate = (value: string) => dayjs(value).format('HH:mm');
 
 export const formatToChatDate = (value: string) => {
   const currentDate = dayjs();
   const formatedDate = dayjs(value);
-  const difference = +currentDate.diff(formatedDate, "d", true).toFixed();
+  const difference = +currentDate.diff(formatedDate, 'd', true).toFixed();
 
   switch (true) {
     case difference === 0:
-      return formatedDate.format("HH:mm");
+      return formatedDate.format('HH:mm');
 
     case difference === 1:
-      return "вчера";
+      return 'вчера';
 
     case difference < 3:
-      return formatedDate.format("dd");
+      return formatedDate.format('dd');
 
     default:
-      return formatedDate.format("DD.MM.YYYY");
+      return formatedDate.format('DD.MM.YYYY');
   }
 };

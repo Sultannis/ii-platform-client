@@ -1,14 +1,22 @@
 <script setup lang="ts">
-import WorkCompanyCard from './components/WorkCompanyCard.vue'
-import { useFetchWorkCompany } from './composables/fetchWorkCompanies'
-import { onBeforeMount } from 'vue'
-import { selectedPersonId } from '@/common/composables/personModalState'
+import WorkCompanyCard from './components/WorkCompanyCard.vue';
+import { useFetchWorkCompany } from './composables/fetchWorkCompanies';
+import { onBeforeMount } from 'vue';
+import { selectedPersonId } from '@/common/composables/personModalState';
+import { computed } from 'vue';
+import CommonAllFinishedBlock from '@/common/components/CommonAllFinishedBlock/CommonAllFinishedBlock.vue';
 
 const { fetchPersonWorkCompanies, workCompanies, workCompaniesLoading } =
-  useFetchWorkCompany()
+  useFetchWorkCompany();
 onBeforeMount(() => {
-  fetchPersonWorkCompanies(selectedPersonId.value)
-})
+  fetchPersonWorkCompanies(selectedPersonId.value);
+});
+
+const showNoWorksBlock = computed(() => {
+  return workCompanies.length === 0;
+});
+
+const message = 'There is no work experience...';
 </script>
 
 <template>
@@ -19,6 +27,10 @@ onBeforeMount(() => {
         :company-name="workcompany.companyName"
         :position="workcompany.position"
         :description="workcompany.description"
+      />
+      <CommonAllFinishedBlock
+        v-if="showNoWorksBlock"
+        :finished-entity="message"
       />
     </template>
     <template v-else>

@@ -1,13 +1,13 @@
-import request from "../request";
-import type { WorkCompanyDao } from "../dao/WorkCompany.dao";
-import type { WorkCompany } from "../entities/WorkCompany";
-import { mapWorkCompanyDaoToEntity } from "../mappers/workCompanyMapper";
+import request from '../request';
+import type { WorkCompanyDao } from '../dao/WorkCompany.dao';
+import type { WorkCompany } from '../entities/WorkCompany';
+import { mapWorkCompanyDaoToEntity } from '../mappers/workCompanyMapper';
 
 export const fetchPersonWorkCompaniesRequest = (
   personId: number
 ): Promise<WorkCompany[]> => {
   return request
-    .get("/work-companies", {
+    .get('/work-companies', {
       params: {
         user_id: personId,
       },

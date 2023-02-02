@@ -1,30 +1,32 @@
 <script setup lang="ts">
-import CommonModal from '@/common/components/CommonModal/CommonModal.vue'
-import CommonProfileImageUpload from '@/common/components/CommonProfileImageUpload/CommonProfileImageUpload.vue'
-import CommonMenuNavigation from '@/common/components/CommonMenuNavigation/CommonMenuNavigation.vue'
-import PersonCommonPage from '@/common/components/PersonCommonPage/PersonCommonPage.vue'
-import PersonWorksPage from '../PersonWorksPage/PersonWorksPage.vue'
-import PersonEducationPage from '../PersonEducationPage/PersonEducationPage.vue'
-import { PROFILE_MENU_LINKS } from '@/common/constants/profileMenuLinks'
+import CommonModal from '@/common/components/CommonModal/CommonModal.vue';
+import CommonProfileImage from '../CommonProfileImage/CommonProfileImage.vue';
+import CommonMenuNavigation from '@/common/components/CommonMenuNavigation/CommonMenuNavigation.vue';
+import PersonCommonPage from '@/common/components/PersonCommonPage/PersonCommonPage.vue';
+import PersonWorksPage from '../PersonWorksPage/PersonWorksPage.vue';
+import PersonEducationPage from '../PersonEducationPage/PersonEducationPage.vue';
+import { PROFILE_MENU_LINKS } from '@/common/constants/profileMenuLinks';
 import {
   personModalVisible,
   closePersonModal,
   selectedPersonId,
-} from '@/common/composables/personModalState'
-import { onUpdated, ref } from 'vue'
-import { useFetchPerson } from '@/common/composables/fetchPerson'
+} from '@/common/composables/personModalState';
+import { onUpdated, ref } from 'vue';
+import { useFetchPerson } from '@/common/composables/fetchPerson';
 
 onUpdated(() => {
   if (personModalVisible.value) {
-    fetchPerson(selectedPersonId.value).catch(closePersonModal)
+    fetchPerson(selectedPersonId.value).catch(closePersonModal);
   }
-})
+});
 
-const seleсtedLinkTitle = ref('')
+const seleсtedLinkTitle = ref('');
 const setSelectedLinkTitle = (title: string) => {
-  seleсtedLinkTitle.value = title
-}
-const { person, personFetchLoading, fetchPerson } = useFetchPerson()
+  seleсtedLinkTitle.value = title;
+};
+const { person, personFetchLoading, fetchPerson } = useFetchPerson();
+const defaultAvatar =
+  'https://www.ktoeos.org/wp-content/uploads/2021/11/default-avatar.png';
 </script>
 
 <template>
@@ -37,13 +39,24 @@ const { person, personFetchLoading, fetchPerson } = useFetchPerson()
       <template v-if="!personFetchLoading">
         <div class="person__left">
           <div class="person__left-top">
-            <CommonProfileImageUpload :avatar-url="person.avatarUrl" />
+            <CommonProfileImage
+              v-if="person.avatarUrl"
+              :avatar-url="person.avatarUrl"
+            />
+            <CommonProfileImage
+              v-else
+              :avatar-url="defaultAvatar"
+            />
             <div class="person__name">
               {{ person.firstName }} {{ person.lastName }}
             </div>
             <div class="person__username">{{ person.nickName }}</div>
             <div class="person__bio">
-              <i class="bx bx-info-circle person__bio-icon" /> {{ person.bio }}
+              <i
+                class="bx bx-info-circle person__bio-icon"
+                v-if="person.bio"
+              />
+              {{ person.bio }}
             </div>
           </div>
           <button

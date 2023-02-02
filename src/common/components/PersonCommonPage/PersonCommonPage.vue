@@ -1,23 +1,34 @@
 <script setup lang="ts">
-import CommonTag from '@/common/components/CommonTag/CommonTag.vue'
-import { useFetchPersonContactList } from '@/common/composables/fetchContactList'
-import { onBeforeMount } from 'vue'
-import { selectedPersonId } from '@/common/composables/personModalState'
-import { useFetchPerson } from '@/common/composables/fetchPerson'
+import CommonTag from '@/common/components/CommonTag/CommonTag.vue';
+import { useFetchPersonContactList } from '@/common/composables/fetchContactList';
+import { onBeforeMount } from 'vue';
+import { selectedPersonId } from '@/common/composables/personModalState';
+import { useFetchPerson } from '@/common/composables/fetchPerson';
 
-const { person } = useFetchPerson()
+const { person } = useFetchPerson();
 const { contactList, fetchPersonContactList, contactListLoading } =
-  useFetchPersonContactList()
+  useFetchPersonContactList();
 onBeforeMount(() => {
-  fetchPersonContactList(selectedPersonId.value)
-})
+  fetchPersonContactList(selectedPersonId.value);
+});
 </script>
 
 <template>
   <div class="common">
     <div class="common__item">
       <div class="common__title">Profession</div>
-      <div class="common__occupation">{{ person.occupation }}</div>
+      <div
+        class="common__occupation"
+        v-if="person.occupation"
+      >
+        {{ person.occupation }}
+      </div>
+      <div
+        class="common__occupation"
+        v-else
+      >
+        No profession
+      </div>
     </div>
     <div class="common__item">
       <div class="common__title">Tags</div>

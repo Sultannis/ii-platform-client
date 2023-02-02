@@ -1,17 +1,17 @@
-import { ref } from "vue";
-import { registerUser as registerUserRequest } from "@/api/repositories/users.repository";
-import { useAuthenticate } from "@/common/composables/authenticate";
-import { useUser } from "@/common/composables/user";
+import { ref } from 'vue';
+import { registerUser as registerUserRequest } from '@/api/repositories/users.repository';
+import { useAuthenticate } from '@/common/composables/authenticate';
+import { useUser } from '@/common/composables/user';
 import {
   showErrorNotification,
   showServerErrorNotification,
-} from "@/common/helpers/notifications";
-import type { RegisterUserDto } from "@/api/converters/register-user/RegisterUser.dto";
+} from '@/common/helpers/notifications';
+import type { RegisterUserDto } from '@/api/converters/register-user/RegisterUser.dto';
 import {
   IncorrectDataError,
   InternalServerError,
   DbConcurrencyError,
-} from "@/api/request";
+} from '@/api/request';
 
 const { setUser } = useUser();
 const { setAuth } = useAuthenticate();
@@ -42,13 +42,13 @@ const registerUser = async (form: RegisterUserDto) => {
   } catch (error) {
     if (error instanceof IncorrectDataError) {
       showErrorNotification(
-        "Incorrect data",
-        "You entered the wrong password. Please check your details and try again"
+        'Incorrect data',
+        'You entered the wrong password. Please check your details and try again'
       );
     } else if (error instanceof DbConcurrencyError) {
       showErrorNotification(
-        "This user already exists",
-        "This email is already taken"
+        'This user already exists',
+        'This email is already taken'
       );
     } else if (error instanceof InternalServerError) {
       showServerErrorNotification();
