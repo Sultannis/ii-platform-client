@@ -11,7 +11,7 @@ import {
   closePersonModal,
   selectedPersonId,
 } from '@/common/composables/personModalState';
-import { onUpdated, ref } from 'vue';
+import { onUpdated, ref, watch } from 'vue';
 import { useFetchPerson } from '@/common/composables/fetchPerson';
 
 onUpdated(() => {
@@ -20,13 +20,20 @@ onUpdated(() => {
   }
 });
 
-const seleсtedLinkTitle = ref('');
+const selectedLinkTitle = ref('');
 const setSelectedLinkTitle = (title: string) => {
-  seleсtedLinkTitle.value = title;
+  selectedLinkTitle.value = title;
 };
 const { person, personFetchLoading, fetchPerson } = useFetchPerson();
-const defaultAvatar =
-  'https://www.ktoeos.org/wp-content/uploads/2021/11/default-avatar.png';
+
+let rawAvatarUrl = ref('');
+watch(person, () => {
+  rawAvatarUrl.value = person.value.avatarUrl ? person.value.avatarUrl : '';
+});
+
+const handleImageLoadingError = () => {
+  rawAvatarUrl.value = '';
+};
 </script>
 
 <template>
@@ -40,12 +47,8 @@ const defaultAvatar =
         <div class="person__left">
           <div class="person__left-top">
             <CommonProfileImage
-              v-if="person.avatarUrl"
-              :avatar-url="person.avatarUrl"
-            />
-            <CommonProfileImage
-              v-else
-              :avatar-url="defaultAvatar"
+              :avatar-url="rawAvatarUrl"
+              @load-error="handleImageLoadingError"
             />
             <div class="person__name">
               {{ person.firstName }} {{ person.lastName }}
@@ -80,9 +83,9 @@ const defaultAvatar =
             @click="setSelectedLinkTitle"
           />
           <div class="person__content">
-            <PersonCommonPage v-if="seleсtedLinkTitle == 'Common'" />
-            <PersonWorksPage v-if="seleсtedLinkTitle == 'Work'" />
-            <PersonEducationPage v-if="seleсtedLinkTitle == 'Education'" />
+            <PersonCommonPage v-if="selectedLinkTitle == 'Common'" />
+            <PersonWorksPage v-if="selectedLinkTitle == 'Work'" />
+            <PersonEducationPage v-if="selectedLinkTitle == 'Education'" />
           </div>
         </div>
       </template>

@@ -27,9 +27,6 @@ defineProps({
 const emitClick = () => {
   emit('click');
 };
-
-const defaultAvatar =
-  'https://www.ktoeos.org/wp-content/uploads/2021/11/default-avatar.png';
 </script>
 
 <template>
@@ -46,7 +43,7 @@ const defaultAvatar =
       />
       <img
         v-else
-        :src="defaultAvatar"
+        src="@/assets/images/default-avatar.png"
         class="person__image"
       />
       <div class="person__row">

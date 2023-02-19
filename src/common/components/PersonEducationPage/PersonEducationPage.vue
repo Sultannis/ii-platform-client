@@ -4,7 +4,7 @@ import { useFetchEducationalInstitution } from './composables/fetchEducationalIn
 import { onBeforeMount } from 'vue';
 import { selectedPersonId } from '@/common/composables/personModalState';
 import { computed } from 'vue';
-import CommonAllFinishedBlock from '../CommonAllFinishedBlock/CommonAllFinishedBlock.vue';
+import CommonEmptyListBlock from '../CommonEmptyListBlock/CommonEmptyListBlock.vue';
 
 const {
   fetchPersonEducationalInstitutions,
@@ -14,8 +14,6 @@ const {
 onBeforeMount(() => {
   fetchPersonEducationalInstitutions(selectedPersonId.value);
 });
-
-const message = 'There is no education...';
 
 const showNoEducationBlock = computed(() => {
   return educationalInstitutions.length === 0;
@@ -32,9 +30,10 @@ const showNoEducationBlock = computed(() => {
         :country="educationalInstitution.country"
         :description="educationalInstitution.description"
       />
-      <CommonAllFinishedBlock
+      <CommonEmptyListBlock
         v-if="showNoEducationBlock"
-        :finished-entity="message"
+        :block-height="55"
+        message="There is no education institutions..."
       />
     </template>
     <template v-else>

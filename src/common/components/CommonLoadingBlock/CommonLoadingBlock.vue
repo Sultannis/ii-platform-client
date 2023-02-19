@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed } from 'vue';
 
 const props = defineProps({
   indicatorSize: {
@@ -10,17 +10,17 @@ const props = defineProps({
     type: Number,
     default: 80,
   },
-})
+});
 
 const blockStyle = computed(() => ({
   height: `${props.blockHeight}px`,
-}))
+}));
 
 const indicatorStyle = computed(() => ({
   height: `${props.indicatorSize}px`,
   width: `${props.indicatorSize}px`,
   '--indicatorSize': `${props.indicatorSize}px`,
-}))
+}));
 </script>
 
 <template>
@@ -40,6 +40,7 @@ const indicatorStyle = computed(() => ({
   width: 100%;
   margin-bottom: 20px;
   border-radius: 10px;
+
   display: flex;
   align-items: center;
   justify-content: center;

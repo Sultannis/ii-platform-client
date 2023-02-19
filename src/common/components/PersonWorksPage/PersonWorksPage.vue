@@ -4,7 +4,7 @@ import { useFetchWorkCompany } from './composables/fetchWorkCompanies';
 import { onBeforeMount } from 'vue';
 import { selectedPersonId } from '@/common/composables/personModalState';
 import { computed } from 'vue';
-import CommonAllFinishedBlock from '@/common/components/CommonAllFinishedBlock/CommonAllFinishedBlock.vue';
+import CommonEmptyListBlock from '../CommonEmptyListBlock/CommonEmptyListBlock.vue';
 
 const { fetchPersonWorkCompanies, workCompanies, workCompaniesLoading } =
   useFetchWorkCompany();
@@ -15,8 +15,6 @@ onBeforeMount(() => {
 const showNoWorksBlock = computed(() => {
   return workCompanies.length === 0;
 });
-
-const message = 'There is no work experience...';
 </script>
 
 <template>
@@ -28,9 +26,10 @@ const message = 'There is no work experience...';
         :position="workcompany.position"
         :description="workcompany.description"
       />
-      <CommonAllFinishedBlock
+      <CommonEmptyListBlock
         v-if="showNoWorksBlock"
-        :finished-entity="message"
+        :block-height="55"
+        message="There is no work experience..."
       />
     </template>
     <template v-else>

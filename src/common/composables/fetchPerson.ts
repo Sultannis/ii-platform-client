@@ -1,7 +1,7 @@
 import type { Person } from '@/api/entities/Person';
 import { fetchPerson as fetchPersonRequest } from '@/api/repositories/person.respository';
 import { InternalServerError, NotExistError } from '@/api/request';
-import { reactive, ref } from 'vue';
+import { ref } from 'vue';
 import {
   showErrorNotification,
   showServerErrorNotification,
