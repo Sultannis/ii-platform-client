@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import CommonTag from '@/common/components/CommonTag/CommonTag.vue';
 import { useFetchPersonContactList } from '@/common/composables/fetchContactList';
-import { onBeforeMount } from 'vue';
+import { onBeforeMount, computed } from 'vue';
 import { selectedPersonId } from '@/common/composables/personModalState';
 import { useFetchPerson } from '@/common/composables/fetchPerson';
 
@@ -10,6 +10,10 @@ const { contactList, fetchPersonContactList, contactListLoading } =
   useFetchPersonContactList();
 onBeforeMount(() => {
   fetchPersonContactList(selectedPersonId.value);
+});
+
+const emptyCharacteristics = computed(() => {
+  return person.value.characteristics.length === 0;
 });
 </script>
 
@@ -33,12 +37,17 @@ onBeforeMount(() => {
     <div class="common__item">
       <div class="common__title">Tags</div>
       <div class="common__tags">
-        <CommonTag> роботы </CommonTag>
-        <CommonTag> роботы </CommonTag>
-        <CommonTag> роботы </CommonTag>
-        <CommonTag> роботы </CommonTag>
-        <CommonTag> роботы </CommonTag>
-        <CommonTag> роботы </CommonTag>
+        <CommonTag
+          v-if="!emptyCharacteristics"
+          v-for="tag in person.characteristics"
+          :tag="tag"
+        />
+        <div
+          v-else
+          class="common__empty"
+        >
+          None
+        </div>
       </div>
     </div>
     <div class="common__item">
@@ -125,6 +134,13 @@ onBeforeMount(() => {
 .common__occupation {
   color: var(--primary-color);
   font-size: 18px;
+}
+
+.common__empty {
+  color: var(--primary-color);
+  margin-top: -8px;
+  font-size: 18px;
+  font-weight: 600;
 }
 
 .common__tags {
