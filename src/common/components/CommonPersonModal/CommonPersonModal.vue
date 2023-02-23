@@ -11,7 +11,7 @@ import {
   closePersonModal,
   selectedPersonId,
 } from '@/common/composables/personModalState';
-import { onUpdated, ref, watch } from 'vue';
+import { onUpdated, ref } from 'vue';
 import { useFetchPerson } from '@/common/composables/fetchPerson';
 
 onUpdated(() => {
@@ -25,15 +25,6 @@ const setSelectedLinkTitle = (title: string) => {
   selectedLinkTitle.value = title;
 };
 const { person, personFetchLoading, fetchPerson } = useFetchPerson();
-
-let rawAvatarUrl = ref('');
-watch(person, () => {
-  rawAvatarUrl.value = person.value.avatarUrl ? person.value.avatarUrl : '';
-});
-
-const handleImageLoadingError = () => {
-  rawAvatarUrl.value = '';
-};
 </script>
 
 <template>
@@ -46,10 +37,7 @@ const handleImageLoadingError = () => {
       <template v-if="!personFetchLoading">
         <div class="person__left">
           <div class="person__left-top">
-            <CommonProfileImage
-              :avatar-url="rawAvatarUrl"
-              @load-error="handleImageLoadingError"
-            />
+            <CommonProfileImage :avatar-url="person.avatarUrl" />
             <div class="person__name">
               {{ person.firstName }} {{ person.lastName }}
             </div>

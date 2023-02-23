@@ -1,7 +1,15 @@
 <script setup lang="ts">
+import defaultAvatar from '@/assets/images/default-avatar.png';
+import { onMounted, ref } from 'vue';
+
+onMounted(() => {
+  if (!localAvatarUrl.value) {
+    localAvatarUrl.value = defaultAvatar;
+  }
+});
 const emit = defineEmits(['click']);
 
-defineProps({
+const props = defineProps({
   firstName: {
     type: String,
     required: true,
@@ -24,6 +32,11 @@ defineProps({
   },
 });
 
+const localAvatarUrl = ref(props.avatarUrl);
+const handleImageLoadingError = () => {
+  localAvatarUrl.value = defaultAvatar;
+};
+
 const emitClick = () => {
   emit('click');
 };
@@ -36,15 +49,10 @@ const emitClick = () => {
   >
     <div class="person__data">
       <img
-        v-if="avatarUrl"
-        :src="avatarUrl"
+        :src="localAvatarUrl"
         alt=""
         class="person__image"
-      />
-      <img
-        v-else
-        src="@/assets/images/default-avatar.png"
-        class="person__image"
+        @error="handleImageLoadingError"
       />
       <div class="person__row">
         <div class="person__info">

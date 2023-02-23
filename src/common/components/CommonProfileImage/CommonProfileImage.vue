@@ -1,29 +1,32 @@
 <script setup lang="ts">
+import defaultAvatar from '@/assets/images/default-avatar.png';
+import { onMounted, ref } from 'vue';
+
+onMounted(() => {
+  if (!localAvatarUrl.value) {
+    localAvatarUrl.value = defaultAvatar;
+  }
+});
 const emit = defineEmits(['loadError']);
 
-defineProps({
+const props = defineProps({
   avatarUrl: {
     type: String,
     required: false,
   },
 });
 
-const handleLoadError = () => {
-  emit('loadError');
+const localAvatarUrl = ref(props.avatarUrl);
+const handleImageLoadingError = () => {
+  localAvatarUrl.value = defaultAvatar;
 };
 </script>
 
 <template>
   <img
-    v-if="avatarUrl"
-    :src="avatarUrl"
+    :src="localAvatarUrl"
     class="image"
-    @error="handleLoadError"
-  />
-  <img
-    v-else
-    src="@/assets/images/default-avatar.png"
-    class="image"
+    @error="handleImageLoadingError"
   />
 </template>
 
