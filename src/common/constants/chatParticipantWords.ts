@@ -1,1 +1,1 @@
-export const chatParticipantWords = ["участник", "участника", "участников"];
+export const chatParticipantWords = ['участник', 'участника', 'участников'];

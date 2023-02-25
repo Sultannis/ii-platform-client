@@ -1,5 +1,5 @@
-import type { IdeaDao } from "../dao/Idea.dao";
-import type { Idea } from "../entities/Idea";
+import type { IdeaDao } from '../dao/Idea.dao';
+import type { Idea } from '../entities/Idea';
 
 export const mapIdeaDaoToEntity = (idea: IdeaDao): Idea => ({
   id: idea.id,

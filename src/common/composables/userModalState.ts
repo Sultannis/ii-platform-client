@@ -1,8 +1,8 @@
-import { ref } from "vue";
+import { ref } from 'vue';
 import {
   setBodyOverflowOvelay,
   setBodyOverflowHidden,
-} from "../helpers/body-overflow-switchers";
+} from '../helpers/body-overflow-switchers';
 
 const userModalVisible = ref(false);
 

@@ -1,5 +1,5 @@
-import type { ChatMessage } from "./chat-message";
-import { ChatParticipant } from "./chat-participant";
+import type { ChatMessage } from './chat-message';
+import { ChatParticipant } from './chat-participant';
 
 export interface ChatRoom {
   id: string;

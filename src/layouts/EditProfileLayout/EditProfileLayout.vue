@@ -1,12 +1,15 @@
 <script setup lang="ts">
-import EditGeneralInformationForm from "./components/EditGeneralInformationForm.vue";
-import EditProjectInformationForm from "./components/EditProjectInformationForm.vue";
-import EditActionButtonsForm from "./components/EditActionButtonsForm.vue";
+import EditGeneralInformationForm from './components/EditGeneralInformationForm.vue'
+import EditProjectInformationForm from './components/EditProjectInformationForm.vue'
+import EditActionButtonsForm from './components/EditActionButtonsForm.vue'
 </script>
 
 <template>
   <div class="edit-layout">
-    <RouterLink to="/feed/new" class="cancel-changes">
+    <RouterLink
+      to="/feed/new"
+      class="cancel-changes"
+    >
       <i class="bx bxs-chevron-left" />
       На главную без сохранения
     </RouterLink>

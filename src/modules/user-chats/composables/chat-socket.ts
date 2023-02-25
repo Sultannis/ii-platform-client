@@ -1,25 +1,25 @@
-import { type Ref, ref, reactive } from "vue";
-import type { ChatRoom, ChatRoomData } from "@/common/entity/chat-room";
-import { useSocketIO } from "@/common/composables/socket-io";
-import config from "@/common/config/config";
-import type { Socket } from "socket.io-client";
-import type { ChatMessage } from "@/common/entity/chat-message";
-import { useAuthenticate } from "@/common/composables/authenticate";
-import { useUser } from "@/common/composables/user";
+import { type Ref, ref, reactive } from 'vue';
+import type { ChatRoom, ChatRoomData } from '@/common/entity/chat-room';
+import { useSocketIO } from '@/common/composables/socket-io';
+import config from '@/common/config/config';
+import type { Socket } from 'socket.io-client';
+import type { ChatMessage } from '@/common/entity/chat-message';
+import { useAuthenticate } from '@/common/composables/authenticate';
+import { useUser } from '@/common/composables/user';
 
 export enum SocketEvent {
-  CONNECTION = "connection",
-  ROOMS = "rooms",
-  JOIN = "join",
-  MESSAGE = "message",
-  MESSAGE_READ = "message-read",
+  CONNECTION = 'connection',
+  ROOMS = 'rooms',
+  JOIN = 'join',
+  MESSAGE = 'message',
+  MESSAGE_READ = 'message-read',
 }
 
 const { auth } = useAuthenticate();
 const { user } = useUser();
 
 const userId = user.id;
-const authToken = "Bearer " + auth.authToken;
+const authToken = 'Bearer ' + auth.authToken;
 
 const socket: Ref<Socket> = ref();
 const rooms = ref([] as ChatRoom[]);

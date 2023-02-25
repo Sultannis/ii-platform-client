@@ -6,7 +6,7 @@ import CommonTransition from "@/common/components/CommonTransition/CommonTransit
   <div class="layout">
     <RouterLink to="/feed/new" class="layout__back">
       <i class="bx bxs-chevron-left layout__back-icon" />
-      Назад на главную
+      Back to home page
     </RouterLink>
     <div class="layout__content">
       <div class="layout__logo">

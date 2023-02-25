@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { useElementVisibility } from "@vueuse/core";
-import IdeaCard from "@/modules/feed/ideas-feed/components/IdeaCard/IdeaCard.vue";
-import CommonLoadingBlock from "@/common/components/CommonLoadingBlock/CommonLoadingBlock.vue";
-import CommonAllFinishedBlock from "@/common/components/CommonAllFinishedBlock/CommonAllFinishedBlock.vue";
+import { useElementVisibility } from '@vueuse/core';
+import IdeaCard from '@/modules/feed/ideas-feed/components/IdeaCard/IdeaCard.vue';
+import CommonLoadingBlock from '@/common/components/CommonLoadingBlock/CommonLoadingBlock.vue';
+import CommonAllFinishedBlock from '@/common/components/CommonAllFinishedBlock/CommonAllFinishedBlock.vue';
 import {
   fetchInitialIdeasChunk,
   initalChunkLoaded,
@@ -10,8 +10,8 @@ import {
   fetchIdeasQueryParams,
   ideasLoading,
   ideas,
-} from "@/modules/feed/ideas-feed/composables/fetchIdeasFeed";
-import { computed, onBeforeMount, ref, watch } from "vue";
+} from '@/modules/feed/ideas-feed/composables/fetchIdeasFeed';
+import { computed, onBeforeMount, ref, watch } from 'vue';
 
 const feedLoadingTrigger = ref(null);
 const feedLoadingTriggerVisible = useElementVisibility(feedLoadingTrigger);
@@ -31,6 +31,8 @@ watch(feedLoadingTriggerVisible, () => {
     fetchNextIdeasChunkAndConcat();
   }
 });
+
+const message = 'Looks like you have seen all ideas...';
 </script>
 
 <template>
@@ -45,8 +47,14 @@ watch(feedLoadingTriggerVisible, () => {
     />
 
     <CommonLoadingBlock v-if="ideasLoading" />
-    <CommonAllFinishedBlock v-if="showAllFinishedBlock" />
-    <div ref="feedLoadingTrigger" class="feed__loading-trigger" />
+    <CommonAllFinishedBlock
+      v-if="showAllFinishedBlock"
+      :finished-entity="message"
+    />
+    <div
+      ref="feedLoadingTrigger"
+      class="feed__loading-trigger"
+    />
   </div>
 </template>
 

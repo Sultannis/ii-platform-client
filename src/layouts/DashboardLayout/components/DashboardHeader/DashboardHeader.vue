@@ -1,22 +1,19 @@
 <script setup lang="ts">
-import { useAuthenticate } from "@/common/composables/authenticate";
-import { useUser } from "@/common/composables/user";
-import { useRouter } from "vue-router";
-import HeaderSearchInput from "@/layouts/DashboardLayout/components/HeaderSearchInput/HeaderSearchInput.vue";
-import { openUserModal } from "@/common/composables/userModalState";
+import { useAuthenticate } from '@/common/composables/authenticate'
+import { useRouter } from 'vue-router'
+import HeaderSearchInput from '@/layouts/DashboardLayout/components/HeaderSearchInput/HeaderSearchInput.vue'
+import { openUserModal } from '@/common/composables/userModalState'
 
-const router = useRouter();
-
-const { auth, logout } = useAuthenticate();
-
+const router = useRouter()
+const { auth, logout } = useAuthenticate()
 const handleProfileClick = () => {
   if (auth.authToken) {
   } else {
     router.push({
-      path: "/auth/login",
-    });
+      path: '/auth/login',
+    })
   }
-};
+}
 </script>
 
 <template>
@@ -40,11 +37,17 @@ const handleProfileClick = () => {
             <span class="popover__title">Sultan Mustafin</span>
           </template>
           <template #content>
-            <div class="popover__link" @click="openUserModal">
-              <i class="bx bx-user popover__link-icon" />Мой профиль
+            <div
+              class="popover__link"
+              @click="openUserModal"
+            >
+              <i class="bx bx-user popover__link-icon" />My profile
             </div>
-            <div class="popover__link" @click="logout">
-              <i class="bx bx-exit popover__link-icon" /> Выйти
+            <div
+              class="popover__link"
+              @click="logout"
+            >
+              <i class="bx bx-exit popover__link-icon" /> Log out
             </div>
           </template>
           <button
@@ -151,7 +154,7 @@ const handleProfileClick = () => {
   position: absolute;
   right: 8px;
   top: 10px;
-  content: "";
+  content: '';
   display: inline-block;
 }
 

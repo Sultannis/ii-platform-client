@@ -1,13 +1,13 @@
-import { reactive, ref } from "vue";
-import type { Auth } from "@/entities/Auth";
-import router from "@/router";
-import { useUser } from "./user";
+import { reactive, ref } from 'vue';
+import type { Auth } from '@/entities/Auth';
+import router from '@/router';
+import { useUser } from './user';
 
-const AUTH_TOKEN_KEY = "auth_token";
+const AUTH_TOKEN_KEY = 'auth_token';
 const { USER_KEY, clearUserData } = useUser();
 
 const getAuthTokenFromLocalStorage = (): string => {
-  const token = localStorage.getItem(AUTH_TOKEN_KEY) || "";
+  const token = localStorage.getItem(AUTH_TOKEN_KEY) || '';
   return token;
 };
 
@@ -24,10 +24,10 @@ const setAuth = (payload: Auth): void => {
 
 const logout = (): void => {
   clearUserData();
-  auth.authToken = "";
+  auth.authToken = '';
   localStorage.removeItem(AUTH_TOKEN_KEY);
   localStorage.removeItem(USER_KEY);
-  router.push({ path: "/auth/login" });
+  router.push({ path: '/auth/login' });
 };
 
 const loggedIn = ref(!!auth.authToken);

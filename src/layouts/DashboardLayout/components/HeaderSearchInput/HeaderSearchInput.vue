@@ -3,7 +3,7 @@
     <i class="search__icon bx bx-search-alt" />
     <input
       type="text"
-      placeholder="Найди идею или человека..."
+      placeholder="Search idea or person..."
       class="search__input"
     />
   </div>

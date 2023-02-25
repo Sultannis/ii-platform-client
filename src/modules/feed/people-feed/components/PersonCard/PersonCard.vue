@@ -1,42 +1,83 @@
 <script setup lang="ts">
-const emit = defineEmits(["click"]);
+import defaultAvatar from '@/assets/images/default-avatar.png';
+import { onMounted, ref } from 'vue';
 
-defineProps({
-  fistName: String,
-  lastName: String,
-  occupation: String,
-  interactionsCount: Number,
-  avatarUrl: String,
+onMounted(() => {
+  if (!localAvatarUrl.value) {
+    localAvatarUrl.value = defaultAvatar;
+  }
+});
+const emit = defineEmits(['click']);
+
+const props = defineProps({
+  firstName: {
+    type: String,
+    required: true,
+  },
+  lastName: {
+    type: String,
+    required: true,
+  },
+  occupation: {
+    type: String,
+    required: false,
+  },
+  interactionsCount: {
+    type: Number,
+    required: false,
+  },
+  avatarUrl: {
+    type: String,
+    required: false,
+  },
 });
 
+const localAvatarUrl = ref(props.avatarUrl);
+const handleImageLoadingError = () => {
+  localAvatarUrl.value = defaultAvatar;
+};
+
 const emitClick = () => {
-  emit("click");
+  emit('click');
 };
 </script>
 
 <template>
-  <div class="person" @click="emitClick">
-    <img :src= "avatarUrl" alt="" class="person__image" />
-    <div class="person__row">
-      <div class="person__info">
-        <div class="person__name">{{ fistName }} {{ lastName }}</div>
-        <div class="person__occupation">
-          {{ occupation }}
+  <div
+    class="person"
+    @click="emitClick"
+  >
+    <div class="person__data">
+      <img
+        :src="localAvatarUrl"
+        alt=""
+        class="person__image"
+        @error="handleImageLoadingError"
+      />
+      <div class="person__row">
+        <div class="person__info">
+          <div class="person__name">{{ firstName }} {{ lastName }}</div>
+          <div class="person__occupation">
+            {{ occupation }}
+          </div>
         </div>
+        <a-tooltip
+          placement="top"
+          color="rgba(68, 56, 202, 0.684)"
+        >
+          <template #title>
+            <span>Количество взаимодействии</span>
+          </template>
+          <div class="person__interactions-count">
+            {{ interactionsCount }}
+          </div>
+        </a-tooltip>
       </div>
-      <a-tooltip placement="top" color="rgba(68, 56, 202, 0.684)">
-        <template #title>
-          <span>Количество взаимодействии</span>
-        </template>
-        <div class="person__interactions-count">
-          {{ interactionsCount ? interactionsCount : 20 }}
-        </div>
-      </a-tooltip>
     </div>
     <div class="person__row">
       <div class="person__action">
         <i class="bx bx-conversation person__icon person__icon_margin-right" />
-        Написать
+        Chat
       </div>
       <div class="person__action">
         <i class="bx bx-bookmark person__icon" />
@@ -56,8 +97,14 @@ const emitClick = () => {
 
   display: flex;
   flex-direction: column;
+  transition-duration: 0.2s;
+  justify-content: space-between;
 }
 
+.person__data {
+  display: flex;
+  flex-direction: column;
+}
 .person:hover {
   background: var(--background-highlighted-color);
 }

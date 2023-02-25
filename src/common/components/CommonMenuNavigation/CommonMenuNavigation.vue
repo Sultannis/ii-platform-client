@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
+import { onMounted, ref } from 'vue'
 
-const emit = defineEmits(["click"]);
+const emit = defineEmits(['click'])
 const { links } = defineProps({
   displayRouterLinks: {
     type: Boolean,
@@ -10,22 +10,22 @@ const { links } = defineProps({
     type: Array<{ title: string; iconClass: string; route: string }>,
     reqired: true,
   },
-});
+})
 
 onMounted(() => {
-  emitClick(links![selectedItemIndex.value]?.title);
-});
+  emitClick(links![selectedItemIndex.value]?.title)
+})
 
-const selectedItemIndex = ref(0);
+const selectedItemIndex = ref(0)
 
 const emitClick = (title: string) => {
-  emit("click", title);
-};
+  emit('click', title)
+}
 
 const handleClick = (title: string, index: number) => {
-  selectedItemIndex.value = index;
-  emitClick(title);
-};
+  selectedItemIndex.value = index
+  emitClick(title)
+}
 </script>
 
 <template>

@@ -3,13 +3,17 @@ export type PersonDao = {
   email: string;
   first_name: string;
   last_name: string;
-  occupation: string,
-  avatar_url: string;
-  interactions_count: number;
+  nick_name?: string;
+  birth_date?: string;
+  residence_country?: string;
+  residence_city?: string;
+  occupation?: string;
+  bio?: string;
+  avatar_url?: string;
   role: number;
-  confirmed_at: string;
   created_at: string;
   updated_at: string;
-  deleted_at: string;
+  confirmed_at?: string;
   characteristics: string;
+  interactions_count: number;
 };

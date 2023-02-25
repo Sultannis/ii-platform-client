@@ -4,14 +4,14 @@ defineProps({
     type: String || Number,
     required: true,
   },
-});
+})
 
-const emit = defineEmits(["update:modelValue"]);
+const emit = defineEmits(['update:modelValue'])
 
 const emitInputValue = (event: Event) => {
-  const target = event.target as HTMLInputElement;
-  emit("update:modelValue", target.value);
-};
+  const target = event.target as HTMLInputElement
+  emit('update:modelValue', target.value)
+}
 </script>
 
 <template>

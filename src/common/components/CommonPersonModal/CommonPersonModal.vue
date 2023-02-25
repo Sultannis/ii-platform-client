@@ -1,39 +1,31 @@
 <script setup lang="ts">
-import CommonModal from "@/common/components/CommonModal/CommonModal.vue";
-import CommonProfileImageUpload from "@/common/components/CommonProfileImageUpload/CommonProfileImageUpload.vue";
-import CommonMenuNavigation from "@/common/components/CommonMenuNavigation/CommonMenuNavigation.vue";
-import PersonCommonPage from "@/common/components/PersonCommonPage/PersonCommonPage.vue";
-import PersonProjectsPage from "@/common/components/PersonProjectsPage/PersonProjectsPage.vue";
-import { PROFILE_MENU_LINKS } from "@/common/constants/profileMenuLinks";
+import CommonModal from '@/common/components/CommonModal/CommonModal.vue';
+import CommonProfileImage from '../CommonProfileImage/CommonProfileImage.vue';
+import CommonMenuNavigation from '@/common/components/CommonMenuNavigation/CommonMenuNavigation.vue';
+import PersonCommonPage from '@/common/components/PersonCommonPage/PersonCommonPage.vue';
+import PersonWorksPage from '../PersonWorksPage/PersonWorksPage.vue';
+import PersonEducationPage from '../PersonEducationPage/PersonEducationPage.vue';
+import { PROFILE_MENU_LINKS } from '@/common/constants/profileMenuLinks';
 import {
   personModalVisible,
   closePersonModal,
   selectedPersonId,
-} from "@/common/composables/personModalState";
-import { onUpdated, ref } from "vue";
-import { useFetchPerson } from "@/common/composables/fetchPerson";
+} from '@/common/composables/personModalState';
+import { onUpdated, ref } from 'vue';
+import { useFetchPerson } from '@/common/composables/fetchPerson';
 
 onUpdated(() => {
-  if(personModalVisible.value) {
-    fetchPerson(selectedPersonId.value).catch(closePersonModal)
-
+  if (personModalVisible.value) {
+    fetchPerson(selectedPersonId.value).catch(closePersonModal);
   }
-})
+});
 
-const seletedLinkTitle = ref("");
-
+const selectedLinkTitle = ref('');
 const setSelectedLinkTitle = (title: string) => {
-  seletedLinkTitle.value = title;
+  selectedLinkTitle.value = title;
 };
-
 const { person, personFetchLoading, fetchPerson } = useFetchPerson();
-
-const consoleLog = () => {
-  console.log(person.value)
-}
-
 </script>
-
 
 <template>
   <CommonModal
@@ -41,29 +33,36 @@ const consoleLog = () => {
     width="900"
     @close-click="closePersonModal"
   >
-    <div class="person" @click="consoleLog">
+    <div class="person">
       <template v-if="!personFetchLoading">
         <div class="person__left">
           <div class="person__left-top">
-            <CommonProfileImageUpload />
-            <div class="person__name">Sultan Mustafin</div>
-            <div class="person__username">@ its.sultan</div>
-            <div class="person__bio">
-              <i class="bx bx-info-circle perison__bio-icon" /> get rich or die
-              trying
+            <CommonProfileImage :avatar-url="person.avatarUrl" />
+            <div class="person__name">
+              {{ person.firstName }} {{ person.lastName }}
             </div>
-            <div class="person__description">
-              Основатель рекорд-лейбла Epinefrin suplex. Одними из участиников
-              которого являются Lil baby, J. Cole, Lil boat.
+            <div class="person__username">{{ person.nickName }}</div>
+            <div class="person__bio">
+              <i
+                class="bx bx-info-circle person__bio-icon"
+                v-if="person.bio"
+              />
+              {{ person.bio }}
             </div>
           </div>
-          <button v-if="false" class="person__button person__button_delete">
+          <button
+            v-if="false"
+            class="person__button person__button_delete"
+          >
             <i class="bx bx-user-minus person__icon" />
-            Удалить из контактов
+            Delete from contacts
           </button>
-          <button v-else class="person__button person__button_add">
+          <button
+            v-else
+            class="person__button person__button_add"
+          >
             <i class="bx bx-user-plus person__icon" />
-            Добавить в контакты
+            Add to contacts
           </button>
         </div>
         <div class="person__right">
@@ -72,24 +71,45 @@ const consoleLog = () => {
             @click="setSelectedLinkTitle"
           />
           <div class="person__content">
-            <PersonCommonPage v-if="seletedLinkTitle == 'Общая'" />
-            <PersonProjectsPage v-if="seletedLinkTitle === 'Проекты'" />
+            <PersonCommonPage v-if="selectedLinkTitle == 'Common'" />
+            <PersonWorksPage v-if="selectedLinkTitle == 'Work'" />
+            <PersonEducationPage v-if="selectedLinkTitle == 'Education'" />
           </div>
         </div>
       </template>
       <template v-else>
         <div class="person__left-skeleton">
-          <a-skeleton-avatar active avatar :size="260" />
-          <a-skeleton active :paragraph="{ rows: 4 }" />
-          <a-skeleton active :paragraph="{ rows: 2 }" />
+          <a-skeleton-avatar
+            active
+            avatar
+            :size="260"
+          />
+          <a-skeleton
+            active
+            :paragraph="{ rows: 4 }"
+          />
+          <a-skeleton
+            active
+            :paragraph="{ rows: 2 }"
+          />
         </div>
         <div class="person__right">
           <div class="person__nav-skeleton">
-            <a-skeleton active :paragraph="{ rows: 1 }" :title="false"/>
+            <a-skeleton
+              active
+              :paragraph="{ rows: 1 }"
+              :title="false"
+            />
           </div>
           <div class="person__content-skeleton">
-            <a-skeleton active :paragraphs="{ rows: 4 }" />
-            <a-skeleton active :paragraphs="{ rows: 4 }" />
+            <a-skeleton
+              active
+              :paragraphs="{ rows: 4 }"
+            />
+            <a-skeleton
+              active
+              :paragraphs="{ rows: 4 }"
+            />
           </div>
         </div>
       </template>
@@ -140,16 +160,11 @@ const consoleLog = () => {
 
 .person__bio {
   display: flex;
-  align-items: center;
 }
 
-.perison__bio-icon {
-  margin-right: 5px;
-}
-
-.person__description {
+.person__bio-icon {
   margin-top: 5px;
-  font-size: 12px;
+  margin-right: 5px;
 }
 
 .person__username {

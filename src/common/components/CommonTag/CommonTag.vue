@@ -1,6 +1,18 @@
+<script setup lang="ts">
+defineProps({
+  tag: {
+    type: String,
+    required: false,
+  },
+});
+</script>
+
 <template>
-  <div class="tag">
-    <slot />
+  <div
+    class="tag"
+    v-if="tag"
+  >
+    {{ tag }}
   </div>
 </template>
 
@@ -12,5 +24,9 @@
   color: var(--primary-color);
   border: 1px solid var(--primary-color);
   border-radius: 10px;
+}
+.empty {
+  font-size: 10;
+  color: var(--primary-color);
 }
 </style>

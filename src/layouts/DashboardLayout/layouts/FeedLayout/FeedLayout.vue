@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import CommonMenuNavigation from "@/common/components/CommonMenuNavigation/CommonMenuNavigation.vue";
-import { FEED_MENU_LINKS } from "@/common/constants/feedMenuLinks";
-import { computed } from "@vue/reactivity";
-import { useRoute } from "vue-router";
+import CommonMenuNavigation from '@/common/components/CommonMenuNavigation/CommonMenuNavigation.vue'
+import { FEED_MENU_LINKS } from '@/common/constants/feedMenuLinks'
+import { computed } from '@vue/reactivity'
+import { useRoute } from 'vue-router'
 
-const route = useRoute();
+const route = useRoute()
 
 const displayAddButton = computed(() => {
-  return route.name === "ideas-feed:new" || route.name === "ideas-feed:popular";
-});
+  return route.name === 'ideas-feed:new' || route.name === 'ideas-feed:popular'
+})
 </script>
 
 <template>
@@ -26,7 +26,7 @@ const displayAddButton = computed(() => {
         ]"
       >
         <i class="bx bx-plus feed__create-icon" />
-        Создать
+        Create
       </div>
     </div>
     <RouterView />

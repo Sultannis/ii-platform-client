@@ -1,4 +1,4 @@
-import type { QueryParamsDto } from "@/api/converters/query-params/QueryParams.dto";
+import type { QueryParamsDto } from '@/api/converters/query-params/QueryParams.dto';
 
 export const mapQueryParamsForRequest = (queryParams: QueryParamsDto) => ({
   page: queryParams.page,
