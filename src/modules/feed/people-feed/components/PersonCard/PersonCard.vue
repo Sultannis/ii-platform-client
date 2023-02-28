@@ -107,6 +107,7 @@ const emitClick = () => {
 }
 .person:hover {
   background: var(--background-highlighted-color);
+  cursor: pointer;
 }
 
 .person__name {

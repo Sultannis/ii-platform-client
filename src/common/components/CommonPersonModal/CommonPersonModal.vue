@@ -41,7 +41,7 @@ const { person, personFetchLoading, fetchPerson } = useFetchPerson();
             <div class="person__name">
               {{ person.firstName }} {{ person.lastName }}
             </div>
-            <div class="person__username">{{ person.nickName }}</div>
+            <div class="person__username">{{ person.nickname }}</div>
             <div class="person__bio">
               <i
                 class="bx bx-info-circle person__bio-icon"

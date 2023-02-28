@@ -7,7 +7,7 @@ export const SIDEBAR_ACCOUNT_LINKS = [
   },
   {
     id: 6,
-    iconClass: 'bx-search-alt',
+    iconClass: 'bx-cog',
     title: 'Settings',
     route: '/settings',
   },

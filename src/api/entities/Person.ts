@@ -3,7 +3,7 @@ export type Person = {
   email: string;
   firstName: string;
   lastName: string;
-  nickName?: string;
+  nickname?: string;
   birthDate?: string;
   residenceCountry?: string;
   residenceCity?: string;

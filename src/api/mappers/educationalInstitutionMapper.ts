@@ -2,15 +2,17 @@ import type { EducationalInstitutionDao } from '../dao/EducationalInstitution.da
 import type { EducationalInstitution } from '../entities/EducationalInstitution';
 
 export const mapEducationalInstitutionDaoToEntity = (
-  educationalInstitution: EducationalInstitutionDao
+  educationalInstitutionDao: EducationalInstitutionDao
 ): EducationalInstitution => ({
-  id: educationalInstitution.id,
-  userId: educationalInstitution.user_id,
-  institutionName: educationalInstitution.institution_name,
-  description: educationalInstitution.description,
-  levelOfEducation: educationalInstitution.level_of_education,
-  country: educationalInstitution.country,
-  startDate: educationalInstitution.start_date,
-  endDate: educationalInstitution.end_date,
-  createdAt: educationalInstitution.created_at,
+  id: educationalInstitutionDao.id,
+  userId: educationalInstitutionDao.user_id,
+  institutionName: educationalInstitutionDao.institution_name,
+  description: educationalInstitutionDao.description,
+  levelOfEducation: educationalInstitutionDao.level_of_education,
+  country: educationalInstitutionDao.country,
+  startDate: educationalInstitutionDao.start_date,
+  endDate: educationalInstitutionDao.end_date,
+  createdAt: educationalInstitutionDao.created_at,
+  updatedAt: educationalInstitutionDao.updated_at,
+  user: educationalInstitutionDao.user,
 });

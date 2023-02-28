@@ -7,7 +7,6 @@ onMounted(() => {
     localAvatarUrl.value = defaultAvatar;
   }
 });
-const emit = defineEmits(['loadError']);
 
 const props = defineProps({
   avatarUrl: {

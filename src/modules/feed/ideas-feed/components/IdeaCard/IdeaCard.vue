@@ -1,6 +1,26 @@
 <script setup lang="ts">
 import CommonTag from '@/common/components/CommonTag/CommonTag.vue';
-defineProps({
+import defaultAvatar from '@/assets/images/default-avatar.png';
+import { useFetchPerson } from '@/common/composables/fetchPerson';
+import { onMounted, ref } from 'vue';
+
+onMounted(() => {
+  if (!localAvatarUrl.value) {
+    localAvatarUrl.value = defaultAvatar;
+  }
+});
+
+const emit = defineEmits(['click']);
+
+const emitClick = () => {
+  emit('click');
+};
+
+const props = defineProps({
+  authorId: {
+    type: Number,
+    required: true,
+  },
   title: {
     type: String,
     required: true,
@@ -9,15 +29,21 @@ defineProps({
     type: String,
     required: true,
   },
-  score: {
-    type: Number,
-    required: true,
-  },
   imageUrl: {
     type: String,
     required: false,
   },
 });
+
+const { person, fetchPerson } = useFetchPerson();
+const localAuthorId = ref(props.authorId);
+const localAvatarUrl = ref(person.value.avatarUrl);
+
+const handleImageLoadingError = () => {
+  localAvatarUrl.value = defaultAvatar;
+};
+
+fetchPerson(localAuthorId.value);
 </script>
 
 <template>
@@ -27,13 +53,19 @@ defineProps({
       <i class="bx bx-dots-horizontal-rounded idea__options"></i>
     </div>
     <div class="idea__row">
-      <div class="idea__author">
+      <div
+        class="idea__author"
+        @click="emitClick"
+      >
         <img
-          src="@/assets/images/profile-photo.jpg"
+          :src="localAvatarUrl"
           alt=""
           class="idea__author-image"
+          @error="handleImageLoadingError"
         />
-        <div class="idea__author-name">its.sultan</div>
+        <div class="idea__author-name">
+          {{ person.nickname }}
+        </div>
         <div class="idea__author-divider" />
       </div>
       <div class="idea__time">2 мин</div>
@@ -112,6 +144,15 @@ defineProps({
   align-items: center;
 }
 
+.idea__author:hover {
+  padding-right: 10px;
+  display: flex;
+  align-items: center;
+
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 .idea__author-image {
   margin-right: 10px;
   height: 40px;
@@ -128,11 +169,6 @@ defineProps({
 
 .idea__author-name {
   font-weight: 600;
-  cursor: pointer;
-}
-
-.idea__author-name:hover {
-  text-decoration: underline;
 }
 
 .idea__time {
@@ -141,6 +177,7 @@ defineProps({
 
 .idea__description {
   margin-top: 10px;
+  font-size: 15px;
 }
 
 .idea__tags {

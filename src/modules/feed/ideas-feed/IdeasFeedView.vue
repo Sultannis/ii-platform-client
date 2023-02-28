@@ -11,10 +11,19 @@ import {
   ideasLoading,
   ideas,
 } from '@/modules/feed/ideas-feed/composables/fetchIdeasFeed';
+import {
+  openPersonModal,
+  setSelectedPersonId,
+} from '@/common/composables/personModalState';
 import { computed, onBeforeMount, ref, watch } from 'vue';
 
 const feedLoadingTrigger = ref(null);
 const feedLoadingTriggerVisible = useElementVisibility(feedLoadingTrigger);
+
+const handleAuthorNicknameClick = (authorId: number) => {
+  setSelectedPersonId(authorId);
+  openPersonModal();
+};
 
 onBeforeMount(fetchInitialIdeasChunk);
 
@@ -40,10 +49,10 @@ const message = 'Looks like you have seen all ideas...';
     <IdeaCard
       v-for="idea of ideas"
       :key="idea.id"
+      :author-id="idea.authorId"
       :title="idea.title"
       :subtitle="idea.subtitle"
-      :score="idea.score"
-      :image-url="idea.mainImageUrl"
+      @click="handleAuthorNicknameClick(idea.authorId)"
     />
 
     <CommonLoadingBlock v-if="ideasLoading" />

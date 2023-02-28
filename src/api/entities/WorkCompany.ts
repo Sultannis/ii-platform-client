@@ -1,3 +1,5 @@
+import type { User } from './User';
+
 export type WorkCompany = {
   id: number;
   userId: number;
@@ -9,4 +11,5 @@ export type WorkCompany = {
   endDate: string;
   createdAt: string;
   updatedAt: string;
+  user?: User;
 };

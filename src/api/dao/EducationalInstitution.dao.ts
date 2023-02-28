@@ -1,3 +1,5 @@
+import type { User } from '../entities/User';
+
 export type EducationalInstitutionDao = {
   id: number;
   user_id: number;
@@ -8,4 +10,6 @@ export type EducationalInstitutionDao = {
   start_date: string;
   end_date: string;
   created_at: string;
+  updated_at: string;
+  user?: User;
 };

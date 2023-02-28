@@ -1,3 +1,5 @@
+import type { User } from './User';
+
 export type EducationalInstitution = {
   id: number;
   userId: number;
@@ -8,4 +10,6 @@ export type EducationalInstitution = {
   startDate: string;
   endDate: string;
   createdAt: string;
+  updatedAt: string;
+  user?: User;
 };

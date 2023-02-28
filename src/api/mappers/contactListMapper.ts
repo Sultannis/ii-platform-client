@@ -2,15 +2,16 @@ import type { ContactListDao } from '../dao/ContactList.dao';
 import type { ContactList } from '../entities/ContactList';
 
 export const mapContactListDaoToEntity = (
-  contactList: ContactListDao
+  contactListDao: ContactListDao
 ): ContactList => ({
-  id: contactList.id,
-  userId: contactList.user_id,
-  email: contactList.email,
-  phoneNumber: contactList.phone_number,
-  linkedinLink: contactList.linkedin_link,
-  githubLink: contactList.github_link,
-  telegramNickname: contactList.telegram_nickname,
-  createdAt: contactList.created_at,
-  updatedAt: contactList.updated_at,
+  id: contactListDao.id,
+  email: contactListDao.email,
+  userId: contactListDao.user_id,
+  phoneNumber: contactListDao.phone_number,
+  linkedinLink: contactListDao.linkedin_link,
+  githubLink: contactListDao.github_link,
+  telegramNickname: contactListDao.telegram_nickname,
+  createdAt: contactListDao.created_at,
+  updatedAt: contactListDao.updated_at,
+  user: contactListDao.user,
 });

@@ -14,4 +14,5 @@ export const mapWorkCompanyDaoToEntity = (
   endDate: workCompanyDao.end_date,
   createdAt: workCompanyDao.created_at,
   updatedAt: workCompanyDao.updated_at,
+  user: workCompanyDao.user,
 });

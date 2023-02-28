@@ -6,7 +6,7 @@ export const mapPersonDaoToEntity = (personDao: PersonDao): Person => ({
   email: personDao.email,
   firstName: personDao.first_name,
   lastName: personDao.last_name,
-  nickName: personDao.nick_name,
+  nickname: personDao.nickname,
   birthDate: personDao.birth_date,
   residenceCountry: personDao.residence_country,
   residenceCity: personDao.residence_city,

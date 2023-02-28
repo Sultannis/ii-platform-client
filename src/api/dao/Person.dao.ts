@@ -3,7 +3,7 @@ export type PersonDao = {
   email: string;
   first_name: string;
   last_name: string;
-  nick_name?: string;
+  nickname?: string;
   birth_date?: string;
   residence_country?: string;
   residence_city?: string;

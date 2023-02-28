@@ -1,3 +1,5 @@
+import type { User } from '../entities/User';
+
 export type WorkCompanyDao = {
   id: number;
   user_id: number;
@@ -9,4 +11,5 @@ export type WorkCompanyDao = {
   end_date: string;
   created_at: string;
   updated_at: string;
+  user?: User;
 };
